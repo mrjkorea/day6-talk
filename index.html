@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Day 6 Talk · MRJ</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <header class="top">
+      <button type="button" id="btnHome" class="ghost" hidden>← Home</button>
+      <div class="brand">
+        <span class="brand-mark">Wait for Languages · MRJ</span>
+        <h1 id="title">Day 6 Talk</h1>
+      </div>
+      <span id="tryBadge" class="badge" hidden></span>
+    </header>
+
+    <!-- HOME -->
+    <main id="viewHome" class="view">
+      <p class="lead">
+        See the line → say it → hear Mr Jay!<br />
+        <small>Chrome listen · speak only · 5 tries</small>
+      </p>
+      <div id="bookList" class="card-grid"></div>
+    </main>
+
+    <!-- UNITS -->
+    <main id="viewUnit" class="view" hidden>
+      <p class="lead" id="unitLead">Pick a unit</p>
+      <div id="unitPicker" class="unit-grid"></div>
+    </main>
+
+    <!-- PRACTICE -->
+    <main id="viewSpeak" class="view" hidden>
+      <div class="progress-wrap">
+        <div id="progressBar" class="progress"></div>
+        <span id="progressText">1 / 10</span>
+      </div>
+      <div id="tryDots" class="try-dots" aria-label="tries"></div>
+
+      <div class="cue-card">
+        <p class="hint">Say this · tap to hear first</p>
+        <button type="button" id="btnCue" class="cue-btn" aria-label="Play student line">
+          <span id="sayLine" class="say-line">…</span>
+        </button>
+        <p id="heardLine" class="heard" hidden></p>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btnHear" class="secondary">▶ Hear</button>
+        <button type="button" id="btnMic" class="primary mic">🎤 Speak</button>
+      </div>
+      <p id="micStatus" class="status muted">Tap Speak and say the line</p>
+      <div id="replyBanner" class="reply-banner" hidden>
+        <span class="reply-label">Mr Jay</span>
+        <span id="replyText"></span>
+      </div>
+      <div class="nav-row">
+        <button type="button" id="btnSkip" class="ghost">Skip →</button>
+        <button type="button" id="btnNext" class="primary" hidden>Next →</button>
+      </div>
+    </main>
+
+    <!-- END -->
+    <main id="viewEnd" class="view" hidden>
+      <div class="done-card">
+        <h2>Done! 🎉</h2>
+        <p id="endSummary" class="big-score"></p>
+        <p id="endDetail" class="muted"></p>
+        <button type="button" id="btnResults" class="primary big">Write this · Results</button>
+        <button type="button" id="btnAgain" class="secondary">Again</button>
+        <button type="button" id="btnBackUnits" class="ghost">Unit list</button>
+      </div>
+    </main>
+
+    <!-- RESULTS / WRITE-DOWN -->
+    <main id="viewResults" class="view" hidden>
+      <div class="results-head print-keep">
+        <div>
+          <p class="eyebrow">Write this</p>
+          <h2>Results</h2>
+          <p id="resultsMeta" class="muted"></p>
+        </div>
+        <div class="results-actions print-hide">
+          <button type="button" id="btnPrint" class="secondary">Print</button>
+          <button type="button" id="btnResultsHome" class="ghost">Home</button>
+        </div>
+      </div>
+      <div id="resultsList" class="results-list"></div>
+      <p class="muted print-hide tip">
+        Missed lines show the question only. Teacher mic (optional): say the missed student line to unlock Mr Jay’s reply.
+      </p>
+    </main>
+  </div>
+
+  <script src="js/score.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
