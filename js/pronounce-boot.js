@@ -54,7 +54,11 @@ function ensureReady(onProgress) {
     const ort = window.ort;
     if (!ort) throw new Error('pronunciation engine missing');
     if (ort.env && ort.env.wasm) {
-      ort.env.wasm.wasmPaths = 'js/ort/';
+      const ortBase = new URL('js/ort/', window.location.href).href;
+      ort.env.wasm.wasmPaths = {
+        mjs: new URL('ort-wasm-simd-threaded.jsep.mjs', ortBase).href,
+        wasm: new URL('ort-wasm-simd-threaded.jsep.wasm', ortBase).href,
+      };
       ort.env.wasm.numThreads = 1;
     }
     setChecker('Loading pronunciation checker…');
