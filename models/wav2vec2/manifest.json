@@ -1,0 +1,39 @@
+{
+  "file": "model_int8.onnx",
+  "bytes": 317712780,
+  "sha256": "74174710e34035bbb7f611601d016c32fc575de7a6f53b1078107dc10a84e7ae",
+  "parts": [
+    {
+      "name": "model_int8.part00",
+      "bytes": 41943040
+    },
+    {
+      "name": "model_int8.part01",
+      "bytes": 41943040
+    },
+    {
+      "name": "model_int8.part02",
+      "bytes": 41943040
+    },
+    {
+      "name": "model_int8.part03",
+      "bytes": 41943040
+    },
+    {
+      "name": "model_int8.part04",
+      "bytes": 41943040
+    },
+    {
+      "name": "model_int8.part05",
+      "bytes": 41943040
+    },
+    {
+      "name": "model_int8.part06",
+      "bytes": 41943040
+    },
+    {
+      "name": "model_int8.part07",
+      "bytes": 24111500
+    }
+  ]
+}

@@ -33,7 +33,7 @@
   }
 
   function stripTag(s) {
-    return Day6Score.stripTag(s);
+    return String(s || "").replace(/^\[[^\]]+\]\s*/, "").trim();
   }
 
   function audioUrl(rel) {
@@ -235,8 +235,7 @@
 
   async function onPass(pair, heard) {
     recordSuccess(pair);
-    $("heardLine").hidden = false;
-    $("heardLine").textContent = "I heard: " + heard;
+    $("heardLine").hidden = true;
     $("replyBanner").hidden = false;
     $("replyText").textContent = stripTag(pair.reply || "");
     $("micStatus").textContent = "Nice! Listening to Mr Jay…";
@@ -329,30 +328,36 @@
     return playUrl(studentSrc(pair));
   }
 
+  async function gradeAgainst(target) {
+    if (!window.MRJPronounce) {
+      throw new Error('Pronunciation checker is not loaded. Refresh the page.');
+    }
+    await window.MRJPronounce.ensureReady();
+    const blob = await window.MRJPronounce.recordOnce();
+    if (!blob || blob.size < 800) {
+      return { pass: false, score: 0, band: 'invalid', reason: 'too_short' };
+    }
+    return window.MRJPronounce.gradeBlob(blob, target);
+  }
+
   async function teacherMic(idx) {
     const row = state.rows[idx];
-    if (!row || row.status === "success") return;
+    if (!row || row.status === 'success') return;
     const pair = findPair(row.question);
     if (!pair) return;
-    $("micStatus"); // noop keep API warm
     try {
-      const { text } = await listenOnce();
-      if (!text) {
-        alert("I did not hear you. Try the teacher mic again.");
+      const graded = await gradeAgainst(row.question);
+      if (!graded.pass) {
+        alert('Not the line. Say the missed student line, then the reply will play.');
         return;
       }
-      const { pass } = Day6Score.bestScore(text, row.question);
-      if (!pass) {
-        alert("Say the missed student line, then the reply will play.\nHeard: " + text);
-        return;
-      }
-      const reply = stripTag(pair.reply || "");
+      const reply = stripTag(pair.reply || '');
       row.teacherWrite = reply;
       row.unlockedReply = reply;
       await playTeacher(pair);
       renderResults();
     } catch (e) {
-      alert(e.message || "Teacher mic needs permission.");
+      alert(e.message || 'Teacher mic needs Chrome and the microphone.');
     }
   }
 
@@ -394,40 +399,26 @@
     if (!pair) return;
     state.listening = true;
     $("btnMic").classList.add("listening");
-    $("micStatus").textContent = "Listening…";
+    $("micStatus").textContent = "Listening… say the line";
     try {
-      const { text, alts } = await listenOnce();
+      const target = stripTag(pair.student || pair.say || "");
+      const graded = await gradeAgainst(target);
       stopListeningUI();
-      if (!text) {
+      if (!graded.pass) {
         state.tries += 1;
         updateTryDots();
-        $("micStatus").textContent = "I didn’t hear you. Tap Speak again.";
+        const why = graded.reason === "too_quiet" || graded.reason === "too_short"
+          ? "I didn’t hear a clear line."
+          : "Not the line.";
+        $("micStatus").textContent = `${why} Try again (${graded.score}% · need 65%)`;
         if (state.tries >= MAX_TRIES) {
           recordSkip(pair);
           $("micStatus").textContent = "5 tries — skipping…";
-          setTimeout(advance, 900);
+          setTimeout(advance, 1100);
         }
         return;
       }
-      $("heardLine").hidden = false;
-      $("heardLine").textContent = "I heard: " + text;
-      const { pass, score, need } = Day6Score.bestScore(
-        text,
-        pair.student || pair.say || "",
-        alts
-      );
-      if (pass) {
-        await onPass(pair, text);
-        return;
-      }
-      state.tries += 1;
-      updateTryDots();
-      $("micStatus").textContent = `Try again (${score}% · need ${need}%)`;
-      if (state.tries >= MAX_TRIES) {
-        recordSkip(pair);
-        $("micStatus").textContent = "5 tries — skipping…";
-        setTimeout(advance, 1100);
-      }
+      await onPass(pair, "matched");
     } catch (e) {
       stopListeningUI();
       $("micStatus").textContent = e.message || "Mic error";
