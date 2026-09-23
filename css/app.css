@@ -29,6 +29,7 @@ body {
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent);
 }
 .top h1 { margin: 2px 0 0; font-size: 1.4rem; }
+#checkerStatus { text-align: center; margin: 0 0 8px; min-height: 1.3em; }
 .badge {
   background: var(--pink); color: #fff; border-radius: 999px;
   padding: 4px 10px; font-size: 0.85rem; font-weight: 800;
@@ -140,6 +141,6 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 
 @media print {
   body { background: #fff; }
-  .print-hide, #btnHome, .top .badge { display: none !important; }
+  .print-hide, #btnHome, .top .badge, #checkerStatus { display: none !important; }
   .result-card { box-shadow: none; break-inside: avoid; }
 }

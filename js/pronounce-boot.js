@@ -8,10 +8,45 @@ const PASS_BANDS = new Set(['good', 'ok']);
 
 let session = null;
 let readyP = null;
+let readyFlag = false;
+let sharedCtx = null;
+let sharedResume = Promise.resolve();
 
 function setChecker(text) {
   const el = document.getElementById('checkerStatus');
   if (el) el.textContent = text;
+}
+
+function isReady() {
+  return readyFlag;
+}
+
+// Must run inside the Speak tap, before any await. Android Chrome only
+// shows the mic prompt and only resumes audio for that gesture.
+function unlockMic() {
+  const Ctor = window.AudioContext || window.webkitAudioContext;
+  if (
+    !Ctor ||
+    !navigator.mediaDevices ||
+    typeof navigator.mediaDevices.getUserMedia !== 'function' ||
+    typeof MediaRecorder === 'undefined'
+  ) {
+    throw new Error('This browser has no microphone. Open in Chrome.');
+  }
+  if (!sharedCtx || sharedCtx.state === 'closed') {
+    sharedCtx = new Ctor();
+  }
+  try {
+    sharedResume = sharedCtx.resume();
+  } catch (_) {
+    sharedResume = Promise.resolve();
+  }
+  return sharedCtx;
+}
+
+function armMic() {
+  unlockMic();
+  return navigator.mediaDevices.getUserMedia({ audio: true });
 }
 
 function decide(result) {
@@ -60,6 +95,7 @@ function ensureReady(onProgress) {
         wasm: new URL('ort-wasm-simd-threaded.jsep.wasm', ortBase).href,
       };
       ort.env.wasm.numThreads = 1;
+      ort.env.wasm.proxy = false;
     }
     setChecker('Loading pronunciation checker…');
     await loadG2P('');
@@ -72,11 +108,13 @@ function ensureReady(onProgress) {
       const warm = new Float32Array(1600);
       await session.run({ input_values: new ort.Tensor('float32', warm, [1, 1600]) });
     } catch (_) { /* warm-up is best-effort */ }
+    readyFlag = true;
     setChecker('Pronunciation checker ready');
     return session;
   })().catch((err) => {
     readyP = null;
     session = null;
+    readyFlag = false;
     setChecker('Pronunciation checker failed. Refresh and try again.');
     throw err;
   });
@@ -132,26 +170,42 @@ async function gradeBlob(blob, text) {
   };
 }
 
-async function recordOnce() {
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    throw new Error('This browser has no microphone. Use Chrome.');
+function openRecorder(stream) {
+  const types = ['audio/webm;codecs=opus', 'audio/mp4'];
+  for (const mime of types) {
+    try {
+      if (typeof MediaRecorder.isTypeSupported === 'function' && !MediaRecorder.isTypeSupported(mime)) {
+        continue;
+      }
+      return new MediaRecorder(stream, { mimeType: mime });
+    } catch (_) { /* try the next container */ }
   }
-  const stream = await navigator.mediaDevices.getUserMedia({
-    audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
-  });
-  let rec;
   try {
-    rec = MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
-      ? new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' })
-      : new MediaRecorder(stream);
+    return new MediaRecorder(stream);
   } catch (_) {
-    rec = new MediaRecorder(stream);
+    throw new Error('This browser has no microphone. Open in Chrome.');
   }
+}
+
+async function recordOnce(stream) {
+  if (!stream || typeof MediaRecorder === 'undefined') {
+    throw new Error('This browser has no microphone. Open in Chrome.');
+  }
+  const ctx = sharedCtx;
+  if (!ctx || ctx.state === 'closed') {
+    throw new Error('This browser has no microphone. Open in Chrome.');
+  }
+  try {
+    await sharedResume;
+  } catch (_) { /* same context; a suspended graph fails the short-audio gate */ }
+  if (ctx.state === 'suspended') {
+    try { await ctx.resume(); } catch (_) { /* shared context only */ }
+  }
+  const rec = openRecorder(stream);
   const chunks = [];
   rec.ondataavailable = (ev) => {
     if (ev.data && ev.data.size) chunks.push(ev.data);
   };
-  const ctx = new AudioContext();
   const src = ctx.createMediaStreamSource(stream);
   const analyser = ctx.createAnalyser();
   analyser.fftSize = 2048;
@@ -160,41 +214,44 @@ async function recordOnce() {
   const stopped = new Promise((resolve) => {
     rec.onstop = resolve;
   });
-  rec.start();
-  const started = performance.now();
-  let heard = false;
-  let silentSince = null;
-  await new Promise((resolve) => {
-    const tick = () => {
-      analyser.getFloatTimeDomainData(data);
-      let sum = 0;
-      for (let i = 0; i < data.length; i++) sum += data[i] * data[i];
-      const rms = Math.sqrt(sum / data.length);
-      const now = performance.now();
-      if (rms > 0.02) {
-        heard = true;
-        silentSince = null;
-      } else if (heard) {
-        if (silentSince == null) silentSince = now;
-        if (now - silentSince > 700) {
+  try {
+    rec.start();
+    const started = performance.now();
+    let heard = false;
+    let silentSince = null;
+    await new Promise((resolve) => {
+      const tick = () => {
+        analyser.getFloatTimeDomainData(data);
+        let sum = 0;
+        for (let i = 0; i < data.length; i++) sum += data[i] * data[i];
+        const rms = Math.sqrt(sum / data.length);
+        const now = performance.now();
+        if (rms > 0.02) {
+          heard = true;
+          silentSince = null;
+        } else if (heard) {
+          if (silentSince == null) silentSince = now;
+          if (now - silentSince > 700) {
+            resolve();
+            return;
+          }
+        }
+        if (now - started > 4500) {
           resolve();
           return;
         }
-      }
-      if (now - started > 4500) {
-        resolve();
-        return;
-      }
-      requestAnimationFrame(tick);
-    };
-    tick();
-  });
-  if (rec.state !== 'inactive') rec.stop();
-  await stopped;
-  stream.getTracks().forEach((track) => track.stop());
-  ctx.close().catch(() => {});
-  return new Blob(chunks, { type: rec.mimeType || 'audio/webm' });
+        requestAnimationFrame(tick);
+      };
+      tick();
+    });
+    if (rec.state !== 'inactive') rec.stop();
+    await stopped;
+    return new Blob(chunks, { type: rec.mimeType || 'audio/webm' });
+  } finally {
+    try { src.disconnect(); } catch (_) {}
+    try { stream.getTracks().forEach((track) => track.stop()); } catch (_) {}
+  }
 }
 
-window.MRJPronounce = { ensureReady, gradeBlob, recordOnce, decide };
+window.MRJPronounce = { ensureReady, gradeBlob, recordOnce, decide, armMic, unlockMic, isReady };
 ensureReady().catch(() => {});

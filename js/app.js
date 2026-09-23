@@ -328,36 +328,100 @@
     return playUrl(studentSrc(pair));
   }
 
-  async function gradeAgainst(target) {
-    if (!window.MRJPronounce) {
-      throw new Error('Pronunciation checker is not loaded. Refresh the page.');
+  const MIC_BLOCKED = "Chrome blocked the microphone. Open this page in Chrome, not inside Telegram, and tap Allow.";
+  const NO_MIC = "This browser has no microphone. Open in Chrome.";
+
+  function waitForMic(micPromise, ms) {
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      const finishReject = () => {
+        if (settled) return;
+        settled = true;
+        reject(new Error(MIC_BLOCKED));
+      };
+      const timer = setTimeout(() => {
+        finishReject();
+        micPromise.then((stream) => {
+          try { stream.getTracks().forEach((track) => track.stop()); } catch (_) {}
+        }).catch(() => {});
+      }, ms);
+      micPromise.then(
+        (stream) => {
+          if (settled) {
+            try { stream.getTracks().forEach((track) => track.stop()); } catch (_) {}
+            return;
+          }
+          settled = true;
+          clearTimeout(timer);
+          resolve(stream);
+        },
+        () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timer);
+          reject(new Error(MIC_BLOCKED));
+        }
+      );
+    });
+  }
+
+  function armMicNow() {
+    if (!window.MRJPronounce || typeof window.MRJPronounce.armMic !== "function") {
+      throw new Error("Pronunciation checker is not loaded. Refresh the page.");
     }
-    await window.MRJPronounce.ensureReady();
-    const blob = await window.MRJPronounce.recordOnce();
+    return window.MRJPronounce.armMic();
+  }
+
+  async function gradeAgainst(target, blob) {
     if (!blob || blob.size < 800) {
-      return { pass: false, score: 0, band: 'invalid', reason: 'too_short' };
+      return { pass: false, score: 0, band: "invalid", reason: "too_short" };
     }
+    if (!window.MRJPronounce.isReady()) {
+      $("micStatus").textContent = "Pronunciation checker is still loading…";
+    } else {
+      $("micStatus").textContent = "Checking your line…";
+    }
+    try {
+      await window.MRJPronounce.ensureReady();
+    } catch (_) {
+      throw new Error("Pronunciation checker failed. Refresh and try again.");
+    }
+    $("micStatus").textContent = "Checking your line…";
     return window.MRJPronounce.gradeBlob(blob, target);
   }
 
   async function teacherMic(idx) {
     const row = state.rows[idx];
-    if (!row || row.status === 'success') return;
+    if (!row || row.status === "success") return;
     const pair = findPair(row.question);
     if (!pair) return;
+    stopAudio();
+    let micPromise;
     try {
-      const graded = await gradeAgainst(row.question);
+      micPromise = armMicNow();
+    } catch (e) {
+      alert((e && e.message) || NO_MIC);
+      return;
+    }
+    window.MRJPronounce.ensureReady().catch(() => {});
+    try {
+      const stream = await waitForMic(micPromise, 8000);
+      const blob = await window.MRJPronounce.recordOnce(stream);
+      const graded = await gradeAgainst(row.question, blob);
       if (!graded.pass) {
-        alert('Not the line. Say the missed student line, then the reply will play.');
+        const why = graded.reason === "too_quiet" || graded.reason === "too_short"
+          ? "I didn’t hear a clear line."
+          : "Not the line. Say the missed student line, then the reply will play.";
+        alert(why);
         return;
       }
-      const reply = stripTag(pair.reply || '');
+      const reply = stripTag(pair.reply || "");
       row.teacherWrite = reply;
       row.unlockedReply = reply;
       await playTeacher(pair);
       renderResults();
     } catch (e) {
-      alert(e.message || 'Teacher mic needs Chrome and the microphone.');
+      alert(e.message || "Teacher mic needs Chrome and the microphone.");
     }
   }
 
@@ -397,13 +461,28 @@
     if (state.listening) return;
     const pair = state.pairs[state.cursor];
     if (!pair) return;
+    stopAudio();
+    if (!window.MRJPronounce || typeof window.MRJPronounce.armMic !== "function") {
+      $("micStatus").textContent = "Pronunciation checker is not loaded. Refresh the page.";
+      return;
+    }
+    let micPromise;
+    try {
+      micPromise = window.MRJPronounce.armMic();
+    } catch (err) {
+      $("micStatus").textContent = (err && err.message) || NO_MIC;
+      return;
+    }
+    $("micStatus").textContent = "Allow the microphone…";
     state.listening = true;
     $("btnMic").classList.add("listening");
-    $("micStatus").textContent = "Listening… say the line";
+    const target = stripTag(pair.student || pair.say || "");
+    window.MRJPronounce.ensureReady().catch(() => {});
     try {
-      const target = stripTag(pair.student || pair.say || "");
-      const graded = await gradeAgainst(target);
-      stopListeningUI();
+      const stream = await waitForMic(micPromise, 8000);
+      $("micStatus").textContent = "Listening… say the line";
+      const blob = await window.MRJPronounce.recordOnce(stream);
+      const graded = await gradeAgainst(target, blob);
       if (!graded.pass) {
         state.tries += 1;
         updateTryDots();
@@ -420,8 +499,9 @@
       }
       await onPass(pair, "matched");
     } catch (e) {
+      $("micStatus").textContent = (e && e.message) || "Mic error";
+    } finally {
       stopListeningUI();
-      $("micStatus").textContent = e.message || "Mic error";
     }
   };
 
