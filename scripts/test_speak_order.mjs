@@ -32,8 +32,14 @@ test("checker load is not awaited before the mic is armed", () => {
 
 test("load bar and word colors are in the page", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
-  assert.match(html, /Loading offline pronunciation\. This only happens once\./);
+  assert.match(html, /Checking this phone for the saved pronunciation/);
   assert.match(html, /id="loadFill"/);
+  assert.equal(html.includes("btnSkip"), false);
+  assert.equal(html.includes("Teacher mic"), false);
+  assert.match(app, /MAX_TRIES = 3/);
+  assert.match(app, /Simply ask your teacher for help with this/);
+  assert.match(boot, /PASS_SCORE = 0.70/);
+  assert.match(boot, /indexedDB/);
   assert.match(html, /id="wordBox"/);
   assert.match(app, /word-chip/);
   assert.match(app, /chipClass/);

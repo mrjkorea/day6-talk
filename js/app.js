@@ -1,6 +1,6 @@
 /** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) */
 (function () {
-  const MAX_TRIES = 5;
+  const MAX_TRIES = 3;
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -192,7 +192,6 @@
     $("heardLine").hidden = true;
     $("replyBanner").hidden = true;
     $("btnNext").hidden = true;
-    $("btnSkip").hidden = false;
     $("btnMic").disabled = false;
     $("micStatus").textContent = "Tap Speak and say the line";
     clearWords();
@@ -242,7 +241,6 @@
     $("replyText").textContent = stripTag(pair.reply || "");
     $("micStatus").textContent = "Nice! Listening to Mr Jay…";
     $("btnMic").disabled = true;
-    $("btnSkip").hidden = true;
     await playTeacher(pair);
     $("btnNext").hidden = false;
     $("micStatus").textContent = "Tap Next";
@@ -274,26 +272,13 @@
       const card = document.createElement("div");
       const ok = row.status === "success";
       card.className = "result-card " + (ok ? "success" : "missed");
-      const replyShown = ok
-        ? row.heardReply || ""
-        : row.teacherWrite || row.unlockedReply || "";
-      let body = `<span class="tag">${ok ? "Success" : "Missed"}</span>`;
+      let body = `<span class="tag">${ok ? "Got it" : "Needs help"}</span>`;
       body += `<p class="q">${escapeHtml(row.question)}</p>`;
-      if (replyShown) {
-        body += `<p class="a">Mr Jay: ${escapeHtml(replyShown)}</p>`;
-      } else {
-        body += `<p class="a muted">Reply hidden — write what you remember, or use Teacher mic</p>`;
+      if (ok && row.heardReply) {
+        body += `<p class="a">Mr Jay: ${escapeHtml(row.heardReply)}</p>`;
       }
       if (!ok) {
-        body += `<div class="miss-actions print-hide">
-          <button type="button" class="secondary btn-play-q" data-i="${idx}">▶ Student line</button>
-          <button type="button" class="primary btn-teacher-mic" data-i="${idx}">🎙 Teacher mic</button>
-          ${row.unlockedReply ? `<button type="button" class="secondary btn-play-r" data-i="${idx}">▶ Reply</button>` : ""}
-        </div>`;
-      } else {
-        body += `<div class="miss-actions print-hide">
-          <button type="button" class="secondary btn-play-r-ok" data-i="${idx}">▶ Hear reply again</button>
-        </div>`;
+        body += `<p class="a">Simply ask your teacher for help with this.</p>`;
       }
       card.innerHTML = body;
       list.appendChild(card);
@@ -479,7 +464,7 @@
     }
     if (!window.MRJPronounce.isReady()) {
       $("micStatus").textContent = "Pronunciation checker is still loading…";
-      showGradeBar("Loading offline pronunciation. This only happens once.");
+      showGradeBar("Still getting the pronunciation ready…");
     } else {
       $("micStatus").textContent = "Checking your line…";
       showGradeBar("Checking your line…");
@@ -548,11 +533,6 @@
   };
   $("btnHear").onclick = () => playStudent();
   $("btnCue").onclick = () => playStudent();
-  $("btnSkip").onclick = () => {
-    const pair = state.pairs[state.cursor];
-    if (pair) recordSkip(pair);
-    advance();
-  };
   $("btnNext").onclick = () => advance();
   $("btnResults").onclick = () => renderResults();
   $("btnAgain").onclick = () => startUnit(state.unit);
@@ -594,10 +574,10 @@
         const why = graded.reason === "too_quiet" || graded.reason === "too_short"
           ? "I didn’t hear a clear line."
           : "Not the line.";
-        $("micStatus").textContent = `${why} Try again (${graded.score}% · need 65%)`;
+        $("micStatus").textContent = `${why} Try again (${graded.score}% · need 70%)`;
         if (state.tries >= MAX_TRIES) {
           recordSkip(pair);
-          $("micStatus").textContent = "5 tries — skipping…";
+          $("micStatus").textContent = "3 tries. Going on. Ask your teacher later.";
           setTimeout(advance, 1100);
         }
         return;

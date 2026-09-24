@@ -4,7 +4,9 @@ import { loadG2P, expectedPhoneSequence, forcedAlignGop, aggregate } from './eng
 import { decodeAudioToMono, audioStats, normalizeForModel, trimSilence, capSpeechWindow } from './audio.js';
 
 const MODEL_ID = 'wav2vec2-lv-60-espeak-cv-ft-onnx-int8';
-const PASS_BANDS = new Set(['good', 'ok']);
+const PASS_SCORE = 0.70;
+const DB_NAME = 'mrj-day6-checker';
+const DB_STORE = 'parts';
 
 let session = null;
 let readyP = null;
@@ -96,24 +98,79 @@ function decide(result) {
   const audio = result.audio || {};
   if (audio.too_quiet) return false;
   if ((audio.duration_ms || 0) < 250) return false;
-  return PASS_BANDS.has(result.overall.band);
+  return (result.overall.score || 0) >= PASS_SCORE;
+}
+
+function openCheckerDb() {
+  return new Promise((resolve, reject) => {
+    if (!window.indexedDB) {
+      resolve(null);
+      return;
+    }
+    const req = indexedDB.open(DB_NAME, 1);
+    req.onupgradeneeded = () => {
+      if (!req.result.objectStoreNames.contains(DB_STORE)) {
+        req.result.createObjectStore(DB_STORE);
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => resolve(null);
+  });
+}
+
+function idbGet(db, key) {
+  return new Promise((resolve) => {
+    try {
+      const req = db.transaction(DB_STORE, 'readonly').objectStore(DB_STORE).get(key);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => resolve(null);
+    } catch (_) {
+      resolve(null);
+    }
+  });
+}
+
+function idbPut(db, key, value) {
+  return new Promise((resolve) => {
+    try {
+      const tx = db.transaction(DB_STORE, 'readwrite');
+      tx.objectStore(DB_STORE).put(value, key);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+      tx.onabort = () => resolve(false);
+    } catch (_) {
+      resolve(false);
+    }
+  });
 }
 
 async function loadModelBytes(onProgress) {
   const manRes = await fetch('models/wav2vec2/manifest.json');
   if (!manRes.ok) throw new Error('pronunciation checker list missing');
   const man = await manRes.json();
+  const db = await openCheckerDb();
   const chunks = [];
   let got = 0;
+  let downloaded = 0;
   for (const part of man.parts) {
+    let buf = null;
+    if (db) buf = await idbGet(db, part.name);
+    if (buf && buf.byteLength === part.bytes) {
+      chunks.push(buf);
+      got += buf.byteLength;
+      if (onProgress) onProgress(got, man.bytes, false);
+      continue;
+    }
+    downloaded += 1;
     const res = await fetch('models/wav2vec2/' + part.name);
     if (!res.ok) throw new Error('pronunciation checker file missing');
-    const buf = await readTracked(res, part.bytes, (partGot) => {
-      if (onProgress) onProgress(got + partGot, man.bytes);
+    buf = await readTracked(res, part.bytes, (partGot) => {
+      if (onProgress) onProgress(got + partGot, man.bytes, true);
     });
     chunks.push(buf);
     got += buf.byteLength;
-    if (onProgress) onProgress(got, man.bytes);
+    if (db) await idbPut(db, part.name, buf);
+    if (onProgress) onProgress(got, man.bytes, true);
   }
   if (got !== man.bytes) throw new Error('pronunciation checker did not finish');
   const out = new Uint8Array(got);
@@ -122,7 +179,7 @@ async function loadModelBytes(onProgress) {
     out.set(chunk, offset);
     offset += chunk.byteLength;
   }
-  return out;
+  return { bytes: out, fromPhone: downloaded === 0 };
 }
 
 function ensureReady(onProgress) {
@@ -140,13 +197,23 @@ function ensureReady(onProgress) {
       ort.env.wasm.numThreads = 1;
       ort.env.wasm.proxy = false;
     }
-    setLoad(4, 'Loading offline pronunciation. This only happens once.', true);
+    setLoad(4, 'Checking this phone for the saved pronunciation…', true);
     await loadG2P('');
-    const bytes = await loadModelBytes((got, total) => {
+    const loaded = await loadModelBytes((got, total, fetching) => {
       const pct = Math.min(88, Math.max(6, Math.round((got / total) * 88)));
-      setLoad(pct, 'Loading offline pronunciation… ' + pct + '%. This only happens once.', false);
+      const text = fetching
+        ? 'Saving offline pronunciation on this phone… ' + pct + '%. Next open will not download it.'
+        : 'Found it on this phone… ' + pct + '%';
+      setLoad(pct, text, false);
     });
-    setLoad(90, 'Starting offline pronunciation. This only happens once.', true);
+    const bytes = loaded.bytes;
+    setLoad(
+      90,
+      loaded.fromPhone
+        ? 'Already on this phone. Starting offline pronunciation.'
+        : 'Starting offline pronunciation. Next open will use the saved copy.',
+      true
+    );
     session = await ort.InferenceSession.create(bytes, { executionProviders: ['wasm'] });
     try {
       const warm = new Float32Array(1600);
