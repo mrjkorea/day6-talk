@@ -6,6 +6,8 @@
   const state = {
     qa: null,
     audioIndex: null,
+    replyPaths: null,
+    replyReady: false,
     level: null,
     unit: null,
     pairs: [],
@@ -70,16 +72,13 @@
     );
   }
 
-  function teacherRel(pair) {
+  function teacherRel(pair, voiceId) {
     const reply = pair.reply || "";
     const map = state.audioIndex?.teacherFiles || {};
-    return (
-      map[reply] ||
-      map[stripTag(reply)] ||
-      map["[happy] " + stripTag(reply)] ||
-      pair.audio ||
-      ""
-    );
+    const indexed = map[reply] || map[stripTag(reply)] || map["[happy] " + stripTag(reply)] || "";
+    const baked = (state.replyPaths && state.replyPaths[reply]) || "";
+    if (voiceId && voiceId !== "jay35") return baked || pair.audio || indexed;
+    return pair.audio || indexed || baked;
   }
 
   function studentSrc(pair) {
@@ -87,7 +86,7 @@
   }
 
   function teacherSrc(pair) {
-    return audioUrl(voiceRel(teacherRel(pair), state.replyVoice));
+    return audioUrl(voiceRel(teacherRel(pair, state.replyVoice), state.replyVoice));
   }
 
   function stopAudio() {
@@ -110,8 +109,22 @@
   }
 
   function replyIsShowing() {
-    const banner = $("replyBanner");
-    return !!(banner && !banner.hidden);
+    return !!state.replyReady;
+  }
+
+  function markReplyVoices() {
+    document.querySelectorAll("#replyVoices button").forEach((btn) => {
+      btn.classList.toggle("on", btn.dataset.voice === state.replyVoice);
+    });
+    const reply = $("replyVoice");
+    if (reply && reply.value !== state.replyVoice) reply.value = state.replyVoice;
+  }
+
+  function chooseReplyVoice(voiceId, playNow) {
+    state.replyVoice = voiceId;
+    localStorage.setItem("day6ReplyVoice", voiceId);
+    markReplyVoices();
+    if (playNow && replyIsShowing()) return replayReply();
   }
 
   function replayReply() {
@@ -134,12 +147,16 @@
   }
 
   function playTeacher(pair) {
-    const rel = teacherRel(pair);
+    const rel = teacherRel(pair, state.replyVoice);
     const chosen = voiceRel(rel, state.replyVoice);
+    const label = (REPLY_VOICES.find((v) => v.id === state.replyVoice) || {}).label || "that voice";
     return playUrl(audioUrl(chosen)).then((result) => {
-      if (result === "played" || state.replyVoice === "jay35") return result;
-      $("micStatus").textContent = "That reply voice is still saving. Playing Mr Jay age 35.";
-      return playUrl(audioUrl(rel));
+      if (result === "played") {
+        $("micStatus").textContent = "Playing " + label + ". Tap again to repeat.";
+        return result;
+      }
+      $("micStatus").textContent = label + " file is missing for this line.";
+      return result;
     });
   }
 
@@ -242,6 +259,8 @@
     $("sayLine").textContent = stripTag(pair.student || pair.say || "");
     $("heardLine").hidden = true;
     $("replyBanner").hidden = true;
+    $("replyVoices").hidden = true;
+    state.replyReady = false;
     $("btnNext").hidden = true;
     $("btnMic").disabled = false;
     if ($("cueHint")) $("cueHint").textContent = "Say this · tap to hear first";
@@ -290,6 +309,9 @@
     recordSuccess(pair);
     $("heardLine").hidden = true;
     $("replyBanner").hidden = false;
+    $("replyVoices").hidden = false;
+    state.replyReady = true;
+    markReplyVoices();
     $("replyText").textContent = stripTag(pair.reply || "");
     if ($("cueHint")) $("cueHint").textContent = "Tap the sentence to hear the reply again";
     $("micStatus").textContent = "Nice! Listening to the reply…";
@@ -594,6 +616,16 @@
       o.textContent = v.label;
       reply.appendChild(o);
     });
+    const box = $("replyVoices");
+    box.innerHTML = "";
+    REPLY_VOICES.forEach((v) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.dataset.voice = v.id;
+      btn.textContent = v.label;
+      btn.onclick = () => chooseReplyVoice(v.id, true);
+      box.appendChild(btn);
+    });
     if (!LISTEN_VOICES.some((v) => v.id === state.listenVoice)) state.listenVoice = "texan";
     if (!REPLY_VOICES.some((v) => v.id === state.replyVoice)) state.replyVoice = "jay35";
     listen.value = state.listenVoice;
@@ -603,11 +635,7 @@
       localStorage.setItem("day6ListenVoice", state.listenVoice);
       if (!replyIsShowing()) playStudent();
     };
-    reply.onchange = () => {
-      state.replyVoice = reply.value;
-      localStorage.setItem("day6ReplyVoice", state.replyVoice);
-      if (replyIsShowing()) replayReply();
-    };
+    reply.onchange = () => chooseReplyVoice(reply.value, true);
   }
 
   /* ---------- Events ---------- */
@@ -684,10 +712,12 @@
   Promise.all([
     fetch("data/day6-qa.json").then((r) => r.json()),
     fetch("data/audio-index.json").then((r) => r.json()),
+    fetch("data/reply-paths.json").then((r) => r.json()),
   ])
-    .then(([qa, audioIndex]) => {
+    .then(([qa, audioIndex, replyPaths]) => {
       state.qa = qa;
       state.audioIndex = audioIndex;
+      state.replyPaths = replyPaths;
       renderHome();
     })
     .catch((err) => {

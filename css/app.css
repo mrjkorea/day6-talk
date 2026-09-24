@@ -31,7 +31,20 @@ body {
 .top h1 { margin: 2px 0 0; font-size: 1.4rem; }
 .voice-picks {
   display: grid; gap: 8px; margin: 0 0 10px;
+  position: sticky; top: 0; z-index: 5;
+  background: rgba(232, 246, 255, 0.96);
+  padding: 8px 0;
 }
+.reply-voices {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+  max-width: 520px; margin: 10px auto 0;
+}
+.reply-voices button {
+  font: inherit; font-weight: 800; font-size: 0.82rem;
+  border: 3px solid var(--ink); border-radius: 14px;
+  background: #fff; padding: 10px 6px; cursor: pointer;
+}
+.reply-voices button.on { background: var(--good); }
 .voice-picks label {
   display: flex; align-items: center; justify-content: space-between; gap: 8px;
   font-size: 0.85rem; font-weight: 800;
