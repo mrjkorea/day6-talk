@@ -14,7 +14,20 @@
     rows: [], // { question, status: 'success'|'skipped', heardReply?, teacherWrite? }
     listening: false,
     player: null,
+    listenVoice: localStorage.getItem("day6ListenVoice") || "texan",
+    replyVoice: localStorage.getItem("day6ReplyVoice") || "jay35",
   };
+
+  const LISTEN_VOICES = [
+    { id: "texan", label: "Texan woman" },
+    { id: "grandpa", label: "Grandfather" },
+    { id: "american", label: "American man" },
+  ];
+  const REPLY_VOICES = [
+    { id: "jay35", label: "Mr Jay age 35" },
+    { id: "jay15", label: "Mr Jay age 15" },
+    { id: "jay7", label: "Mr Jay age 7" },
+  ];
 
   const views = {
     home: $("viewHome"),
@@ -41,26 +54,40 @@
     return "audio/" + String(rel).replace(/^audio\//, "").replace(/^\//, "");
   }
 
-  function studentSrc(pair) {
-    const say = pair.student || pair.say || "";
-    const map = state.audioIndex?.studentFiles || {};
-    const hit =
-      map[say] ||
-      map["[happy] " + say] ||
-      (pair.audio ? "say/" + pair.audio : "");
-    return audioUrl(hit);
+  function voiceRel(rel, voiceId) {
+    if (!rel) return "";
+    if (voiceId === "texan" || voiceId === "jay35") return rel;
+    return "voices/" + voiceId + "/" + String(rel).replace(/^\/+/, "");
   }
 
-  function teacherSrc(pair) {
+  function studentRel(pair) {
+    const say = pair.student || pair.say || "";
+    const map = state.audioIndex?.studentFiles || {};
+    return (
+      map[say] ||
+      map["[happy] " + say] ||
+      (pair.audio ? "say/" + pair.audio : "")
+    );
+  }
+
+  function teacherRel(pair) {
     const reply = pair.reply || "";
     const map = state.audioIndex?.teacherFiles || {};
-    const hit =
+    return (
       map[reply] ||
       map[stripTag(reply)] ||
       map["[happy] " + stripTag(reply)] ||
       pair.audio ||
-      "";
-    return audioUrl(hit);
+      ""
+    );
+  }
+
+  function studentSrc(pair) {
+    return audioUrl(voiceRel(studentRel(pair), state.listenVoice));
+  }
+
+  function teacherSrc(pair) {
+    return audioUrl(voiceRel(teacherRel(pair), state.replyVoice));
   }
 
   function stopAudio() {
@@ -85,11 +112,23 @@
   function playStudent() {
     const pair = state.pairs[state.cursor];
     if (!pair) return;
-    return playUrl(studentSrc(pair));
+    const rel = studentRel(pair);
+    const chosen = voiceRel(rel, state.listenVoice);
+    return playUrl(audioUrl(chosen)).then((result) => {
+      if (result === "played" || state.listenVoice === "texan") return result;
+      $("micStatus").textContent = "That voice is still saving. Playing Texan woman.";
+      return playUrl(audioUrl(rel));
+    });
   }
 
   function playTeacher(pair) {
-    return playUrl(teacherSrc(pair));
+    const rel = teacherRel(pair);
+    const chosen = voiceRel(rel, state.replyVoice);
+    return playUrl(audioUrl(chosen)).then((result) => {
+      if (result === "played" || state.replyVoice === "jay35") return result;
+      $("micStatus").textContent = "That reply voice is still saving. Playing Mr Jay age 35.";
+      return playUrl(audioUrl(rel));
+    });
   }
 
   /* ---------- Speech ---------- */
@@ -526,7 +565,37 @@
     $("btnMic").classList.remove("listening");
   }
 
+  function fillVoices() {
+    const listen = $("listenVoice");
+    const reply = $("replyVoice");
+    LISTEN_VOICES.forEach((v) => {
+      const o = document.createElement("option");
+      o.value = v.id;
+      o.textContent = v.label;
+      listen.appendChild(o);
+    });
+    REPLY_VOICES.forEach((v) => {
+      const o = document.createElement("option");
+      o.value = v.id;
+      o.textContent = v.label;
+      reply.appendChild(o);
+    });
+    if (!LISTEN_VOICES.some((v) => v.id === state.listenVoice)) state.listenVoice = "texan";
+    if (!REPLY_VOICES.some((v) => v.id === state.replyVoice)) state.replyVoice = "jay35";
+    listen.value = state.listenVoice;
+    reply.value = state.replyVoice;
+    listen.onchange = () => {
+      state.listenVoice = listen.value;
+      localStorage.setItem("day6ListenVoice", state.listenVoice);
+    };
+    reply.onchange = () => {
+      state.replyVoice = reply.value;
+      localStorage.setItem("day6ReplyVoice", state.replyVoice);
+    };
+  }
+
   /* ---------- Events ---------- */
+  fillVoices();
   $("btnHome").onclick = () => {
     stopAudio();
     renderHome();

@@ -29,6 +29,17 @@ body {
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent);
 }
 .top h1 { margin: 2px 0 0; font-size: 1.4rem; }
+.voice-picks {
+  display: grid; gap: 8px; margin: 0 0 10px;
+}
+.voice-picks label {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  font-size: 0.85rem; font-weight: 800;
+}
+.voice-picks select {
+  font: inherit; font-weight: 800; border: 3px solid var(--ink);
+  border-radius: 12px; padding: 8px 10px; background: #fff; max-width: 220px;
+}
 #checkerStatus { text-align: center; margin: 0 0 6px; min-height: 1.3em; font-weight: 700; }
 .load-track {
   height: 14px; background: #fff; border: 2px solid var(--ink);
