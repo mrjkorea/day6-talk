@@ -17,6 +17,48 @@ function setChecker(text) {
   if (el) el.textContent = text;
 }
 
+function setLoad(pct, text, creep) {
+  setChecker(text);
+  const fill = document.getElementById('loadFill');
+  const track = document.getElementById('loadTrack');
+  if (track) track.hidden = false;
+  if (!fill) return;
+  fill.classList.toggle('creep', !!creep);
+  if (!creep) fill.style.width = Math.max(6, Math.min(100, pct)) + '%';
+}
+
+function hideLoad() {
+  const track = document.getElementById('loadTrack');
+  if (track) track.hidden = true;
+  setChecker('Offline pronunciation ready');
+}
+
+async function readTracked(res, expected, onBytes) {
+  if (!res.body || typeof res.body.getReader !== 'function') {
+    const buf = new Uint8Array(await res.arrayBuffer());
+    onBytes(buf.byteLength);
+    return buf;
+  }
+  const reader = res.body.getReader();
+  const chunks = [];
+  let got = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    got += value.byteLength;
+    onBytes(got);
+  }
+  if (expected && got !== expected) throw new Error('pronunciation checker file is the wrong size');
+  const out = new Uint8Array(got);
+  let offset = 0;
+  for (const chunk of chunks) {
+    out.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return out;
+}
+
 function isReady() {
   return readyFlag;
 }
@@ -66,8 +108,9 @@ async function loadModelBytes(onProgress) {
   for (const part of man.parts) {
     const res = await fetch('models/wav2vec2/' + part.name);
     if (!res.ok) throw new Error('pronunciation checker file missing');
-    const buf = new Uint8Array(await res.arrayBuffer());
-    if (buf.byteLength !== part.bytes) throw new Error('pronunciation checker file is the wrong size');
+    const buf = await readTracked(res, part.bytes, (partGot) => {
+      if (onProgress) onProgress(got + partGot, man.bytes);
+    });
     chunks.push(buf);
     got += buf.byteLength;
     if (onProgress) onProgress(got, man.bytes);
@@ -97,25 +140,27 @@ function ensureReady(onProgress) {
       ort.env.wasm.numThreads = 1;
       ort.env.wasm.proxy = false;
     }
-    setChecker('Loading pronunciation checker…');
+    setLoad(4, 'Loading offline pronunciation. This only happens once.', true);
     await loadG2P('');
     const bytes = await loadModelBytes((got, total) => {
-      const pct = Math.min(99, Math.round((got / total) * 100));
-      setChecker('Loading pronunciation checker… ' + pct + '%');
+      const pct = Math.min(88, Math.max(6, Math.round((got / total) * 88)));
+      setLoad(pct, 'Loading offline pronunciation… ' + pct + '%. This only happens once.', false);
     });
+    setLoad(90, 'Starting offline pronunciation. This only happens once.', true);
     session = await ort.InferenceSession.create(bytes, { executionProviders: ['wasm'] });
     try {
       const warm = new Float32Array(1600);
       await session.run({ input_values: new ort.Tensor('float32', warm, [1, 1600]) });
     } catch (_) { /* warm-up is best-effort */ }
     readyFlag = true;
-    setChecker('Pronunciation checker ready');
+    setLoad(100, 'Offline pronunciation ready', false);
+    setTimeout(hideLoad, 900);
     return session;
   })().catch((err) => {
     readyP = null;
     session = null;
     readyFlag = false;
-    setChecker('Pronunciation checker failed. Refresh and try again.');
+    setLoad(0, 'Pronunciation checker failed. Refresh and try again.', false);
     throw err;
   });
   return readyP;

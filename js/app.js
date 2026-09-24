@@ -195,6 +195,8 @@
     $("btnSkip").hidden = false;
     $("btnMic").disabled = false;
     $("micStatus").textContent = "Tap Speak and say the line";
+    clearWords();
+    hideGradeBar();
     updateProgress();
     updateTryDots();
   }
@@ -372,14 +374,115 @@
     return window.MRJPronounce.armMic();
   }
 
+  function showGradeBar(text) {
+    const box = $("gradeBox");
+    if (!box) return;
+    box.hidden = false;
+    $("gradeStatus").textContent = text;
+  }
+
+  function hideGradeBar() {
+    const box = $("gradeBox");
+    if (box) box.hidden = true;
+  }
+
+  function chipClass(score) {
+    if (score >= 0.8) return "good";
+    if (score >= 0.5) return "ok";
+    return "bad";
+  }
+
+  function clearWords() {
+    const box = $("wordBox");
+    if (!box) return;
+    box.hidden = true;
+    box.innerHTML = "";
+  }
+
+  function renderWords(graded) {
+    const box = $("wordBox");
+    const words = graded && graded.result && graded.result.words;
+    if (!box || !words || !words.length) {
+      clearWords();
+      return;
+    }
+    box.hidden = false;
+    box.innerHTML = "";
+    const hint = document.createElement("p");
+    hint.className = "word-hint";
+    hint.textContent = "Green is good. Tap a yellow or red word, then say just that word.";
+    box.appendChild(hint);
+    const row = document.createElement("div");
+    row.className = "word-row";
+    words.forEach((w) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      const score = w.score || 0;
+      btn.className = "word-chip " + chipClass(score);
+      btn.innerHTML =
+        `<span class="w">${escapeHtml(w.word)}</span>` +
+        `<span class="p">${Math.round(score * 100)}%</span>`;
+      btn.onclick = () => practiceWord(w.word, btn);
+      row.appendChild(btn);
+    });
+    box.appendChild(row);
+  }
+
+  async function practiceWord(word, btn) {
+    if (state.listening) return;
+    if (btn.classList.contains("good")) {
+      $("micStatus").textContent = word + " is already good.";
+      return;
+    }
+    stopAudio();
+    let micPromise;
+    try {
+      micPromise = armMicNow();
+    } catch (e) {
+      $("micStatus").textContent = (e && e.message) || NO_MIC;
+      return;
+    }
+    $("micStatus").textContent = "Allow the microphone…";
+    state.listening = true;
+    $("btnMic").classList.add("listening");
+    window.MRJPronounce.ensureReady().catch(() => {});
+    try {
+      const stream = await waitForMic(micPromise, 8000);
+      $("micStatus").textContent = "Say just: " + word;
+      const blob = await window.MRJPronounce.recordOnce(stream);
+      const graded = await gradeAgainst(word, blob);
+      const score = (graded.score || 0) / 100;
+      btn.className = "word-chip " + chipClass(score);
+      const pct = btn.querySelector(".p");
+      if (pct) pct.textContent = Math.round(score * 100) + "%";
+      if (chipClass(score) === "good") {
+        $("micStatus").textContent = word + " is good.";
+        const chips = [...$("wordBox").querySelectorAll(".word-chip")];
+        if (chips.length && chips.every((c) => c.classList.contains("good"))) {
+          const pair = state.pairs[state.cursor];
+          if (pair) await onPass(pair, "words");
+        }
+      } else {
+        $("micStatus").textContent = "Not yet. Say " + word + " again.";
+      }
+    } catch (e) {
+      $("micStatus").textContent = (e && e.message) || "Mic error";
+    } finally {
+      hideGradeBar();
+      stopListeningUI();
+    }
+  }
+
   async function gradeAgainst(target, blob) {
     if (!blob || blob.size < 800) {
       return { pass: false, score: 0, band: "invalid", reason: "too_short" };
     }
     if (!window.MRJPronounce.isReady()) {
       $("micStatus").textContent = "Pronunciation checker is still loading…";
+      showGradeBar("Loading offline pronunciation. This only happens once.");
     } else {
       $("micStatus").textContent = "Checking your line…";
+      showGradeBar("Checking your line…");
     }
     try {
       await window.MRJPronounce.ensureReady();
@@ -483,6 +586,8 @@
       $("micStatus").textContent = "Listening… say the line";
       const blob = await window.MRJPronounce.recordOnce(stream);
       const graded = await gradeAgainst(target, blob);
+      hideGradeBar();
+      renderWords(graded);
       if (!graded.pass) {
         state.tries += 1;
         updateTryDots();
@@ -501,6 +606,7 @@
     } catch (e) {
       $("micStatus").textContent = (e && e.message) || "Mic error";
     } finally {
+      hideGradeBar();
       stopListeningUI();
     }
   };

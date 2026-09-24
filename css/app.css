@@ -29,7 +29,35 @@ body {
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent);
 }
 .top h1 { margin: 2px 0 0; font-size: 1.4rem; }
-#checkerStatus { text-align: center; margin: 0 0 8px; min-height: 1.3em; }
+#checkerStatus { text-align: center; margin: 0 0 6px; min-height: 1.3em; font-weight: 700; }
+.load-track {
+  height: 14px; background: #fff; border: 2px solid var(--ink);
+  border-radius: 999px; overflow: hidden; margin: 0 8px 12px;
+}
+.load-fill {
+  height: 100%; width: 8%; background: var(--accent); border-radius: 999px;
+}
+.load-fill.creep {
+  width: 38%;
+  animation: load-creep 1.1s ease-in-out infinite;
+}
+@keyframes load-creep {
+  0% { transform: translateX(-130%); }
+  100% { transform: translateX(320%); }
+}
+.grade-box { margin: 8px 0 4px; }
+.grade-box p { text-align: center; font-weight: 800; margin: 0 0 6px; }
+.word-box { margin: 10px 0 4px; text-align: center; }
+.word-hint { margin: 0 0 8px; color: var(--muted); font-size: 0.88rem; font-weight: 700; }
+.word-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.word-chip {
+  border: 3px solid var(--ink); border-radius: 16px; background: #fff;
+  min-width: 72px; padding: 8px 10px; font: inherit; font-weight: 900; cursor: pointer;
+}
+.word-chip .p { display: block; font-size: 0.75rem; font-weight: 800; }
+.word-chip.good { background: #06d6a0; }
+.word-chip.ok { background: #ffd166; }
+.word-chip.bad { background: #ef476f; color: #fff; }
 .badge {
   background: var(--pink); color: #fff; border-radius: 999px;
   padding: 4px 10px; font-size: 0.85rem; font-weight: 800;
@@ -141,6 +169,6 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 
 @media print {
   body { background: #fff; }
-  .print-hide, #btnHome, .top .badge, #checkerStatus { display: none !important; }
+  .print-hide, #btnHome, .top .badge, #checkerStatus, #loadTrack, #gradeBox, #wordBox { display: none !important; }
   .result-card { box-shadow: none; break-inside: avoid; }
 }

@@ -30,6 +30,19 @@ test("checker load is not awaited before the mic is armed", () => {
   assert.equal(fn.slice(arm, ready).includes("await "), false);
 });
 
+test("load bar and word colors are in the page", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  assert.match(html, /Loading offline pronunciation\. This only happens once\./);
+  assert.match(html, /id="loadFill"/);
+  assert.match(html, /id="wordBox"/);
+  assert.match(app, /word-chip/);
+  assert.match(app, /chipClass/);
+  const practice = handler(app, "async function practiceWord");
+  const arm = practice.indexOf("armMicNow()");
+  const firstAwait = practice.indexOf("await ");
+  assert.ok(arm > 0 && firstAwait > arm, "word practice must arm the mic before await");
+});
+
 test("recording uses the shared context, not a new one after getUserMedia", () => {
   const fn = handler(boot, "async function recordOnce");
   assert.equal(fn.includes("new AudioContext"), false);

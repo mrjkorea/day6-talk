@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Day 6 Talk · MRJ</title>
-  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/app.css?v=5" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
@@ -17,7 +17,8 @@
       </div>
       <span id="tryBadge" class="badge" hidden></span>
     </header>
-    <p id="checkerStatus" class="muted">Loading pronunciation checker…</p>
+    <p id="checkerStatus" class="muted">Loading offline pronunciation. This only happens once.</p>
+    <div id="loadTrack" class="load-track" aria-hidden="true"><div id="loadFill" class="load-fill creep"></div></div>
 
     <!-- HOME -->
     <main id="viewHome" class="view">
@@ -55,6 +56,11 @@
         <button type="button" id="btnMic" class="primary mic">🎤 Speak</button>
       </div>
       <p id="micStatus" class="status muted">Tap Speak and say the line</p>
+      <div id="gradeBox" class="grade-box" hidden>
+        <p id="gradeStatus">Checking your line…</p>
+        <div class="load-track"><div class="load-fill creep"></div></div>
+      </div>
+      <div id="wordBox" class="word-box" hidden></div>
       <div id="replyBanner" class="reply-banner" hidden>
         <span class="reply-label">Mr Jay</span>
         <span id="replyText"></span>
@@ -98,7 +104,7 @@
   </div>
 
   <script src="js/ort/ort.all.min.js"></script>
-  <script type="module" src="js/pronounce-boot.js?v=4"></script>
-  <script src="js/app.js?v=4" defer></script>
+  <script type="module" src="js/pronounce-boot.js?v=5"></script>
+  <script src="js/app.js?v=5" defer></script>
 </body>
 </html>
