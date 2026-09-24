@@ -25,7 +25,7 @@
   ];
   const REPLY_VOICES = [
     { id: "jay35", label: "Mr Jay age 35" },
-    { id: "jay15", label: "Mr Jay age 15" },
+    { id: "jay15", label: "Teenager" },
     { id: "jay7", label: "Mr Jay age 7" },
   ];
 
@@ -107,6 +107,18 @@
       a.onerror = () => resolve("error");
       a.play().catch(() => resolve("error"));
     });
+  }
+
+  function replyIsShowing() {
+    const banner = $("replyBanner");
+    return !!(banner && !banner.hidden);
+  }
+
+  function replayReply() {
+    const pair = state.pairs[state.cursor];
+    if (!pair) return;
+    $("micStatus").textContent = "Playing the reply…";
+    return playTeacher(pair);
   }
 
   function playStudent() {
@@ -232,6 +244,7 @@
     $("replyBanner").hidden = true;
     $("btnNext").hidden = true;
     $("btnMic").disabled = false;
+    if ($("cueHint")) $("cueHint").textContent = "Say this · tap to hear first";
     $("micStatus").textContent = "Tap Speak and say the line";
     clearWords();
     hideGradeBar();
@@ -278,11 +291,12 @@
     $("heardLine").hidden = true;
     $("replyBanner").hidden = false;
     $("replyText").textContent = stripTag(pair.reply || "");
-    $("micStatus").textContent = "Nice! Listening to Mr Jay…";
+    if ($("cueHint")) $("cueHint").textContent = "Tap the sentence to hear the reply again";
+    $("micStatus").textContent = "Nice! Listening to the reply…";
     $("btnMic").disabled = true;
     await playTeacher(pair);
     $("btnNext").hidden = false;
-    $("micStatus").textContent = "Tap Next";
+    $("micStatus").textContent = "Tap the reply to hear it again";
   }
 
   function advance() {
@@ -587,10 +601,12 @@
     listen.onchange = () => {
       state.listenVoice = listen.value;
       localStorage.setItem("day6ListenVoice", state.listenVoice);
+      if (!replyIsShowing()) playStudent();
     };
     reply.onchange = () => {
       state.replyVoice = reply.value;
       localStorage.setItem("day6ReplyVoice", state.replyVoice);
+      if (replyIsShowing()) replayReply();
     };
   }
 
@@ -601,7 +617,11 @@
     renderHome();
   };
   $("btnHear").onclick = () => playStudent();
-  $("btnCue").onclick = () => playStudent();
+  $("btnCue").onclick = () => {
+    if (replyIsShowing()) replayReply();
+    else playStudent();
+  };
+  $("replyBanner").onclick = () => replayReply();
   $("btnNext").onclick = () => advance();
   $("btnResults").onclick = () => renderResults();
   $("btnAgain").onclick = () => startUnit(state.unit);

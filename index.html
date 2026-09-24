@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Day 6 Talk · MRJ</title>
-  <link rel="stylesheet" href="css/app.css?v=7" />
+  <link rel="stylesheet" href="css/app.css?v=8" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
@@ -52,7 +52,7 @@
       <div id="tryDots" class="try-dots" aria-label="tries"></div>
 
       <div class="cue-card">
-        <p class="hint">Say this · tap to hear first</p>
+        <p class="hint" id="cueHint">Say this · tap to hear first</p>
         <button type="button" id="btnCue" class="cue-btn" aria-label="Play student line">
           <span id="sayLine" class="say-line">…</span>
         </button>
@@ -69,10 +69,10 @@
         <div class="load-track"><div class="load-fill creep"></div></div>
       </div>
       <div id="wordBox" class="word-box" hidden></div>
-      <div id="replyBanner" class="reply-banner" hidden>
-        <span class="reply-label">Mr Jay</span>
+      <button type="button" id="replyBanner" class="reply-banner" hidden>
+        <span class="reply-label">Reply · tap to hear again</span>
         <span id="replyText"></span>
-      </div>
+      </button>
       <div class="nav-row">
         <button type="button" id="btnNext" class="primary" hidden>Next →</button>
       </div>
@@ -110,6 +110,6 @@
 
   <script src="js/ort/ort.all.min.js"></script>
   <script type="module" src="js/pronounce-boot.js?v=7"></script>
-  <script src="js/app.js?v=7" defer></script>
+  <script src="js/app.js?v=8" defer></script>
 </body>
 </html>

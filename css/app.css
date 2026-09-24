@@ -133,9 +133,11 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 }
 .try-dots span.used { background: var(--pink); }
 .reply-banner {
+  display: block; width: 100%;
   margin: 14px auto 0; max-width: 520px; padding: 14px 16px;
   background: #073b4c; color: #fff; border-radius: 18px; text-align: left;
-  font-weight: 700; line-height: 1.4;
+  font: inherit; font-weight: 700; line-height: 1.4;
+  border: 3px solid var(--ink); cursor: pointer;
 }
 .reply-label {
   display: inline-block; background: var(--good); color: var(--ink);

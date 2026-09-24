@@ -5,7 +5,7 @@ Listen (student line):
   grandpa  = Grandpa Walt
   american = Morgan Freeman, labeled American man
 Reply:
-  jay15 = teen boy (Mr Jay age 15)
+  jay15 = Leo, the teenager voice (Mr Jay age 15). Not Confident Young Man.
   jay7  = Little Boy American (Mr Jay age 7)
 
 Free Fish model only. Files land in audio/voices/<id>/<same relative path>.
@@ -34,7 +34,7 @@ FISH_TTS = Path.home() / ".hermes" / "scripts" / "fish_tts.py"
 VOICES = {
     "grandpa": "86d2e997840443a1832c999ee71468b2",
     "american": "3ad4d432023c47ee9e6c7805b973630a",
-    "jay15": "57a7c775b56f4b97bb6322c203e98aa5",
+    "jay15": "a60e9fc6e78c4bdca656702c6d27ba08",
     "jay7": "342663389ddb40bba1e4f5961774efd6",
 }
 LISTEN = {"grandpa", "american"}
@@ -131,9 +131,9 @@ def save_progress(progress: dict) -> None:
     tmp.replace(PROGRESS)
 
 
-def bake_one(voice: str, text: str, rel: str) -> str:
+def bake_one(voice: str, text: str, rel: str, force: bool = False) -> str:
     dest = AUDIO / "voices" / voice / rel
-    if good_mp3(dest):
+    if good_mp3(dest) and not force:
         return "skip"
     dest.parent.mkdir(parents=True, exist_ok=True)
     env = os.environ.copy()
@@ -168,7 +168,11 @@ def bake_one(voice: str, text: str, rel: str) -> str:
 
 
 def main() -> int:
-    pending = jobs()
+    force = "--force" in sys.argv
+    only = None
+    if "--only" in sys.argv:
+        only = sys.argv[sys.argv.index("--only") + 1]
+    pending = [job for job in jobs() if only is None or job[0] == only]
     if "--dry-run" in sys.argv:
         from collections import Counter as C
         print(dict(C(v for v, _t, _r in pending)))
@@ -179,16 +183,16 @@ def main() -> int:
     for voice, text, rel in pending:
         key = f"{voice}|{rel}"
         dest = AUDIO / "voices" / voice / rel
-        if progress.get(key) == "ok" and good_mp3(dest):
+        if progress.get(key) == "ok" and good_mp3(dest) and not force:
             continue
-        todo.append((key, voice, text, rel))
+        todo.append((key, voice, text, rel, force))
     log(f"todo {len(todo)} of {len(pending)}")
     if not todo:
         log("nothing to bake")
         return 0
     ok = fail = paid = 0
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        futures = {pool.submit(bake_one, voice, text, rel): key for key, voice, text, rel in todo}
+        futures = {pool.submit(bake_one, voice, text, rel, force): key for key, voice, text, rel, force in todo}
         for fut in as_completed(futures):
             key = futures[fut]
             result = fut.result()
