@@ -12,6 +12,7 @@
   font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
 }
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 body {
   margin: 0;
   background: linear-gradient(165deg, #caf0f8 0%, #e8f6ff 40%, #fff3b0 100%);

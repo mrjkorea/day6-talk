@@ -45,6 +45,11 @@
     });
     $("btnHome").hidden = name === "home";
     $("tryBadge").hidden = name !== "speak";
+    if (name !== "speak") {
+      $("replyText").textContent = "";
+      $("replyBanner").hidden = true;
+      $("replyVoices").hidden = true;
+    }
   }
 
   function stripTag(s) {
@@ -116,8 +121,6 @@
     document.querySelectorAll("#replyVoices button").forEach((btn) => {
       btn.classList.toggle("on", btn.dataset.voice === state.replyVoice);
     });
-    const reply = $("replyVoice");
-    if (reply && reply.value !== state.replyVoice) reply.value = state.replyVoice;
   }
 
   function chooseReplyVoice(voiceId, playNow) {
@@ -260,6 +263,7 @@
     $("heardLine").hidden = true;
     $("replyBanner").hidden = true;
     $("replyVoices").hidden = true;
+    $("replyText").textContent = "";
     state.replyReady = false;
     $("btnNext").hidden = true;
     $("btnMic").disabled = false;
@@ -603,18 +607,11 @@
 
   function fillVoices() {
     const listen = $("listenVoice");
-    const reply = $("replyVoice");
     LISTEN_VOICES.forEach((v) => {
       const o = document.createElement("option");
       o.value = v.id;
       o.textContent = v.label;
       listen.appendChild(o);
-    });
-    REPLY_VOICES.forEach((v) => {
-      const o = document.createElement("option");
-      o.value = v.id;
-      o.textContent = v.label;
-      reply.appendChild(o);
     });
     const box = $("replyVoices");
     box.innerHTML = "";
@@ -629,13 +626,12 @@
     if (!LISTEN_VOICES.some((v) => v.id === state.listenVoice)) state.listenVoice = "texan";
     if (!REPLY_VOICES.some((v) => v.id === state.replyVoice)) state.replyVoice = "jay35";
     listen.value = state.listenVoice;
-    reply.value = state.replyVoice;
     listen.onchange = () => {
       state.listenVoice = listen.value;
       localStorage.setItem("day6ListenVoice", state.listenVoice);
       if (!replyIsShowing()) playStudent();
     };
-    reply.onchange = () => chooseReplyVoice(reply.value, true);
+    markReplyVoices();
   }
 
   /* ---------- Events ---------- */
