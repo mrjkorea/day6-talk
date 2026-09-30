@@ -58,7 +58,7 @@
 
   function audioUrl(rel) {
     if (!rel) return "";
-    return "audio/" + String(rel).replace(/^audio\//, "").replace(/^\//, "");
+    return "audio/" + String(rel).replace(/^audio\//, "").replace(/^\//, "") + "?v=11";
   }
 
   function voiceRel(rel, voiceId) {
@@ -706,9 +706,9 @@
 
   /* ---------- Boot ---------- */
   Promise.all([
-    fetch("data/day6-qa.json").then((r) => r.json()),
-    fetch("data/audio-index.json").then((r) => r.json()),
-    fetch("data/reply-paths.json").then((r) => r.json()),
+    fetch("data/day6-qa.json?v=11").then((r) => r.json()),
+    fetch("data/audio-index.json?v=11").then((r) => r.json()),
+    fetch("data/reply-paths.json?v=11").then((r) => r.json()),
   ])
     .then(([qa, audioIndex, replyPaths]) => {
       state.qa = qa;

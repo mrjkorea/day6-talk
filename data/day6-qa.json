@@ -193,7 +193,7 @@
             },
             {
               "student": "Pardon?",
-              "reply": "[happy] Pardon is spelled P A R D ON",
+              "reply": "[sad] Sorry. I will say it again.",
               "audio": "ba/u04/03.mp3"
             },
             {
@@ -208,7 +208,7 @@
             },
             {
               "student": "Wait!",
-              "reply": "[calm] Hurry please",
+              "reply": "[happy] Okay. I will wait.",
               "audio": "ba/u04/06.mp3"
             }
           ]
@@ -1492,42 +1492,42 @@
           "pairs": [
             {
               "student": "There is food!",
-              "reply": "[surprised] Oh my god. Be careful!",
+              "reply": "[happy] Yum! Can I have some?",
               "audio": "i2-review/u01/01.mp3"
             },
             {
               "student": "There are ants!",
-              "reply": "[happy] There is a hotel!",
+              "reply": "[sad] Oh no! Don't touch the ants!",
               "audio": "i2-review/u01/02.mp3"
             },
             {
               "student": "There is a hotel!",
-              "reply": "[surprised] Oh my god. Be careful!",
+              "reply": "[happy] Wow! Is it a big hotel?",
               "audio": "i2-review/u01/03.mp3"
             },
             {
               "student": "How is the weather in space?",
-              "reply": "[happy] It is always hot in my classroom!",
+              "reply": "[happy] It is very cold in space!",
               "audio": "i2-review/u01/04.mp3"
             },
             {
               "student": "It is cold.",
-              "reply": "[happy] How is the weather in Australia?",
+              "reply": "[surprised] Brrr! Put on a coat!",
               "audio": "i2-review/u01/05.mp3"
             },
             {
               "student": "How is the weather in Australia?",
-              "reply": "[happy] It is always hot in my classroom!",
+              "reply": "[happy] It is sunny and hot there!",
               "audio": "i2-review/u01/06.mp3"
             },
             {
               "student": "Are you open tomorrow?",
-              "reply": "[happy] My pen is red. Is it yours?",
+              "reply": "[happy] Yes. We are open tomorrow.",
               "audio": "i2-review/u01/07.mp3"
             },
             {
               "student": "We close every Monday.",
-              "reply": "[happy] What day is it today?",
+              "reply": "[happy] Okay. I will come on Tuesday.",
               "audio": "i2-review/u01/08.mp3"
             },
             {
@@ -1572,7 +1572,7 @@
             },
             {
               "student": "I am taking a picture.",
-              "reply": "[happy] Okay. I am happy too. Cheer up!",
+              "reply": "[happy] Smile! Say cheese!",
               "audio": "i2-review/u01/17.mp3"
             },
             {
@@ -1588,7 +1588,7 @@
           "pairs": [
             {
               "student": "Can you speak Vietnamese ?",
-              "reply": "[happy] Can you speak Korean?",
+              "reply": "[happy] No. I cannot speak Vietnamese.",
               "audio": "i2-review/u02/01.mp3"
             },
             {
@@ -1613,7 +1613,7 @@
             },
             {
               "student": "I want a blanket.",
-              "reply": "[happy] I want tissue paper.",
+              "reply": "[happy] Okay. Here is a warm blanket.",
               "audio": "i2-review/u02/06.mp3"
             },
             {
@@ -1623,12 +1623,12 @@
             },
             {
               "student": "I want to be a scientist.",
-              "reply": "[happy] I want to be an actress or a doctor.",
+              "reply": "[happy] Wow! You can discover new things!",
               "audio": "i2-review/u02/08.mp3"
             },
             {
               "student": "I want to be an actress or a doctor.",
-              "reply": "[surprised] Wow. That is very expensive!",
+              "reply": "[happy] Both? You will be very busy!",
               "audio": "i2-review/u02/09.mp3"
             },
             {
@@ -1638,7 +1638,7 @@
             },
             {
               "student": "What is about 5000 won in Canada?",
-              "reply": "[happy] Everything here is cheap!",
+              "reply": "[happy] That is about five dollars.",
               "audio": "i2-review/u02/11.mp3"
             },
             {
@@ -1658,7 +1658,7 @@
             },
             {
               "student": "Whose watch is this?",
-              "reply": "[happy] Whose car is this?",
+              "reply": "[happy] I don't know. It is not my watch.",
               "audio": "i2-review/u02/15.mp3"
             },
             {
@@ -1714,22 +1714,22 @@
             },
             {
               "student": "What did he look like?",
-              "reply": "[happy] I cannot see. Describe him!",
+              "reply": "[happy] He was tall and thin.",
               "audio": "i2-review/u03/07.mp3"
             },
             {
               "student": "Is he thin?",
-              "reply": "[happy] I cannot see. Describe him!",
+              "reply": "[happy] Yes. He is very thin.",
               "audio": "i2-review/u03/08.mp3"
             },
             {
               "student": "Is he young?",
-              "reply": "[happy] I cannot see. Describe him!",
+              "reply": "[happy] Yes. He looks very young.",
               "audio": "i2-review/u03/09.mp3"
             },
             {
               "student": "This is my math teacher, Ms. Soohok",
-              "reply": "[happy] This is my science teacher, Mr. Gwohok",
+              "reply": "[happy] Nice to meet you, Ms. Soohok!",
               "audio": "i2-review/u03/10.mp3"
             },
             {
@@ -1739,22 +1739,22 @@
             },
             {
               "student": "This is my history teacher, Mrs. Yuksu",
-              "reply": "[happy] This is my music teacher, Mr. Oommok",
+              "reply": "[happy] Hello, Mrs. Yuksu. Nice to meet you!",
               "audio": "i2-review/u03/12.mp3"
             },
             {
               "student": "I am feeling proud.",
-              "reply": "[happy] Okay. I am happy too. Cheer up!",
+              "reply": "[happy] Good job! You should feel proud!",
               "audio": "i2-review/u03/13.mp3"
             },
             {
               "student": "I am feeling a little ignored.",
-              "reply": "[happy] I am feeling satisfied.",
+              "reply": "[happy] I see you. I am listening.",
               "audio": "i2-review/u03/14.mp3"
             },
             {
               "student": "I am feeling satisfied.",
-              "reply": "[happy] Okay. I am happy too. Cheer up!",
+              "reply": "[happy] Nice! I am glad you feel good.",
               "audio": "i2-review/u03/15.mp3"
             },
             {
@@ -1769,7 +1769,7 @@
             },
             {
               "student": "I have a headache.",
-              "reply": "[happy] My back hurts.",
+              "reply": "[sad] Oh no. Sit down and rest.",
               "audio": "i2-review/u03/18.mp3"
             }
           ]
@@ -1785,7 +1785,7 @@
             },
             {
               "student": "They are in the gym.",
-              "reply": "[happy] Yum! Can I try one?",
+              "reply": "[happy] Okay. Let's go to the gym.",
               "audio": "i2-review/u04/02.mp3"
             },
             {
@@ -1805,7 +1805,7 @@
             },
             {
               "student": "I play soccer.",
-              "reply": "[happy] I practice martial arts.",
+              "reply": "[happy] Cool! I like soccer too.",
               "audio": "i2-review/u04/06.mp3"
             },
             {
@@ -1830,7 +1830,7 @@
             },
             {
               "student": "They are theirs.",
-              "reply": "[happy] Yum! Can I try one?",
+              "reply": "[happy] Okay. Let's give them back.",
               "audio": "i2-review/u04/11.mp3"
             },
             {
@@ -1855,7 +1855,7 @@
             },
             {
               "student": "Hi, Is Jessica home?",
-              "reply": "[sad] Sorry, he is out.",
+              "reply": "[sad] Sorry. She is not home.",
               "audio": "i2-review/u04/16.mp3"
             },
             {
@@ -1865,7 +1865,7 @@
             },
             {
               "student": "What is his number?",
-              "reply": "[happy] What is her number?",
+              "reply": "[sad] Sorry. I don't know his number.",
               "audio": "i2-review/u04/18.mp3"
             }
           ]
@@ -1887,27 +1887,27 @@
             },
             {
               "student": "If",
-              "reply": "[happy] How is the weather in Tongyeong, South Korea",
+              "reply": "[happy] If what? Please finish your sentence!",
               "audio": "i2a/u01/02.mp3"
             },
             {
               "student": "In Tongyeong",
-              "reply": "[happy] How is the weather in space?",
+              "reply": "[happy] In Tongyeong it is nice today!",
               "audio": "i2a/u01/03.mp3"
             },
             {
               "student": "It is cold.",
-              "reply": "[happy] How is the weather in Australia?",
+              "reply": "[surprised] Brrr! I need a warm coat!",
               "audio": "i2a/u01/04.mp3"
             },
             {
               "student": "It is windy.",
-              "reply": "[happy] How is the weather in Canada?",
+              "reply": "[happy] Hold your hat! The wind is strong!",
               "audio": "i2a/u01/05.mp3"
             },
             {
               "student": "In Canada,",
-              "reply": "[happy] It is sunny.",
+              "reply": "[happy] In Canada it is often cold!",
               "audio": "i2a/u01/06.mp3"
             },
             {
@@ -1943,17 +1943,17 @@
             },
             {
               "student": "There are bees!",
-              "reply": "[happy] There is food!",
+              "reply": "[sad] Oh no! Don't move near the bees!",
               "audio": "i2a/u02/03.mp3"
             },
             {
               "student": "There are ants!",
-              "reply": "[happy] There is a hotel!",
+              "reply": "[surprised] Yuck! Tiny ants everywhere!",
               "audio": "i2a/u02/04.mp3"
             },
             {
               "student": "There are spiders!",
-              "reply": "[happy] There is a washroom!",
+              "reply": "[surprised] Eek! I am scared of spiders!",
               "audio": "i2a/u02/05.mp3"
             }
           ]
@@ -1969,22 +1969,22 @@
             },
             {
               "student": "It has subtitles.",
-              "reply": "[happy] Can you speak Japanese?",
+              "reply": "[happy] Good. Then I can read the words.",
               "audio": "i2a/u03/02.mp3"
             },
             {
               "student": "Can you speak French?",
-              "reply": "[happy] Can you speak German?",
+              "reply": "[happy] No. I only know a little French.",
               "audio": "i2a/u03/03.mp3"
             },
             {
               "student": "Can you speak Spanish ?",
-              "reply": "[happy] Can you speak Hindi?",
+              "reply": "[happy] No. Spanish is too fast for me!",
               "audio": "i2a/u03/04.mp3"
             },
             {
               "student": "Can you speak Vietnamese ?",
-              "reply": "[happy] Can you speak Korean?",
+              "reply": "[happy] No. I cannot speak Vietnamese.",
               "audio": "i2a/u03/05.mp3"
             },
             {
@@ -2005,17 +2005,17 @@
             },
             {
               "student": "I want a blanket.",
-              "reply": "[happy] I want tissue paper.",
+              "reply": "[happy] Here. A big warm blanket!",
               "audio": "i2a/u04/02.mp3"
             },
             {
               "student": "I want soup.",
-              "reply": "[happy] I want juice.",
+              "reply": "[happy] Yum! Hot soup sounds good.",
               "audio": "i2a/u04/03.mp3"
             },
             {
               "student": "I want water.",
-              "reply": "[happy] I want my phone.",
+              "reply": "[happy] Okay. Cold water, coming up!",
               "audio": "i2a/u04/04.mp3"
             },
             {
@@ -2046,7 +2046,7 @@
             },
             {
               "student": "Maybe it is in the bedroom.",
-              "reply": "[happy] Hey google! Where is my phone?",
+              "reply": "[happy] Good idea. Let's look in the bedroom.",
               "audio": "i2a/u05/04.mp3"
             },
             {
@@ -2133,7 +2133,7 @@
             },
             {
               "student": "Where is the janitor?",
-              "reply": "[happy] In Korea, students clean their school.",
+              "reply": "[happy] He is cleaning the hallway.",
               "audio": "i2a/u07/07.mp3"
             }
           ]
@@ -2176,32 +2176,32 @@
           "pairs": [
             {
               "student": "Hello, this is pizzaland",
-              "reply": "[happy] Are you open tomorrow?",
+              "reply": "[happy] Hello! I want one pizza, please.",
               "audio": "i2b/u01/01.mp3"
             },
             {
               "student": "We close every Monday.",
-              "reply": "[happy] What day is it today?",
+              "reply": "[sad] Oh no. I will come on Tuesday.",
               "audio": "i2b/u01/02.mp3"
             },
             {
               "student": "Hello? Hello?",
-              "reply": "[happy] It's Sunday.",
+              "reply": "[happy] Hello! I can hear you.",
               "audio": "i2b/u01/03.mp3"
             },
             {
               "student": "It's Monday.",
-              "reply": "[happy] It's Tuesday.",
+              "reply": "[happy] Monday? Then the shop is closed!",
               "audio": "i2b/u01/04.mp3"
             },
             {
               "student": "It's Wednesday.",
-              "reply": "[happy] It's Thursday.",
+              "reply": "[happy] Wednesday is a good pizza day!",
               "audio": "i2b/u01/05.mp3"
             },
             {
               "student": "It's Friday.",
-              "reply": "[happy] It's Saturday.",
+              "reply": "[happy] Friday pizza? Yes, please!",
               "audio": "i2b/u01/06.mp3"
             }
           ]
@@ -2212,7 +2212,7 @@
           "pairs": [
             {
               "student": "Hey google,",
-              "reply": "[happy] What time is it now?",
+              "reply": "[happy] Yes? How can I help you?",
               "audio": "i2b/u02/01.mp3"
             },
             {
@@ -2273,22 +2273,22 @@
             },
             {
               "student": "I want to be a computer hacker.",
-              "reply": "[happy] I want to be a pro-gamer.",
+              "reply": "[happy] Wow! Please use that power for good!",
               "audio": "i2b/u03/02.mp3"
             },
             {
               "student": "I want to be a scientist.",
-              "reply": "[happy] I want to be an actress or a doctor.",
+              "reply": "[happy] Cool! You can help the world!",
               "audio": "i2b/u03/03.mp3"
             },
             {
               "student": "I want to be a food critic.",
-              "reply": "[happy] I want to be a judge.",
+              "reply": "[happy] Yum! You can eat and get paid!",
               "audio": "i2b/u03/04.mp3"
             },
             {
               "student": "I want to be an English teacher.",
-              "reply": "[happy] I want to be the president.",
+              "reply": "[happy] Like me? Welcome to the teacher club!",
               "audio": "i2b/u03/05.mp3"
             },
             {
@@ -2304,27 +2304,27 @@
           "pairs": [
             {
               "student": "Welcome to Seven-Eleven.",
-              "reply": "[happy] How much is a hamburger in Canada?",
+              "reply": "[happy] Hello! I want a small snack, please.",
               "audio": "i2b/u04/01.mp3"
             },
             {
               "student": "What is about 100 won in Canada?",
-              "reply": "[happy] How much is a cup of coffee in Canada?",
+              "reply": "[happy] That is about ten cents. So small!",
               "audio": "i2b/u04/02.mp3"
             },
             {
               "student": "What is about 500 won in Canada?",
-              "reply": "[happy] How much is a car in Canada?",
+              "reply": "[happy] That is about fifty cents.",
               "audio": "i2b/u04/03.mp3"
             },
             {
               "student": "What is about 1000 won in Canada?",
-              "reply": "[happy] How much is a house in Canada?",
+              "reply": "[happy] That is about one dollar.",
               "audio": "i2b/u04/04.mp3"
             },
             {
               "student": "What is about 5000 won in Canada?",
-              "reply": "[happy] Everything here is cheap!",
+              "reply": "[happy] That is about five dollars.",
               "audio": "i2b/u04/05.mp3"
             },
             {
@@ -2340,27 +2340,27 @@
           "pairs": [
             {
               "student": "Somebody stole my bike.",
-              "reply": "[happy] What did he look like?",
+              "reply": "[sad] Oh no! Let's call for help!",
               "audio": "i2b/u05/01.mp3"
             },
             {
               "student": "I don't know",
-              "reply": "[happy] Is he tall?",
+              "reply": "[happy] That is okay. Think slowly.",
               "audio": "i2b/u05/02.mp3"
             },
             {
               "student": "He is very tall.",
-              "reply": "[happy] Is he thin?",
+              "reply": "[happy] A tall bike thief? Wow!",
               "audio": "i2b/u05/03.mp3"
             },
             {
               "student": "He is very thin.",
-              "reply": "[happy] Is he young?",
+              "reply": "[happy] Okay. Tall and thin. I see.",
               "audio": "i2b/u05/04.mp3"
             },
             {
               "student": "He is very young.",
-              "reply": "[happy] Is he ugly?",
+              "reply": "[happy] A young thief? That is sad.",
               "audio": "i2b/u05/05.mp3"
             },
             {
@@ -2381,7 +2381,7 @@
           "pairs": [
             {
               "student": "Welcome to Parent's night.",
-              "reply": "[happy] This is my English teacher, Mr. Jay",
+              "reply": "[happy] Hello, parents! Welcome in!",
               "audio": "i2b/u06/01.mp3"
             },
             {
@@ -2391,17 +2391,17 @@
             },
             {
               "student": "This is my math teacher, Ms. Soohok",
-              "reply": "[happy] This is my science teacher, Mr. Gwohok",
+              "reply": "[happy] Nice to meet you, Ms. Soohok!",
               "audio": "i2b/u06/03.mp3"
             },
             {
               "student": "This is my history teacher, Mrs. Yuksu",
-              "reply": "[happy] This is my music teacher, Mr. Oommok",
+              "reply": "[happy] Hello, Mrs. Yuksu. Nice to meet you!",
               "audio": "i2b/u06/04.mp3"
             },
             {
               "student": "This is my art teacher, Ms. Meesool",
-              "reply": "[happy] This is my gym teacher, Mr. Chaiyook",
+              "reply": "[happy] Hi, Ms. Meesool! I love art!",
               "audio": "i2b/u06/05.mp3"
             },
             {
@@ -2422,12 +2422,12 @@
             },
             {
               "student": "Let's think together.",
-              "reply": "[happy] Is it in your pencil case?",
+              "reply": "[happy] Okay. Let's look slowly.",
               "audio": "i2b/u07/02.mp3"
             },
             {
               "student": "Nope.",
-              "reply": "[happy] Is it on your books?",
+              "reply": "[happy] Okay. Not there. Let's look again.",
               "audio": "i2b/u07/03.mp3"
             },
             {
@@ -2437,12 +2437,12 @@
             },
             {
               "student": "Is it behind your phone?",
-              "reply": "[happy] Is it in front of the stairs?",
+              "reply": "[happy] I will check behind the phone.",
               "audio": "i2b/u07/05.mp3"
             },
             {
               "student": "Is it between your shoes?",
-              "reply": "[happy] Is it next to the bus stop?",
+              "reply": "[happy] Okay. I will look between your shoes.",
               "audio": "i2b/u07/06.mp3"
             },
             {
@@ -2500,7 +2500,7 @@
           "pairs": [
             {
               "student": "I love summer.",
-              "reply": "[happy] How about you?",
+              "reply": "[happy] Me too! Summer is the best!",
               "audio": "i2c/u01/01.mp3"
             },
             {
@@ -2546,7 +2546,7 @@
             },
             {
               "student": "He is fishing.",
-              "reply": "[happy] She is selling vegetables.",
+              "reply": "[happy] I hope he catches a big fish!",
               "audio": "i2c/u02/04.mp3"
             },
             {
@@ -2556,7 +2556,7 @@
             },
             {
               "student": "They are playing computer games.",
-              "reply": "[happy] What are we doing?",
+              "reply": "[happy] Fun! Can I play one game too?",
               "audio": "i2c/u02/06.mp3"
             },
             {
@@ -2577,7 +2577,7 @@
             },
             {
               "student": "Is this yours?",
-              "reply": "[happy] Whose money is this?",
+              "reply": "[happy] No. It is not mine.",
               "audio": "i2c/u03/02.mp3"
             },
             {
@@ -2592,22 +2592,22 @@
             },
             {
               "student": "Whose watch is this?",
-              "reply": "[happy] Whose car is this?",
+              "reply": "[happy] I don't know. It is not my watch.",
               "audio": "i2c/u03/05.mp3"
             },
             {
               "student": "Whose jacket is this?",
-              "reply": "[happy] Whose laptop is this?",
+              "reply": "[happy] Not my jacket. It is too big!",
               "audio": "i2c/u03/06.mp3"
             },
             {
               "student": "Whose sunglasses are these?",
-              "reply": "[happy] Whose headphones are these?",
+              "reply": "[happy] Not mine. I don't wear those.",
               "audio": "i2c/u03/07.mp3"
             },
             {
               "student": "Whose perfume is this?",
-              "reply": "[happy] Whose bike is this?",
+              "reply": "[happy] Not mine. It smells very strong!",
               "audio": "i2c/u03/08.mp3"
             },
             {
@@ -2664,12 +2664,12 @@
           "pairs": [
             {
               "student": "I am feeling a little confused.",
-              "reply": "[happy] I am feeling a little embarrassed.",
+              "reply": "[happy] It is okay. I will help you.",
               "audio": "i2c/u05/01.mp3"
             },
             {
               "student": "I am feeling a little jealous.",
-              "reply": "[happy] I am feeling fantastic",
+              "reply": "[happy] Don't worry. You are special too.",
               "audio": "i2c/u05/02.mp3"
             },
             {
@@ -2679,7 +2679,7 @@
             },
             {
               "student": "I am feeling a little ignored.",
-              "reply": "[happy] I am feeling satisfied.",
+              "reply": "[happy] I see you. You are not ignored.",
               "audio": "i2c/u05/04.mp3"
             },
             {
@@ -2705,12 +2705,12 @@
             },
             {
               "student": "I have a headache.",
-              "reply": "[happy] My back hurts.",
+              "reply": "[sad] Oh no. Please sit and rest.",
               "audio": "i2c/u06/03.mp3"
             },
             {
               "student": "I have a stomachache.",
-              "reply": "[happy] My tooth hurts.",
+              "reply": "[sad] Oh no. Sit down. No snacks now.",
               "audio": "i2c/u06/04.mp3"
             },
             {
@@ -2726,22 +2726,22 @@
           "pairs": [
             {
               "student": "Is Beomjun there?",
-              "reply": "[happy] Hello, can I talk to Jinho please.",
+              "reply": "[sad] Sorry. Beomjun is not here.",
               "audio": "i2c/u07/01.mp3"
             },
             {
               "student": "Hi, Is Jessica home?",
-              "reply": "[sad] Sorry, he is out.",
+              "reply": "[sad] Sorry. She is not home.",
               "audio": "i2c/u07/02.mp3"
             },
             {
               "student": "What is his number?",
-              "reply": "[happy] What is her number?",
+              "reply": "[sad] Sorry. I don't know his number.",
               "audio": "i2c/u07/03.mp3"
             },
             {
               "student": "Is this 010 6616 2558",
-              "reply": "[happy] 010 4558 9231?",
+              "reply": "[happy] No. That is not my number.",
               "audio": "i2c/u07/04.mp3"
             },
             {
@@ -2839,12 +2839,12 @@
             },
             {
               "student": "Do you like salty food?",
-              "reply": "[happy] Try doenjang guk.",
+              "reply": "[happy] Yes. I like salty soup.",
               "audio": "i3-review/u01/10.mp3"
             },
             {
               "student": "Do not run",
-              "reply": "[angry] Do not yell",
+              "reply": "[happy] Okay. I will walk.",
               "audio": "i3-review/u01/11.mp3"
             },
             {
@@ -2880,7 +2880,7 @@
             },
             {
               "student": "Slower, please.",
-              "reply": "[happy] Warmer, please.",
+              "reply": "[happy] Okay. I will speak more slowly.",
               "audio": "i3-review/u02/05.mp3"
             },
             {
@@ -2961,7 +2961,7 @@
             },
             {
               "student": "Study!",
-              "reply": "[happy] What do you have?",
+              "reply": "[happy] Okay. I will open my book.",
               "audio": "i3-review/u03/08.mp3"
             },
             {
@@ -2992,7 +2992,7 @@
           "pairs": [
             {
               "student": "Run Around",
-              "reply": "[happy] Jump rope? Okay, I will try!",
+              "reply": "[happy] Okay! I will run around the gym!",
               "audio": "i3-review/u04/01.mp3"
             },
             {
@@ -3012,7 +3012,7 @@
             },
             {
               "student": "Do not forget your school bag!",
-              "reply": "[happy] Do not forget your lunch!",
+              "reply": "[happy] Okay. My school bag is on my back.",
               "audio": "i3-review/u04/05.mp3"
             },
             {
@@ -3022,7 +3022,7 @@
             },
             {
               "student": "I am 187cm tall.",
-              "reply": "[happy] How old are you?",
+              "reply": "[happy] Wow! You are very tall!",
               "audio": "i3-review/u04/07.mp3"
             },
             {
@@ -3079,22 +3079,22 @@
             },
             {
               "student": "I can draw a monster",
-              "reply": "[happy] I can draw a tree",
+              "reply": "[happy] A monster? Make it funny, not scary!",
               "audio": "i3a/u01/04.mp3"
             },
             {
               "student": "I can",
-              "reply": "[happy] I can draw Korea",
+              "reply": "[happy] You can what? Tell me more!",
               "audio": "i3a/u01/05.mp3"
             },
             {
               "student": "Really?",
-              "reply": "[disgusted] I can draw poo",
+              "reply": "[happy] Yes, really! I am not joking.",
               "audio": "i3a/u01/06.mp3"
             },
             {
               "student": "Yuck!",
-              "reply": "[disgusted] I can draw a flag.",
+              "reply": "[sad] Sorry! I will draw a flower.",
               "audio": "i3a/u01/07.mp3"
             },
             {
@@ -3120,7 +3120,7 @@
             },
             {
               "student": "What about you?",
-              "reply": "[happy] About what? What flavor?",
+              "reply": "[happy] Me? I like chocolate best!",
               "audio": "i3a/u02/03.mp3"
             },
             {
@@ -3130,7 +3130,7 @@
             },
             {
               "student": "And you?",
-              "reply": "[happy] What do you want to know?",
+              "reply": "[happy] Me too! I like that one!",
               "audio": "i3a/u02/05.mp3"
             },
             {
@@ -3155,7 +3155,7 @@
             },
             {
               "student": "Lemon",
-              "reply": "[happy] I am on a diet. No ice cream!",
+              "reply": "[happy] Lemon? That is too sour for me!",
               "audio": "i3a/u02/10.mp3"
             }
           ]
@@ -3176,22 +3176,22 @@
             },
             {
               "student": "This is cold",
-              "reply": "[happy] That is hot",
+              "reply": "[surprised] Brrr! I want something hot!",
               "audio": "i3a/u03/03.mp3"
             },
             {
               "student": "This is small",
-              "reply": "[happy] That is big",
+              "reply": "[happy] Wow, so small! I can hold it.",
               "audio": "i3a/u03/04.mp3"
             },
             {
               "student": "This is soft",
-              "reply": "[happy] That is hard",
+              "reply": "[happy] It feels soft, like a pillow.",
               "audio": "i3a/u03/05.mp3"
             },
             {
               "student": "This is quiet",
-              "reply": "[calm] That is loud",
+              "reply": "[happy] Shh. Yes, it is very quiet.",
               "audio": "i3a/u03/06.mp3"
             }
           ]
@@ -3263,7 +3263,7 @@
             },
             {
               "student": "it is a spider.",
-              "reply": "[surprised] it is an ant.",
+              "reply": "[surprised] Eek! A spider! Please step back!",
               "audio": "i3a/u05/05.mp3"
             },
             {
@@ -3289,7 +3289,7 @@
             },
             {
               "student": "Rose?",
-              "reply": "[happy] What is your name?",
+              "reply": "[happy] Yes, Rose. That is a pretty name.",
               "audio": "i3a/u06/02.mp3"
             },
             {
@@ -3334,12 +3334,12 @@
             },
             {
               "student": "Yep, Mike",
-              "reply": "[happy] Ivy? Is that your friend?",
+              "reply": "[happy] Hi, Mike! Nice to meet you.",
               "audio": "i3a/u06/11.mp3"
             },
             {
               "student": "Ivy is",
-              "reply": "[happy] I am Mr. Jay. Nice to meet you!",
+              "reply": "[happy] Ivy is your friend? She sounds nice.",
               "audio": "i3a/u06/12.mp3"
             },
             {
@@ -3360,17 +3360,17 @@
             },
             {
               "student": "Run Around",
-              "reply": "[happy] Jump rope? Okay, I will try!",
+              "reply": "[happy] Okay! I will run around the gym!",
               "audio": "i3a/u07/02.mp3"
             },
             {
               "student": "Climb up",
-              "reply": "[happy] Clap 3 times. Clap clap clap!",
+              "reply": "[happy] I will climb up. Don't look down!",
               "audio": "i3a/u07/03.mp3"
             },
             {
               "student": "Do jumping jacks",
-              "reply": "[happy] Dance? I love dancing!",
+              "reply": "[happy] One, two, three! Jumping jacks!",
               "audio": "i3a/u07/04.mp3"
             },
             {
@@ -3386,7 +3386,7 @@
           "pairs": [
             {
               "student": "What is your name?",
-              "reply": "[happy] How old are you?",
+              "reply": "[happy] My name is Mr. Jay.",
               "audio": "i3a/u08/01.mp3"
             },
             {
@@ -3426,17 +3426,17 @@
             },
             {
               "student": "Seoul? A",
-              "reply": "[happy] How big is your family?",
+              "reply": "[happy] Yes. Seoul is a very big city.",
               "audio": "i3a/u08/09.mp3"
             },
             {
               "student": "I have",
-              "reply": "[happy] What school do you go to?",
+              "reply": "[happy] You have what? Tell me more!",
               "audio": "i3a/u08/10.mp3"
             },
             {
               "student": "I do not",
-              "reply": "[happy] I go to Juklim Elementary School? No, I am the teacher!",
+              "reply": "[happy] That is okay. I am the teacher here.",
               "audio": "i3a/u08/11.mp3"
             }
           ]
@@ -3545,22 +3545,22 @@
           "pairs": [
             {
               "student": "Slower, please.",
-              "reply": "[happy] Warmer, please.",
+              "reply": "[happy] Okay. I will speak more slowly.",
               "audio": "i3b/u03/01.mp3"
             },
             {
               "student": "Bigger, please.",
-              "reply": "[happy] Higher, please.",
+              "reply": "[happy] Okay. I will make it bigger.",
               "audio": "i3b/u03/02.mp3"
             },
             {
               "student": "Cooler, please.",
-              "reply": "[happy] Smaller, please.",
+              "reply": "[happy] Okay. I will make it cooler.",
               "audio": "i3b/u03/03.mp3"
             },
             {
               "student": "More, please.",
-              "reply": "[happy] Less, please.",
+              "reply": "[happy] Okay. Here is some more!",
               "audio": "i3b/u03/04.mp3"
             }
           ]
@@ -3586,7 +3586,7 @@
             },
             {
               "student": "No, she is my teacher",
-              "reply": "[happy] Who is this? Is he your dad?",
+              "reply": "[happy] Oh! Hello, teacher!",
               "audio": "i3b/u04/04.mp3"
             },
             {
@@ -3596,7 +3596,7 @@
             },
             {
               "student": "How",
-              "reply": "[happy] No, he is my grandfather.",
+              "reply": "[happy] This is how: I look at the face.",
               "audio": "i3b/u04/06.mp3"
             },
             {
@@ -3622,7 +3622,7 @@
             },
             {
               "student": "Wash up!",
-              "reply": "[happy] Hurry up!",
+              "reply": "[happy] Okay. I will wash my hands.",
               "audio": "i3b/u05/02.mp3"
             },
             {
@@ -3637,7 +3637,7 @@
             },
             {
               "student": "Lay down!",
-              "reply": "[happy] Get down!",
+              "reply": "[happy] Okay. I will lie down for a minute.",
               "audio": "i3b/u05/05.mp3"
             },
             {
@@ -3663,12 +3663,12 @@
             },
             {
               "student": "They are lychee.",
-              "reply": "[happy] They are soursop.",
+              "reply": "[happy] Lychee? Sweet and juicy!",
               "audio": "i3b/u06/03.mp3"
             },
             {
               "student": "They are grapefruit.",
-              "reply": "[happy] They are mangosteen.",
+              "reply": "[happy] Grapefruit is so sour!",
               "audio": "i3b/u06/04.mp3"
             },
             {
@@ -3689,17 +3689,17 @@
             },
             {
               "student": "Do not forget your hat!",
-              "reply": "[happy] Do not forget your jacket!",
+              "reply": "[happy] Okay. I have my hat.",
               "audio": "i3b/u07/02.mp3"
             },
             {
               "student": "Do not forget your money!",
-              "reply": "[happy] Do not forget your phone!",
+              "reply": "[happy] Okay. My money is in my pocket.",
               "audio": "i3b/u07/03.mp3"
             },
             {
               "student": "Do not forget your school bag!",
-              "reply": "[happy] Do not forget your lunch!",
+              "reply": "[happy] Okay. My school bag is on my back.",
               "audio": "i3b/u07/04.mp3"
             },
             {
@@ -3715,42 +3715,42 @@
           "pairs": [
             {
               "student": "Hello!",
-              "reply": "[happy] Where are you from?",
+              "reply": "[happy] Hello! Nice to see you!",
               "audio": "i3b/u08/01.mp3"
             },
             {
               "student": "I am from Canada.",
-              "reply": "[happy] How tall are you?",
+              "reply": "[happy] Canada? It is very cold there!",
               "audio": "i3b/u08/02.mp3"
             },
             {
               "student": "I am 187cm tall.",
-              "reply": "[happy] How old are you?",
+              "reply": "[happy] Wow! You are very tall!",
               "audio": "i3b/u08/03.mp3"
             },
             {
               "student": "I am 22 years old forever.",
-              "reply": "[happy] Why did you come to Korea?",
+              "reply": "[happy] Ha! I want to stay young too!",
               "audio": "i3b/u08/04.mp3"
             },
             {
               "student": "I came to teach English.",
-              "reply": "[happy] How big are your feet?",
+              "reply": "[happy] That is my job too!",
               "audio": "i3b/u08/05.mp3"
             },
             {
               "student": "They are 310 mm.",
-              "reply": "[happy] What Korean food do you like?",
+              "reply": "[happy] Wow! Those are big feet!",
               "audio": "i3b/u08/06.mp3"
             },
             {
               "student": "I love Gimbap!",
-              "reply": "[happy] How much do you weigh?",
+              "reply": "[happy] Yum! I love gimbap too!",
               "audio": "i3b/u08/07.mp3"
             },
             {
               "student": "That is a secret!",
-              "reply": "[surprised] Do you have a girlfriend?",
+              "reply": "[happy] Okay. I will not ask again.",
               "audio": "i3b/u08/08.mp3"
             },
             {
@@ -3777,27 +3777,27 @@
             },
             {
               "student": "Try ddeok.",
-              "reply": "[happy] It is a sticky rice dessert.",
+              "reply": "[happy] Okay! I will try a little.",
               "audio": "i3c/u01/02.mp3"
             },
             {
               "student": "Do you like salty food?",
-              "reply": "[happy] Try doenjang guk.",
+              "reply": "[happy] Yes. I like salty soup.",
               "audio": "i3c/u01/03.mp3"
             },
             {
               "student": "It is a soy paste stew.",
-              "reply": "[happy] Do you like bitter food?",
+              "reply": "[happy] Yum! I like soup.",
               "audio": "i3c/u01/04.mp3"
             },
             {
               "student": "Try doraji namul.",
-              "reply": "[happy] It is a sautéed bellflower root.",
+              "reply": "[happy] Okay. I will try a little.",
               "audio": "i3c/u01/05.mp3"
             },
             {
               "student": "Do you like sour food?",
-              "reply": "[happy] Try this.",
+              "reply": "[happy] A little. Not too sour!",
               "audio": "i3c/u01/06.mp3"
             },
             {
@@ -3813,27 +3813,27 @@
           "pairs": [
             {
               "student": "Do not run",
-              "reply": "[angry] Do not yell",
+              "reply": "[happy] Okay. I will walk.",
               "audio": "i3c/u02/01.mp3"
             },
             {
               "student": "Do not open it",
-              "reply": "[happy] Do not pull it",
+              "reply": "[happy] Okay. I will not open it.",
               "audio": "i3c/u02/02.mp3"
             },
             {
               "student": "Do not sleep",
-              "reply": "[calm] Do not throw that.",
+              "reply": "[happy] Okay. I am awake!",
               "audio": "i3c/u02/03.mp3"
             },
             {
               "student": "Do not draw here",
-              "reply": "[angry] Do not fight",
+              "reply": "[sad] Sorry. I will draw on paper.",
               "audio": "i3c/u02/04.mp3"
             },
             {
               "student": "Do not touch",
-              "reply": "[happy] Please, do not cry",
+              "reply": "[happy] Okay. I will not touch it.",
               "audio": "i3c/u02/05.mp3"
             }
           ]
@@ -3864,12 +3864,12 @@
             },
             {
               "student": "not yet, put on your jacket",
-              "reply": "[happy] not yet, put on your gloves",
+              "reply": "[happy] Okay. I will put on my jacket.",
               "audio": "i3c/u03/05.mp3"
             },
             {
               "student": "not yet, put on your shoes",
-              "reply": "[happy] Okay! Have fun",
+              "reply": "[happy] Okay. Shoes on. Now we can go!",
               "audio": "i3c/u03/06.mp3"
             },
             {
@@ -3936,7 +3936,7 @@
           "pairs": [
             {
               "student": "Study!",
-              "reply": "[happy] What do you have?",
+              "reply": "[happy] Okay. I will open my book.",
               "audio": "i3c/u05/01.mp3"
             },
             {
@@ -3967,7 +3967,7 @@
             },
             {
               "student": "A professor? Great!",
-              "reply": "[happy] How many cities are there in Korea?",
+              "reply": "[happy] Wow! A professor is so smart!",
               "audio": "i3c/u06/02.mp3"
             },
             {
@@ -4018,22 +4018,22 @@
             },
             {
               "student": "Can you jump?",
-              "reply": "[happy] Can you sing?",
+              "reply": "[happy] Yes! I can jump very high!",
               "audio": "i3c/u07/02.mp3"
             },
             {
               "student": "Can you fight?",
-              "reply": "[angry] Can you type?",
+              "reply": "[happy] No. I do not like fighting.",
               "audio": "i3c/u07/03.mp3"
             },
             {
               "student": "Can you walk",
-              "reply": "[happy] Can you cook?",
+              "reply": "[happy] Yes. I can walk to school.",
               "audio": "i3c/u07/04.mp3"
             },
             {
               "student": "Can you fly?",
-              "reply": "[happy] Can you love?",
+              "reply": "[happy] No. I cannot fly. I wish!",
               "audio": "i3c/u07/05.mp3"
             },
             {
