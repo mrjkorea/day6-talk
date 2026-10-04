@@ -18,7 +18,13 @@
     player: null,
     listenVoice: localStorage.getItem("day6ListenVoice") || "texan",
     replyVoice: localStorage.getItem("day6ReplyVoice") || "jay35",
+    doneIds: new Set(),
+    doneRows: new Map(),
+    authRows: [],
   };
+
+  let authSeen = false;
+  let booted = false;
 
   const LISTEN_VOICES = [
     { id: "texan", label: "Texan woman" },
@@ -250,9 +256,154 @@
     show("speak");
   }
 
+  function lineId(pair) {
+    return String((pair && pair.audio) || "").trim();
+  }
+
+  function bookTitle() {
+    if (state.level && state.level.label) return state.level.label;
+    if (state.unit && state.unit.title) return state.unit.title;
+    return "";
+  }
+
+  function unitTitle() {
+    if (!state.unit) return "";
+    return "Unit " + state.unit.unit + ". " + (state.unit.title || "");
+  }
+
+  function rowLooksPassed(row) {
+    const text = String((row && row.score) || "");
+    const match = text.match(/(\d+(?:\.\d+)?)/);
+    if (!match) return true;
+    if (text.indexOf("/") > 0) {
+      const parts = text.split("/");
+      const value = Number(parts[0]);
+      const max = Number(parts[1]);
+      if (max) return (value / max) * 100 >= 70;
+    }
+    return Number(match[1]) >= 70;
+  }
+
+  function noteDoneRow(pair) {
+    const row = state.doneRows.get(lineId(pair));
+    if (row && !rowLooksPassed(row)) recordSkip(pair);
+    else recordSuccess(pair);
+  }
+
+  function postLineScore(pair, graded) {
+    if (!window.MRJ_SCORES || typeof window.MRJ_SCORES.post !== "function") return;
+    if (!graded || typeof graded.score !== "number") return;
+    const student =
+      window.MRJ_AUTH && typeof window.MRJ_AUTH.student === "function"
+        ? window.MRJ_AUTH.student()
+        : "";
+    window.MRJ_SCORES.post({
+      student: student,
+      program: "day6-talk",
+      appName: "MRJ Day 6 Talk",
+      source: "day6-talk",
+      bookTitle: bookTitle(),
+      unitTitle: unitTitle(),
+      itemId: lineId(pair),
+      itemType: "speaking",
+      scoreValue: graded.score,
+      scoreMax: 100,
+      scorePct: graded.score,
+      correctness: graded.pass ? "correct" : "incorrect",
+    });
+  }
+
+  function eachPair(fn) {
+    const levels = (state.qa && state.qa.levels) || [];
+    levels.forEach((lv) => {
+      (lv.units || []).forEach((u) => {
+        (u.pairs || []).forEach((pair, i) => fn(lv, u, pair, i));
+      });
+    });
+  }
+
+  function findLine(itemId) {
+    const id = String(itemId || "").trim();
+    if (!id) return null;
+    let found = null;
+    eachPair((lv, u, pair, i) => {
+      if (!found && lineId(pair) === id) found = { lv, u, i };
+    });
+    return found;
+  }
+
+  function lineAfter(anchor) {
+    let passed = false;
+    let found = null;
+    eachPair((lv, u, pair, i) => {
+      if (found) return;
+      if (!passed) {
+        if (lv === anchor.lv && u === anchor.u && i === anchor.i) passed = true;
+        return;
+      }
+      if (!state.doneIds.has(lineId(pair))) found = { lv, u, i };
+    });
+    return found;
+  }
+
+  function openAt(lv, u, index) {
+    state.level = lv;
+    state.unit = u;
+    state.pairs = u.pairs.slice();
+    state.cursor = index;
+    state.tries = 0;
+    state.rows = [];
+    for (let i = 0; i < index; i++) {
+      if (state.doneIds.has(lineId(state.pairs[i]))) noteDoneRow(state.pairs[i]);
+    }
+    $("title").textContent = `U${u.unit} · ${u.title}`;
+    showPair();
+    show("speak");
+  }
+
+  function resumeFromProgress(rows) {
+    let anchor = null;
+    (rows || []).some((row) => {
+      if (!row || String(row.program || "") !== "day6-talk") return false;
+      anchor = findLine(row.item || row.itemId);
+      return !!anchor;
+    });
+    if (!anchor) return false;
+    const next = lineAfter(anchor);
+    if (!next) return false;
+    openAt(next.lv, next.u, next.i);
+    return true;
+  }
+
+  function applyAuthProgress(rows) {
+    state.doneIds = new Set();
+    state.doneRows = new Map();
+    (rows || []).forEach((row) => {
+      if (!row || String(row.program || "") !== "day6-talk") return;
+      const id = String(row.item || row.itemId || "").trim();
+      if (!id) return;
+      state.doneIds.add(id);
+      state.doneRows.set(id, row);
+    });
+  }
+
+  function bootUi() {
+    if (booted || !state.qa || !authSeen) return;
+    booted = true;
+    if (state.doneIds.size && resumeFromProgress(state.authRows)) return;
+    renderHome();
+  }
+
   function showPair() {
     stopAudio();
     stopListeningUI();
+    while (
+      state.cursor < state.pairs.length &&
+      state.doneIds.has(lineId(state.pairs[state.cursor]))
+    ) {
+      noteDoneRow(state.pairs[state.cursor]);
+      state.cursor += 1;
+    }
     const pair = state.pairs[state.cursor];
     if (!pair) {
       showEnd();
@@ -575,6 +726,7 @@
       const stream = await waitForMic(micPromise, 8000);
       const blob = await window.MRJPronounce.recordOnce(stream);
       const graded = await gradeAgainst(row.question, blob);
+      postLineScore(pair, graded);
       if (!graded.pass) {
         const why = graded.reason === "too_quiet" || graded.reason === "too_short"
           ? "I didn’t hear a clear line."
@@ -679,6 +831,7 @@
       $("micStatus").textContent = "Listening… say the line";
       const blob = await window.MRJPronounce.recordOnce(stream);
       const graded = await gradeAgainst(target, blob);
+      postLineScore(pair, graded);
       hideGradeBar();
       renderWords(graded);
       if (!graded.pass) {
@@ -714,7 +867,7 @@
       state.qa = qa;
       state.audioIndex = audioIndex;
       state.replyPaths = replyPaths;
-      renderHome();
+      bootUi();
     })
     .catch((err) => {
       document.body.innerHTML =
@@ -722,4 +875,13 @@
         escapeHtml(String(err)) +
         "</p>";
     });
+
+  window.addEventListener("mrj-auth-ready", (event) => {
+    const detail = (event && event.detail) || {};
+    const rows = Array.isArray(detail.progress) ? detail.progress : [];
+    state.authRows = rows;
+    authSeen = true;
+    applyAuthProgress(rows);
+    bootUi();
+  });
 })();
