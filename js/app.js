@@ -25,6 +25,8 @@
 
   let authSeen = false;
   let booted = false;
+  let stopWanted = false;
+  let listenTarget = null;
 
   const LISTEN_VOICES = [
     { id: "texan", label: "Texan woman" },
@@ -644,7 +646,11 @@
   }
 
   async function practiceWord(word, btn) {
-    if (state.listening) return;
+    if (state.listening) {
+      if (btn === listenTarget) requestStopTake();
+      else queueNextStart(() => practiceWord(word, btn));
+      return;
+    }
     if (btn.classList.contains("good")) {
       $("micStatus").textContent = word + " is already good.";
       return;
@@ -658,13 +664,15 @@
       return;
     }
     $("micStatus").textContent = "Allow the microphone…";
-    state.listening = true;
-    $("btnMic").classList.add("listening");
+    beginListening(btn);
     window.MRJPronounce.ensureReady().catch(() => {});
+    let held = true;
     try {
       const stream = await waitForMic(micPromise, 8000);
       $("micStatus").textContent = "Say just: " + word;
-      const blob = await window.MRJPronounce.recordOnce(stream);
+      const blob = await window.MRJPronounce.recordOnce(stream, () => stopWanted);
+      releaseTake();
+      held = false;
       const graded = await gradeAgainst(word, blob);
       const score = (graded.score || 0) / 100;
       btn.className = "word-chip " + chipClass(score);
@@ -681,10 +689,13 @@
         $("micStatus").textContent = "Not yet. Say " + word + " again.";
       }
     } catch (e) {
+      if (held) {
+        pendingStart = null;
+        stopListeningUI();
+      }
       $("micStatus").textContent = (e && e.message) || "Mic error";
     } finally {
       hideGradeBar();
-      stopListeningUI();
     }
   }
 
@@ -709,6 +720,10 @@
   }
 
   async function teacherMic(idx) {
+    if (state.listening) {
+      queueNextStart(() => teacherMic(idx));
+      return;
+    }
     const row = state.rows[idx];
     if (!row || row.status === "success") return;
     const pair = findPair(row.question);
@@ -722,9 +737,13 @@
       return;
     }
     window.MRJPronounce.ensureReady().catch(() => {});
+    beginListening(null);
+    let held = true;
     try {
       const stream = await waitForMic(micPromise, 8000);
-      const blob = await window.MRJPronounce.recordOnce(stream);
+      const blob = await window.MRJPronounce.recordOnce(stream, () => stopWanted);
+      releaseTake();
+      held = false;
       const graded = await gradeAgainst(row.question, blob);
       postLineScore(pair, graded);
       if (!graded.pass) {
@@ -740,6 +759,10 @@
       await playTeacher(pair);
       renderResults();
     } catch (e) {
+      if (held) {
+        pendingStart = null;
+        stopListeningUI();
+      }
       alert(e.message || "Teacher mic needs Chrome and the microphone.");
     }
   }
@@ -752,9 +775,50 @@
       .replace(/"/g, "&quot;");
   }
 
+  function setStopVisible(on) {
+    const btn = $("btnStop");
+    if (btn) btn.hidden = !on;
+  }
+
+  function beginListening(target) {
+    stopWanted = false;
+    state.listening = true;
+    listenTarget = target || null;
+    if (listenTarget) listenTarget.classList.add("listening");
+    setStopVisible(true);
+  }
+
+  let pendingStart = null;
+
+  function queueNextStart(fn) {
+    pendingStart = fn;
+    requestStopTake();
+  }
+
+  function releaseTake() {
+    stopListeningUI();
+    const next = pendingStart;
+    pendingStart = null;
+    if (next) next();
+  }
+
+  function requestStopTake() {
+    if (!state.listening) return;
+    stopWanted = true;
+    if (window.MRJPronounce && typeof window.MRJPronounce.stopActiveTake === "function") {
+      window.MRJPronounce.stopActiveTake();
+    }
+  }
+
   function stopListeningUI() {
     state.listening = false;
-    $("btnMic").classList.remove("listening");
+    stopWanted = false;
+    if (listenTarget) listenTarget.classList.remove("listening");
+    listenTarget = null;
+    const mic = $("btnMic");
+    if (mic) mic.classList.remove("listening");
+    document.querySelectorAll(".word-chip.listening").forEach((el) => el.classList.remove("listening"));
+    setStopVisible(false);
   }
 
   function fillVoices() {
@@ -805,8 +869,13 @@
   $("btnPrint").onclick = () => window.print();
   $("btnResultsHome").onclick = () => renderHome();
 
+  $("btnStop").onclick = () => requestStopTake();
   $("btnMic").onclick = async () => {
-    if (state.listening) return;
+    if (state.listening) {
+      if (listenTarget === $("btnMic")) requestStopTake();
+      else queueNextStart(() => $("btnMic").click());
+      return;
+    }
     const pair = state.pairs[state.cursor];
     if (!pair) return;
     stopAudio();
@@ -822,14 +891,16 @@
       return;
     }
     $("micStatus").textContent = "Allow the microphone…";
-    state.listening = true;
-    $("btnMic").classList.add("listening");
+    beginListening($("btnMic"));
     const target = stripTag(pair.student || pair.say || "");
     window.MRJPronounce.ensureReady().catch(() => {});
+    let held = true;
     try {
       const stream = await waitForMic(micPromise, 8000);
       $("micStatus").textContent = "Listening… say the line";
-      const blob = await window.MRJPronounce.recordOnce(stream);
+      const blob = await window.MRJPronounce.recordOnce(stream, () => stopWanted);
+      releaseTake();
+      held = false;
       const graded = await gradeAgainst(target, blob);
       postLineScore(pair, graded);
       hideGradeBar();
@@ -850,10 +921,13 @@
       }
       await onPass(pair, "matched");
     } catch (e) {
+      if (held) {
+        pendingStart = null;
+        stopListeningUI();
+      }
       $("micStatus").textContent = (e && e.message) || "Mic error";
     } finally {
       hideGradeBar();
-      stopListeningUI();
     }
   };
 

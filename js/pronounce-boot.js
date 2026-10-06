@@ -299,7 +299,13 @@ function openRecorder(stream) {
   }
 }
 
-async function recordOnce(stream) {
+let finishActive = null;
+
+function stopActiveTake() {
+  if (finishActive) finishActive();
+}
+
+async function recordOnce(stream, shouldStop) {
   if (!stream || typeof MediaRecorder === 'undefined') {
     throw new Error('This browser has no microphone. Open in Chrome.');
   }
@@ -307,13 +313,34 @@ async function recordOnce(stream) {
   if (!ctx || ctx.state === 'closed') {
     throw new Error('This browser has no microphone. Open in Chrome.');
   }
+  const stopNow = typeof shouldStop === 'function' ? shouldStop : () => false;
+  let settled = false;
+  let resolveWait = null;
+  const ended = new Promise((resolve) => {
+    resolveWait = resolve;
+  });
+  const finish = () => {
+    if (settled) return;
+    settled = true;
+    if (finishActive === finish) finishActive = null;
+    resolveWait();
+  };
+  finishActive = finish;
+  if (stopNow()) finish();
   try {
     await sharedResume;
   } catch (_) { /* same context; a suspended graph fails the short-audio gate */ }
   if (ctx.state === 'suspended') {
     try { await ctx.resume(); } catch (_) { /* shared context only */ }
   }
-  const rec = openRecorder(stream);
+  if (stopNow()) finish();
+  let rec;
+  try {
+    rec = openRecorder(stream);
+  } catch (err) {
+    if (finishActive === finish) finishActive = null;
+    throw err;
+  }
   const chunks = [];
   rec.ondataavailable = (ev) => {
     if (ev.data && ev.data.size) chunks.push(ev.data);
@@ -331,39 +358,44 @@ async function recordOnce(stream) {
     const started = performance.now();
     let heard = false;
     let silentSince = null;
-    await new Promise((resolve) => {
-      const tick = () => {
-        analyser.getFloatTimeDomainData(data);
-        let sum = 0;
-        for (let i = 0; i < data.length; i++) sum += data[i] * data[i];
-        const rms = Math.sqrt(sum / data.length);
-        const now = performance.now();
-        if (rms > 0.02) {
-          heard = true;
-          silentSince = null;
-        } else if (heard) {
-          if (silentSince == null) silentSince = now;
-          if (now - silentSince > 700) {
-            resolve();
-            return;
-          }
-        }
-        if (now - started > 4500) {
-          resolve();
+    const tick = () => {
+      if (settled) return;
+      if (stopNow()) {
+        finish();
+        return;
+      }
+      analyser.getFloatTimeDomainData(data);
+      let sum = 0;
+      for (let i = 0; i < data.length; i++) sum += data[i] * data[i];
+      const rms = Math.sqrt(sum / data.length);
+      const now = performance.now();
+      if (rms > 0.02) {
+        heard = true;
+        silentSince = null;
+      } else if (heard) {
+        if (silentSince == null) silentSince = now;
+        if (now - silentSince > 700) {
+          finish();
           return;
         }
-        requestAnimationFrame(tick);
-      };
-      tick();
-    });
+      }
+      if (now - started > 4500) {
+        finish();
+        return;
+      }
+      requestAnimationFrame(tick);
+    };
+    tick();
+    await ended;
     if (rec.state !== 'inactive') rec.stop();
     await stopped;
     return new Blob(chunks, { type: rec.mimeType || 'audio/webm' });
   } finally {
+    if (finishActive === finish) finishActive = null;
     try { src.disconnect(); } catch (_) {}
     try { stream.getTracks().forEach((track) => track.stop()); } catch (_) {}
   }
 }
 
-window.MRJPronounce = { ensureReady, gradeBlob, recordOnce, decide, armMic, unlockMic, isReady };
+window.MRJPronounce = { ensureReady, gradeBlob, recordOnce, stopActiveTake, decide, armMic, unlockMic, isReady };
 ensureReady().catch(() => {});

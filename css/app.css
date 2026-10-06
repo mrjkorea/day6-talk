@@ -102,7 +102,7 @@ body {
 .book-card:active, .unit-card:active { transform: translateY(2px); box-shadow: 0 6px 0 rgba(7,59,76,0.12); }
 .book-card h2, .unit-card h3 { margin: 0 0 4px; font-size: 1.15rem; }
 .book-card p, .unit-card p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-button.primary, button.secondary, button.ghost, button.big {
+button.primary, button.secondary, button.ghost, button.big, button.stop {
   border: 3px solid var(--ink); border-radius: 999px; padding: 12px 20px;
   font: inherit; font-weight: 800; cursor: pointer;
 }
@@ -114,6 +114,13 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 .actions { display: flex; gap: 10px; justify-content: center; margin: 16px 0 8px; flex-wrap: wrap; }
 .mic { font-size: 1.15rem; min-width: 150px; }
 .mic.listening { background: var(--ink); animation: pulse 1s infinite; }
+button.stop {
+  position: fixed; z-index: 30; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  background: var(--pink); color: #fff; font-size: 1.2rem; min-width: 180px;
+  box-shadow: var(--shadow);
+}
+.word-chip.listening { animation: pulse 1s infinite; }
 @keyframes pulse { 50% { transform: scale(1.05); } }
 .cue-card {
   background: var(--card); border: 3px solid var(--ink); border-radius: 28px;
@@ -196,6 +203,6 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 
 @media print {
   body { background: #fff; }
-  .print-hide, #btnHome, .top .badge, #checkerStatus, #loadTrack, #gradeBox, #wordBox { display: none !important; }
+  .print-hide, #btnHome, #btnStop, .top .badge, #checkerStatus, #loadTrack, #gradeBox, #wordBox { display: none !important; }
   .result-card { box-shadow: none; break-inside: avoid; }
 }
