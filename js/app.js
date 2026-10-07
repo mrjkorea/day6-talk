@@ -1,4 +1,4 @@
-/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) */
+/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261007-progress-1 */
 (function () {
   const MAX_TRIES = 3;
   const $ = (id) => document.getElementById(id);
@@ -23,8 +23,12 @@
     authRows: [],
   };
 
+  const AUTH_PROGRAM = "day6-talk";
+  const PROGRESS_RETRY_MS = 20000;
+
   let authSeen = false;
   let booted = false;
+  let progressRetried = false;
   let stopWanted = false;
   let listenTarget = null;
 
@@ -377,16 +381,69 @@
     return true;
   }
 
-  function applyAuthProgress(rows) {
-    state.doneIds = new Set();
-    state.doneRows = new Map();
+  function progressApi() {
+    return window.MRJ_DAY6_AUTH_PROGRESS || null;
+  }
+
+  function safeProgressError() {
+    try {
+      if (!window.MRJ_AUTH || typeof window.MRJ_AUTH.progressError !== "function") return "";
+      return String(window.MRJ_AUTH.progressError() || "").trim();
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function ingestProgressRows(rows) {
+    const api = progressApi();
+    if (api && typeof api.mergeAuthProgress === "function") {
+      const merged = api.mergeAuthProgress(state.doneIds, state.doneRows, rows, AUTH_PROGRAM);
+      state.doneIds = merged.doneIds;
+      state.doneRows = merged.doneRows;
+      if (typeof api.mergeRowLists === "function") {
+        state.authRows = api.mergeRowLists(state.authRows, rows, AUTH_PROGRAM);
+      }
+      return;
+    }
     (rows || []).forEach((row) => {
-      if (!row || String(row.program || "") !== "day6-talk") return;
+      if (!row || String(row.program || "") !== AUTH_PROGRAM) return;
       const id = String(row.item || row.itemId || "").trim();
       if (!id) return;
       state.doneIds.add(id);
-      state.doneRows.set(id, row);
+      const prev = state.doneRows.get(id);
+      state.doneRows.set(id, prev || row);
     });
+  }
+
+  function scheduleProgressRetry() {
+    if (progressRetried) return;
+    progressRetried = true;
+    setTimeout(() => {
+      const auth = window.MRJ_AUTH;
+      if (!auth || typeof auth.loadProgressForApp !== "function") return;
+      if (safeProgressError()) return;
+      auth
+        .loadProgressForApp(AUTH_PROGRAM)
+        .then((res) => {
+          if (res && res.ok) ingestProgressRows(res.progress || []);
+        })
+        .catch(() => {});
+    }, PROGRESS_RETRY_MS);
+  }
+
+  function loadFullAuthProgress() {
+    const auth = window.MRJ_AUTH;
+    if (!auth || typeof auth.loadProgressForApp !== "function") return;
+    auth
+      .loadProgressForApp(AUTH_PROGRAM)
+      .then((res) => {
+        if (res && res.ok) {
+          ingestProgressRows(res.progress || []);
+          return;
+        }
+        scheduleProgressRetry();
+      })
+      .catch(() => scheduleProgressRetry());
   }
 
   function bootUi() {
@@ -952,10 +1009,15 @@
 
   window.addEventListener("mrj-auth-ready", (event) => {
     const detail = (event && event.detail) || {};
-    const rows = Array.isArray(detail.progress) ? detail.progress : [];
-    state.authRows = rows;
     authSeen = true;
-    applyAuthProgress(rows);
+    const progErr = safeProgressError();
+    if (!progErr) {
+      const rows = Array.isArray(detail.progress) ? detail.progress : [];
+      ingestProgressRows(rows);
+      loadFullAuthProgress();
+    } else {
+      scheduleProgressRetry();
+    }
     bootUi();
   });
 })();
