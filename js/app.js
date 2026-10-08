@@ -252,6 +252,8 @@
   }
 
   function startUnit(u) {
+    state.skipDone = false;
+    if (state.level !== levelOf(u)) state.level = levelOf(u) || state.level;
     state.unit = u;
     state.pairs = u.pairs.slice();
     state.cursor = 0;
@@ -352,7 +354,13 @@
     return found;
   }
 
+  function levelOf(u) {
+    const levels = (state.qa && state.qa.levels) || [];
+    return levels.find((lv) => (lv.units || []).indexOf(u) >= 0) || null;
+  }
+
   function openAt(lv, u, index) {
+    state.skipDone = true;
     state.level = lv;
     state.unit = u;
     state.pairs = u.pairs.slice();
@@ -449,7 +457,7 @@
   function bootUi() {
     if (booted || !state.qa || !authSeen) return;
     booted = true;
-    if (state.doneIds.size && resumeFromProgress(state.authRows)) return;
+    // Always open the book picker. Auto-resume jumped to other units (shared logins merge many students).
     renderHome();
   }
 
@@ -457,6 +465,7 @@
     stopAudio();
     stopListeningUI();
     while (
+      state.skipDone &&
       state.cursor < state.pairs.length &&
       state.doneIds.has(lineId(state.pairs[state.cursor]))
     ) {
