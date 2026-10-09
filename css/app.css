@@ -75,6 +75,8 @@ body {
 .word-box { margin: 10px 0 4px; text-align: center; }
 .word-hint { margin: 0 0 8px; color: var(--muted); font-size: 0.88rem; font-weight: 700; }
 .word-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.word-chip-wrap { display: flex; flex-direction: column; align-items: center; max-width: 160px; }
+.word-chip-wrap .word-hint { margin: 4px 0 0; font-size: 0.75rem; line-height: 1.25; }
 .word-chip {
   border: 3px solid var(--ink); border-radius: 16px; background: #fff;
   min-width: 72px; padding: 8px 10px; font: inherit; font-weight: 900; cursor: pointer;

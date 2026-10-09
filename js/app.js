@@ -670,9 +670,25 @@
   }
 
   function chipClass(score) {
-    if (score >= 0.8) return "good";
-    if (score >= 0.5) return "ok";
+    if (score >= 0.6) return "good";
     return "bad";
+  }
+
+  function wordHintEl(text) {
+    const tip = document.createElement("p");
+    tip.className = "word-hint";
+    tip.textContent = text;
+    return tip;
+  }
+
+  function missCopy(graded, other) {
+    if (graded && (graded.reason === "too_quiet" || graded.reason === "too_short")) {
+      return "I didn’t hear a clear line.";
+    }
+    if (graded && graded.doorFail) {
+      return graded.reason || "Say the sentence again, please. Say each word clearly.";
+    }
+    return other;
   }
 
   function clearWords() {
@@ -693,11 +709,13 @@
     box.innerHTML = "";
     const hint = document.createElement("p");
     hint.className = "word-hint";
-    hint.textContent = "Green is good. Tap a yellow or red word, then say just that word.";
+    hint.textContent = "Green is good. Tap a red word, then say just that word.";
     box.appendChild(hint);
     const row = document.createElement("div");
     row.className = "word-row";
     words.forEach((w) => {
+      const wrap = document.createElement("div");
+      wrap.className = "word-chip-wrap";
       const btn = document.createElement("button");
       btn.type = "button";
       const score = w.score || 0;
@@ -706,7 +724,9 @@
         `<span class="w">${escapeHtml(w.word)}</span>` +
         `<span class="p">${Math.round(score * 100)}%</span>`;
       btn.onclick = () => practiceWord(w.word, btn);
-      row.appendChild(btn);
+      wrap.appendChild(btn);
+      if (chipClass(score) === "bad" && w.hint) wrap.appendChild(wordHintEl(w.hint));
+      row.appendChild(wrap);
     });
     box.appendChild(row);
   }
@@ -744,6 +764,13 @@
       btn.className = "word-chip " + chipClass(score);
       const pct = btn.querySelector(".p");
       if (pct) pct.textContent = Math.round(score * 100) + "%";
+      const wrap = btn.parentElement;
+      if (wrap) {
+        const oldTip = wrap.querySelector(".word-hint");
+        if (oldTip) oldTip.remove();
+        const heard = graded.result && graded.result.words && graded.result.words[0];
+        if (chipClass(score) === "bad" && heard && heard.hint) wrap.appendChild(wordHintEl(heard.hint));
+      }
       if (chipClass(score) === "good") {
         $("micStatus").textContent = word + " is good.";
         const chips = [...$("wordBox").querySelectorAll(".word-chip")];
@@ -813,10 +840,7 @@
       const graded = await gradeAgainst(row.question, blob);
       postLineScore(pair, graded);
       if (!graded.pass) {
-        const why = graded.reason === "too_quiet" || graded.reason === "too_short"
-          ? "I didn’t hear a clear line."
-          : "Not the line. Say the missed student line, then the reply will play.";
-        alert(why);
+        alert(missCopy(graded, "Not the line. Say the missed student line, then the reply will play."));
         return;
       }
       const reply = stripTag(pair.reply || "");
@@ -974,10 +998,10 @@
       if (!graded.pass) {
         state.tries += 1;
         updateTryDots();
-        const why = graded.reason === "too_quiet" || graded.reason === "too_short"
-          ? "I didn’t hear a clear line."
-          : "Not the line.";
-        $("micStatus").textContent = `${why} Try again (${graded.score}% · need 70%)`;
+        const why = missCopy(graded, "Not the line.");
+        $("micStatus").textContent = graded.doorFail
+          ? why
+          : `${why} Try again (${graded.score}% · need 70%)`;
         if (state.tries >= MAX_TRIES) {
           recordSkip(pair);
           $("micStatus").textContent = "3 tries. Going on. Ask your teacher later.";

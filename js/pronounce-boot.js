@@ -1,14 +1,13 @@
-// Day 6 Talk — same browser grader as MRJ Pronounce (wav2vec2 + forced GOP).
+// Day 6 Talk — Whistle door, Citrinet word colors, ZIPA hint on a red word.
 // Noise / wrong words must fail. Never fall back to Web Speech string match.
-import { loadG2P, expectedPhoneSequence, forcedAlignGop, aggregate } from './engine.js';
-import { decodeAudioToMono, audioStats, normalizeForModel, trimSilence, capSpeechWindow } from './audio.js';
+import { decodeAudioToMono, audioStats, trimSilence, capSpeechWindow } from './audio.js';
+import { bootTrialInPage, gradeTrialSamples, DOOR_FAIL_TEXT } from './trial.js';
 
-const MODEL_ID = 'wav2vec2-lv-60-espeak-cv-ft-onnx-int8';
-const PASS_SCORE = 0.70;
-const DB_NAME = 'mrj-day6-checker';
-const DB_STORE = 'parts';
+const PASS_PCT = 70;
+// Word color matches the try page. Green at 60. Red under 60. The line still needs 70.
+const RED_WORD_PCT = 60;
 
-let session = null;
+let trialReady = null;
 let readyP = null;
 let readyFlag = false;
 let sharedCtx = null;
@@ -33,32 +32,6 @@ function hideLoad() {
   const track = document.getElementById('loadTrack');
   if (track) track.hidden = true;
   setChecker('Offline pronunciation ready');
-}
-
-async function readTracked(res, expected, onBytes) {
-  if (!res.body || typeof res.body.getReader !== 'function') {
-    const buf = new Uint8Array(await res.arrayBuffer());
-    onBytes(buf.byteLength);
-    return buf;
-  }
-  const reader = res.body.getReader();
-  const chunks = [];
-  let got = 0;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    chunks.push(value);
-    got += value.byteLength;
-    onBytes(got);
-  }
-  if (expected && got !== expected) throw new Error('pronunciation checker file is the wrong size');
-  const out = new Uint8Array(got);
-  let offset = 0;
-  for (const chunk of chunks) {
-    out.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-  return out;
 }
 
 function isReady() {
@@ -94,138 +67,48 @@ function armMic() {
 }
 
 function decide(result) {
-  if (!result || !result.overall) return false;
+  if (!result || result.doorFail) return false;
   const audio = result.audio || {};
   if (audio.too_quiet) return false;
-  if ((audio.duration_ms || 0) < 250) return false;
-  return (result.overall.score || 0) >= PASS_SCORE;
+  if (typeof audio.duration_ms === 'number' && audio.duration_ms < 250) return false;
+  if (result.overall) return (result.overall.score || 0) * 100 >= PASS_PCT;
+  const pct = typeof result.scorePct === 'number' ? result.scorePct : (result.score || 0);
+  return pct >= PASS_PCT;
 }
 
-function openCheckerDb() {
-  return new Promise((resolve, reject) => {
-    if (!window.indexedDB) {
-      resolve(null);
-      return;
-    }
-    const req = indexedDB.open(DB_NAME, 1);
-    req.onupgradeneeded = () => {
-      if (!req.result.objectStoreNames.contains(DB_STORE)) {
-        req.result.createObjectStore(DB_STORE);
-      }
-    };
-    req.onsuccess = () => resolve(req.result);
-    req.onerror = () => resolve(null);
-  });
+function ortWasmPaths() {
+  const ortBase = new URL('js/ort/', window.location.href).href;
+  return {
+    mjs: new URL('ort-wasm-simd-threaded.jsep.mjs', ortBase).href,
+    wasm: new URL('ort-wasm-simd-threaded.jsep.wasm', ortBase).href,
+  };
 }
 
-function idbGet(db, key) {
-  return new Promise((resolve) => {
-    try {
-      const req = db.transaction(DB_STORE, 'readonly').objectStore(DB_STORE).get(key);
-      req.onsuccess = () => resolve(req.result || null);
-      req.onerror = () => resolve(null);
-    } catch (_) {
-      resolve(null);
-    }
-  });
-}
-
-function idbPut(db, key, value) {
-  return new Promise((resolve) => {
-    try {
-      const tx = db.transaction(DB_STORE, 'readwrite');
-      tx.objectStore(DB_STORE).put(value, key);
-      tx.oncomplete = () => resolve(true);
-      tx.onerror = () => resolve(false);
-      tx.onabort = () => resolve(false);
-    } catch (_) {
-      resolve(false);
-    }
-  });
-}
-
-async function loadModelBytes(onProgress) {
-  const manRes = await fetch('models/wav2vec2/manifest.json');
-  if (!manRes.ok) throw new Error('pronunciation checker list missing');
-  const man = await manRes.json();
-  const db = await openCheckerDb();
-  const chunks = [];
-  let got = 0;
-  let downloaded = 0;
-  for (const part of man.parts) {
-    let buf = null;
-    if (db) buf = await idbGet(db, part.name);
-    if (buf && buf.byteLength === part.bytes) {
-      chunks.push(buf);
-      got += buf.byteLength;
-      if (onProgress) onProgress(got, man.bytes, false);
-      continue;
-    }
-    downloaded += 1;
-    const res = await fetch('models/wav2vec2/' + part.name);
-    if (!res.ok) throw new Error('pronunciation checker file missing');
-    buf = await readTracked(res, part.bytes, (partGot) => {
-      if (onProgress) onProgress(got + partGot, man.bytes, true);
-    });
-    chunks.push(buf);
-    got += buf.byteLength;
-    if (db) await idbPut(db, part.name, buf);
-    if (onProgress) onProgress(got, man.bytes, true);
-  }
-  if (got !== man.bytes) throw new Error('pronunciation checker did not finish');
-  const out = new Uint8Array(got);
-  let offset = 0;
-  for (const chunk of chunks) {
-    out.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-  return { bytes: out, fromPhone: downloaded === 0 };
-}
-
-function ensureReady(onProgress) {
-  if (session) return Promise.resolve(session);
+function ensureReady() {
+  if (trialReady) return Promise.resolve(trialReady);
   if (readyP) return readyP;
   readyP = (async () => {
     const ort = window.ort;
     if (!ort) throw new Error('pronunciation engine missing');
+    const wasmPaths = ortWasmPaths();
     if (ort.env && ort.env.wasm) {
-      const ortBase = new URL('js/ort/', window.location.href).href;
-      ort.env.wasm.wasmPaths = {
-        mjs: new URL('ort-wasm-simd-threaded.jsep.mjs', ortBase).href,
-        wasm: new URL('ort-wasm-simd-threaded.jsep.wasm', ortBase).href,
-      };
+      ort.env.wasm.wasmPaths = wasmPaths;
       ort.env.wasm.numThreads = 1;
       ort.env.wasm.proxy = false;
     }
-    setLoad(4, 'Checking this phone for the saved pronunciation…', true);
-    await loadG2P('');
-    const loaded = await loadModelBytes((got, total, fetching) => {
-      const pct = Math.min(88, Math.max(6, Math.round((got / total) * 88)));
-      const text = fetching
-        ? 'Saving offline pronunciation on this phone… ' + pct + '%. Next open will not download it.'
-        : 'Found it on this phone… ' + pct + '%';
-      setLoad(pct, text, false);
+    setLoad(8, 'Saving offline pronunciation on this phone…', true);
+    trialReady = await bootTrialInPage({
+      ort,
+      createNeedle: window.createNeedle,
+      wasmPaths,
     });
-    const bytes = loaded.bytes;
-    setLoad(
-      90,
-      loaded.fromPhone
-        ? 'Already on this phone. Starting offline pronunciation.'
-        : 'Starting offline pronunciation. Next open will use the saved copy.',
-      true
-    );
-    session = await ort.InferenceSession.create(bytes, { executionProviders: ['wasm'] });
-    try {
-      const warm = new Float32Array(1600);
-      await session.run({ input_values: new ort.Tensor('float32', warm, [1, 1600]) });
-    } catch (_) { /* warm-up is best-effort */ }
     readyFlag = true;
     setLoad(100, 'Offline pronunciation ready', false);
     setTimeout(hideLoad, 900);
-    return session;
+    return trialReady;
   })().catch((err) => {
     readyP = null;
-    session = null;
+    trialReady = null;
     readyFlag = false;
     setLoad(0, 'Pronunciation checker failed. Refresh and try again.', false);
     throw err;
@@ -233,52 +116,67 @@ function ensureReady(onProgress) {
   return readyP;
 }
 
+function pageWords(words) {
+  return (words || []).map((w) => {
+    const score = Math.max(0, Math.min(1, (Number(w.score) || 0) / 100));
+    const red = score < 0.6;
+    return {
+      word: w.word,
+      score,
+      hint: red ? (w.hint || '') : '',
+    };
+  });
+}
+
+function audioMiss(reason) {
+  return {
+    pass: false,
+    score: 0,
+    band: 'invalid',
+    reason,
+    doorFail: false,
+    result: { words: [] },
+  };
+}
+
 async function gradeBlob(blob, text) {
-  const t0 = performance.now();
-  const live = await ensureReady();
+  await ensureReady();
   const samples = await decodeAudioToMono(blob, 16000);
   const stats = audioStats(samples, 16000);
-  if (stats.durationMs < 80) {
-    return { pass: false, score: 0, band: 'invalid', reason: 'too_short' };
-  }
+  if (stats.durationMs < 80) return audioMiss('too_short');
   const trimmed = capSpeechWindow(trimSilence(samples, 16000, 0.006, 80), 16000, 4500);
   const trimmedStats = audioStats(trimmed, 16000);
-  if (trimmedStats.tooQuiet || trimmedStats.durationMs < 250) {
-    return { pass: false, score: 0, band: 'invalid', reason: 'too_quiet' };
+  if (trimmedStats.tooQuiet || trimmedStats.durationMs < 250) return audioMiss('too_quiet');
+  const graded = await gradeTrialSamples(trimmed, text, RED_WORD_PCT);
+  const trial = graded.result;
+  if (trial.doorFail) {
+    return {
+      pass: false,
+      score: 0,
+      band: 'fail',
+      reason: DOOR_FAIL_TEXT,
+      doorFail: true,
+      result: { words: [] },
+    };
   }
-  const input = normalizeForModel(trimmed);
-  const out = await live.run({ input_values: new ort.Tensor('float32', input, [1, input.length]) });
-  const logitsArr = out.logits.data;
-  const dims = out.logits.dims || [];
-  const T = Number(dims[1]);
-  const V = Number(dims[2]);
-  if (!T || !V || logitsArr.length !== T * V) throw new Error('checker shape mismatch');
-  const logits = new Array(T);
-  for (let t = 0; t < T; t++) logits[t] = logitsArr.subarray(t * V, (t + 1) * V);
-  const { phones, words } = expectedPhoneSequence(text);
-  const phoneScores = forcedAlignGop(logits, phones, 0);
-  const result = aggregate(
-    text,
-    words,
-    phoneScores,
-    trimmedStats.durationMs,
-    16000,
-    MODEL_ID,
-    performance.now() - t0,
-    {
-      clipping: stats.clipping,
-      too_quiet: false,
-      snr_est: stats.snrEst,
-      warnings: [],
-    }
-  );
-  const pct = Math.round((result.overall.score || 0) * 100);
+  const score = typeof trial.scorePct === 'number'
+    ? trial.scorePct
+    : Math.round((trial.score || 0) * 100);
+  const words = pageWords(trial.words);
+  const packed = {
+    doorFail: false,
+    score,
+    scorePct: score,
+    audio: { too_quiet: false, duration_ms: trimmedStats.durationMs },
+  };
+  const pass = decide(packed);
   return {
-    pass: decide(result),
-    score: pct,
-    band: result.overall.band,
-    reason: decide(result) ? 'pass' : 'needs_work',
-    result,
+    pass,
+    score,
+    band: pass ? 'pass' : 'fail',
+    reason: pass ? '' : DOOR_FAIL_TEXT,
+    doorFail: false,
+    result: { words },
   };
 }
 
