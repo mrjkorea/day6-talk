@@ -1,0 +1,7 @@
+{
+  "name": "day6-talk",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.js scripts/test_auth_progress.mjs scripts/test_speak_order.mjs && node scripts/check_reply_clear.js"
+  }
+}
