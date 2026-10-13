@@ -5,13 +5,7 @@ import {
   bootTrialInPage,
   gradeTrialSamples,
   DOOR_FAIL_TEXT,
-  trialRuntime,
-  initTrialEngine,
-  bootHintPaths,
-} from 'https://mrjkorea.github.io/pronounce/src/trial.js?v=20261013-da52';
-
-const ESPEAK_MODULE =
-  'https://mrjkorea.github.io/pronounce/vendor/espeak/dist/phonemizer.js';
+} from 'https://mrjkorea.github.io/pronounce/src/trial.js?v=20261014-da52';
 
 const PASS_PCT = 70;
 // Word color matches the try page. Green at 60. Red under 60. The line still needs 70.
@@ -20,85 +14,8 @@ const RED_WORD_PCT = 60;
 let trialReady = null;
 let readyP = null;
 let readyFlag = false;
-let hintWarmP = null;
 let sharedCtx = null;
 let sharedResume = Promise.resolve();
-
-function parseZipaTokens(text) {
-  const map = new Map();
-  const lines = String(text || '').split('\n');
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    if (!line.trim()) continue;
-    const cut = line.lastIndexOf(' ');
-    map.set(Number(line.slice(cut + 1)), line.slice(0, cut));
-  }
-  return map;
-}
-
-async function warmHintRuntime() {
-  const rt = trialRuntime();
-  if (!rt.ready) return rt;
-  if (rt.zipa && rt.phonemize) return rt;
-  const paths = bootHintPaths();
-  const responses = await Promise.all(paths.map(async (path) => {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error('missing ' + path);
-    return res;
-  }));
-  const ort = rt.citrinet.ort || window.ort;
-  let zipa = null;
-  let zipaTokens = null;
-  let zipaError = '';
-  try {
-    const zipaBuf = await responses[0].arrayBuffer();
-    zipaTokens = parseZipaTokens(await responses[1].text());
-    zipa = await ort.InferenceSession.create(zipaBuf, { executionProviders: ['wasm'] });
-    zipa.ort = ort;
-  } catch (err) {
-    zipa = null;
-    zipaError = err && err.message ? err.message : String(err);
-  }
-  let phonemize = null;
-  try {
-    const espeak = await import(ESPEAK_MODULE);
-    phonemize = espeak.phonemize;
-  } catch (err) {
-    phonemize = null;
-    if (!zipaError) zipaError = err && err.message ? err.message : String(err);
-  }
-  await initTrialEngine({
-    needle: rt.needle,
-    citrinet: rt.citrinet,
-    pieces: rt.pieces,
-    zipa,
-    zipaTokens,
-    phonemize,
-    zipaError,
-  });
-  return trialRuntime();
-}
-
-function ensureHintWarm() {
-  if (!hintWarmP) {
-    hintWarmP = warmHintRuntime().catch((err) => {
-      hintWarmP = null;
-      throw err;
-    });
-  }
-  return hintWarmP;
-}
-
-function scheduleHintPrefetch() {
-  const run = () => {
-    ensureHintWarm().catch(() => {});
-  };
-  if (typeof requestIdleCallback === 'function') {
-    requestIdleCallback(run, { timeout: 2500 });
-  } else {
-    setTimeout(run, 0);
-  }
-}
 
 function setChecker(text) {
   const el = document.getElementById('checkerStatus');
@@ -191,7 +108,6 @@ function ensureReady() {
       loadHints: false,
     });
     readyFlag = true;
-    scheduleHintPrefetch();
     setLoad(100, 'Offline pronunciation ready', false);
     setTimeout(hideLoad, 900);
     return trialReady;
@@ -230,7 +146,6 @@ function audioMiss(reason) {
 
 async function gradeBlob(blob, text) {
   await ensureReady();
-  await ensureHintWarm();
   const samples = await decodeAudioToMono(blob, 16000);
   const stats = audioStats(samples, 16000);
   if (stats.durationMs < 80) return audioMiss('too_short');
