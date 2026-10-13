@@ -1,7 +1,11 @@
-// Day 6 Talk — Whistle door, Citrinet word colors, ZIPA hint on a red word.
+// Day 6 Talk — shared MRJ pronounce engine (hosted on pronounce Pages).
 // Noise / wrong words must fail. Never fall back to Web Speech string match.
 import { decodeAudioToMono, audioStats, trimSilence, capSpeechWindow } from './audio.js';
-import { bootTrialInPage, gradeTrialSamples, DOOR_FAIL_TEXT } from './trial.js';
+import {
+  bootTrialInPage,
+  gradeTrialSamples,
+  DOOR_FAIL_TEXT,
+} from 'https://mrjkorea.github.io/pronounce/src/trial.js?v=20261013-da52';
 
 const PASS_PCT = 70;
 // Word color matches the try page. Green at 60. Red under 60. The line still needs 70.
@@ -101,6 +105,7 @@ function ensureReady() {
       ort,
       createNeedle: window.createNeedle,
       wasmPaths,
+      loadHints: false,
     });
     readyFlag = true;
     setLoad(100, 'Offline pronunciation ready', false);
@@ -147,7 +152,7 @@ async function gradeBlob(blob, text) {
   const trimmed = capSpeechWindow(trimSilence(samples, 16000, 0.006, 80), 16000, 4500);
   const trimmedStats = audioStats(trimmed, 16000);
   if (trimmedStats.tooQuiet || trimmedStats.durationMs < 250) return audioMiss('too_quiet');
-  const graded = await gradeTrialSamples(trimmed, text, RED_WORD_PCT);
+  const graded = await gradeTrialSamples(trimmed, text, RED_WORD_PCT, null, { hints: true });
   const trial = graded.result;
   if (trial.doorFail) {
     return {
