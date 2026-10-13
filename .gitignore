@@ -1,3 +1,5 @@
 apk-extract/
 .DS_Store
 *.apk
+node_modules/
+test/bench-trial-report.json

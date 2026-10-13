@@ -1,11 +1,10 @@
-// Day 6 Talk — shared MRJ pronounce engine (hosted on pronounce Pages).
-// Noise / wrong words must fail. Never fall back to Web Speech string match.
+// Day 6 Talk — Citrinet-only pronunciation (int8 ONNX, onnxruntime-web WASM).
 import { decodeAudioToMono, audioStats, trimSilence, capSpeechWindow } from './audio.js';
 import {
   bootTrialInPage,
   gradeTrialSamples,
   DOOR_FAIL_TEXT,
-} from 'https://mrjkorea.github.io/pronounce/src/trial.js?v=20261014-da52';
+} from './trial.js';
 
 const PASS_PCT = 70;
 // Word color matches the try page. Green at 60. Red under 60. The line still needs 70.
@@ -40,6 +39,34 @@ function hideLoad() {
 
 function isReady() {
   return readyFlag;
+}
+
+function benchModeEnabled() {
+  try {
+    if (new URLSearchParams(location.search).get('bench') === '1') return true;
+    const auth = window.MRJ_AUTH;
+    const student = typeof auth?.student === 'function' ? auth.student() : auth;
+    const id = student && (student.id || student.studentId || student.email || '');
+    return String(id).toLowerCase().startsWith('zz_test');
+  } catch (_) {
+    return false;
+  }
+}
+
+function exposeBenchHook() {
+  if (!readyFlag || !benchModeEnabled()) return;
+  window.__mrjPronounceBench = async (blob, english, gradeOpts) => {
+    const opts = Object.assign({ hints: false }, gradeOpts || {});
+    const passAt = typeof opts.passAt === 'number' ? opts.passAt : RED_WORD_PCT;
+    const samples = await decodeAudioToMono(blob, 16000);
+    const graded = await gradeTrialSamples(samples, english, passAt, null, opts);
+    return { result: graded.result, door: graded.door, perf: graded.perf, trialMode: 'citrinet-only' };
+  };
+  window.__mrjTrialBoot = () => ({
+    trialMode: 'citrinet-only',
+    grader: 'citrinet-trial',
+    ready: readyFlag,
+  });
 }
 
 // Must run inside the Speak tap, before any await. Android Chrome only
@@ -103,13 +130,14 @@ function ensureReady() {
     setLoad(8, 'Saving offline pronunciation on this phone…', true);
     trialReady = await bootTrialInPage({
       ort,
-      createNeedle: window.createNeedle,
+      mode: 'citrinet-only',
       wasmPaths,
       loadHints: false,
     });
     readyFlag = true;
     setLoad(100, 'Offline pronunciation ready', false);
     setTimeout(hideLoad, 900);
+    exposeBenchHook();
     return trialReady;
   })().catch((err) => {
     readyP = null;
@@ -152,7 +180,7 @@ async function gradeBlob(blob, text) {
   const trimmed = capSpeechWindow(trimSilence(samples, 16000, 0.006, 80), 16000, 4500);
   const trimmedStats = audioStats(trimmed, 16000);
   if (trimmedStats.tooQuiet || trimmedStats.durationMs < 250) return audioMiss('too_quiet');
-  const graded = await gradeTrialSamples(trimmed, text, RED_WORD_PCT, null, { hints: true });
+  const graded = await gradeTrialSamples(trimmed, text, RED_WORD_PCT, null, { hints: false });
   const trial = graded.result;
   if (trial.doorFail) {
     return {

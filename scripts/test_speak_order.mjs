@@ -58,3 +58,11 @@ test("recording uses the shared context, not a new one after getUserMedia", () =
   assert.match(boot, /function armMic\(\)[\s\S]*getUserMedia/);
   assert.match(boot, /proxy = false/);
 });
+
+test("pronunciation uses local Citrinet-only trial", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  assert.match(boot, /from '\.\/trial\.js'/);
+  assert.match(boot, /mode: 'citrinet-only'/);
+  assert.match(boot, /hints: false/);
+  assert.equal(html.includes("needle.js"), false);
+});
