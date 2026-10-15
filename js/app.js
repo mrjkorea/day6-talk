@@ -1,6 +1,6 @@
 /** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261013-receiver */
 (function () {
-  const MAX_TRIES = 3;
+  const MAX_TRIES = 5;
   const $ = (id) => document.getElementById(id);
 
   const state = {
@@ -1004,7 +1004,7 @@
           : `${why} Try again (${graded.score}% · need 70%)`;
         if (state.tries >= MAX_TRIES) {
           recordSkip(pair);
-          $("micStatus").textContent = "3 tries. Going on. Ask your teacher later.";
+          $("micStatus").textContent = "5 tries. Going on. Ask your teacher later.";
           setTimeout(advance, 1100);
         }
         return;
