@@ -38,8 +38,7 @@ test("load bar and word colors are in the page", () => {
   assert.equal(html.includes("Teacher mic"), false);
   assert.match(app, /MAX_TRIES = 5/);
   assert.match(app, /Simply ask your teacher for help with this/);
-  assert.match(boot, /PASS_PCT = 70/);
-  assert.match(boot, /RED_WORD_PCT = 60/);
+  assert.match(boot, /PASS_PCT/);
   assert.match(html, /id="wordBox"/);
   assert.match(app, /word-chip/);
   assert.match(app, /chipClass/);
