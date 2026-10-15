@@ -94,3 +94,4 @@ button.secondary { border: 2px solid var(--border); box-shadow: 0 5px 0 var(--bo
 .pv-you { display: inline-block; margin-bottom: .5rem; font-weight: 900; color: var(--accent-dark); }
 @keyframes pv-breathe { 50% { transform: translateY(-4px) scale(1.02); } }
 @media (max-width: 600px) { .pv-call { grid-template-columns: 1fr; } .pv-call-video { max-width: 220px; margin: 0 auto; } .pv-bubble::before { display: none; } .pv-avatar-pic svg { width: 84px; height: 84px; } }
+/* no brand marks on preview */ .brand-mark { display: none !important; }
