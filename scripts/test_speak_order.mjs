@@ -56,13 +56,17 @@ test("recording uses the shared context, not a new one after getUserMedia", () =
   assert.equal(fn.includes("getUserMedia"), false);
   assert.match(fn, /sharedCtx/);
   assert.match(boot, /function armMic\(\)[\s\S]*getUserMedia/);
-  assert.match(boot, /proxy = false/);
 });
 
-test("pronunciation uses local Citrinet-only trial", () => {
+test("pronunciation uses the shared HuBERT checker from the pronounce site", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
-  assert.match(boot, /from '\.\/trial\.js'/);
-  assert.match(boot, /mode: 'citrinet-only'/);
+  const app = readFileSync(new URL("../js/app.js", import.meta.url), "utf8");
+  assert.match(boot, /https:\/\/mrjkorea\.github\.io\/pronounce\/src\/shared\.js/);
+  assert.match(boot, /PASS_PCT/);
+  assert.match(app, /score >= 0\.75\) return "good"/);
+  assert.match(app, /score >= 0\.5\) return "ok"/);
+  assert.match(app, /MAX_TRIES = 5/);
+  assert.equal(/citrinet/i.test(boot + html), false);
   assert.match(boot, /hints: false/);
   assert.equal(html.includes("needle.js"), false);
 });

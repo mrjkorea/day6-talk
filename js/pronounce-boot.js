@@ -1,14 +1,17 @@
-// Day 6 Talk — Citrinet-only pronunciation (int8 ONNX, onnxruntime-web WASM).
-import { decodeAudioToMono, audioStats, trimSilence, capSpeechWindow } from './audio.js';
+// Day 6 Talk — shared MRJ HuBERT phoneme checker loaded from the pronounce site
+// (https://mrjkorea.github.io/pronounce/src/shared.js, model models/hubert/manifest.json),
+// so the model is cached once per browser for every MRJ app.
+// Colours: green 75+, yellow 50-74, red under 50. PASS = line average >= 60. 5-try rule in app.js.
 import {
-  bootTrialInPage,
+  bootShared,
   gradeTrialSamples,
   DOOR_FAIL_TEXT,
-} from './trial.js';
+  PASS_PCT,
+  audio as sharedAudio,
+} from 'https://mrjkorea.github.io/pronounce/src/shared.js';
 
-const PASS_PCT = 70;
-// Word color matches the try page. Green at 60. Red under 60. The line still needs 70.
-const RED_WORD_PCT = 60;
+const { decodeAudioToMono, audioStats, trimSilence, capSpeechWindow } = sharedAudio;
+const APP_ID = 'day6';
 
 let trialReady = null;
 let readyP = null;
@@ -57,14 +60,15 @@ function exposeBenchHook() {
   if (!readyFlag || !benchModeEnabled()) return;
   window.__mrjPronounceBench = async (blob, english, gradeOpts) => {
     const opts = Object.assign({ hints: false }, gradeOpts || {});
-    const passAt = typeof opts.passAt === 'number' ? opts.passAt : RED_WORD_PCT;
+    const passAt = typeof opts.passAt === 'number' ? opts.passAt : PASS_PCT;
+    opts.appId = APP_ID;
     const samples = await decodeAudioToMono(blob, 16000);
     const graded = await gradeTrialSamples(samples, english, passAt, null, opts);
-    return { result: graded.result, door: graded.door, perf: graded.perf, trialMode: 'citrinet-only' };
+    return { result: graded.result, door: graded.door, perf: graded.perf, trialMode: 'hubert-phoneme' };
   };
   window.__mrjTrialBoot = () => ({
-    trialMode: 'citrinet-only',
-    grader: 'citrinet-trial',
+    trialMode: 'hubert-phoneme',
+    grader: 'hubert-phoneme-shared',
     ready: readyFlag,
   });
 }
@@ -107,32 +111,13 @@ function decide(result) {
   return pct >= PASS_PCT;
 }
 
-function ortWasmPaths() {
-  const ortBase = new URL('js/ort/', window.location.href).href;
-  return {
-    mjs: new URL('ort-wasm-simd-threaded.jsep.mjs', ortBase).href,
-    wasm: new URL('ort-wasm-simd-threaded.jsep.wasm', ortBase).href,
-  };
-}
-
 function ensureReady() {
   if (trialReady) return Promise.resolve(trialReady);
   if (readyP) return readyP;
   readyP = (async () => {
-    const ort = window.ort;
-    if (!ort) throw new Error('pronunciation engine missing');
-    const wasmPaths = ortWasmPaths();
-    if (ort.env && ort.env.wasm) {
-      ort.env.wasm.wasmPaths = wasmPaths;
-      ort.env.wasm.numThreads = 1;
-      ort.env.wasm.proxy = false;
-    }
     setLoad(8, 'Saving offline pronunciation on this phone…', true);
-    trialReady = await bootTrialInPage({
-      ort,
-      mode: 'citrinet-only',
-      wasmPaths,
-      loadHints: false,
+    trialReady = await bootShared({
+      onProgress: (f) => setLoad(Math.round((Number(f) || 0) * 100), 'Saving offline pronunciation on this phone…', false),
     });
     readyFlag = true;
     setLoad(100, 'Offline pronunciation ready', false);
@@ -152,10 +137,11 @@ function ensureReady() {
 function pageWords(words) {
   return (words || []).map((w) => {
     const score = Math.max(0, Math.min(1, (Number(w.score) || 0) / 100));
-    const red = score < 0.6;
+    const red = w.band ? w.band === 'red' : score < 0.5;
     return {
       word: w.word,
       score,
+      band: w.band || (score >= 0.75 ? 'green' : (score >= 0.5 ? 'yellow' : 'red')),
       hint: red ? (w.hint || '') : '',
     };
   });
@@ -180,7 +166,7 @@ async function gradeBlob(blob, text) {
   const trimmed = capSpeechWindow(trimSilence(samples, 16000, 0.006, 80), 16000, 4500);
   const trimmedStats = audioStats(trimmed, 16000);
   if (trimmedStats.tooQuiet || trimmedStats.durationMs < 250) return audioMiss('too_quiet');
-  const graded = await gradeTrialSamples(trimmed, text, RED_WORD_PCT, null, { hints: false });
+  const graded = await gradeTrialSamples(trimmed, text, PASS_PCT, null, { hints: false, appId: APP_ID });
   const trial = graded.result;
   if (trial.doorFail) {
     return {

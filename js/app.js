@@ -669,8 +669,10 @@
     if (box) box.hidden = true;
   }
 
+  // Shared MRJ colours: green 75+, yellow 50-74, red under 50.
   function chipClass(score) {
-    if (score >= 0.6) return "good";
+    if (score >= 0.75) return "good";
+    if (score >= 0.5) return "ok";
     return "bad";
   }
 
@@ -709,7 +711,7 @@
     box.innerHTML = "";
     const hint = document.createElement("p");
     hint.className = "word-hint";
-    hint.textContent = "Green is good. Tap a red word, then say just that word.";
+    hint.textContent = "Green is good. Yellow is close. Tap a red word, then say just that word.";
     box.appendChild(hint);
     const row = document.createElement("div");
     row.className = "word-row";
