@@ -12,7 +12,8 @@
       o.hair +
       '<circle cx="' + (60 - o.eye) + '" cy="60" r="' + o.es + '" fill="#2b1d14"/><circle cx="' + (60 + o.eye) + '" cy="60" r="' + o.es + '" fill="#2b1d14"/>' +
       '<circle cx="' + (60 - o.eye - 2) + '" cy="58" r="1.6" fill="#fff"/><circle cx="' + (60 + o.eye - 2) + '" cy="58" r="1.6" fill="#fff"/>' +
-      '<path d="M48 ' + o.my + ' Q60 ' + (o.my + 10) + ' 72 ' + o.my + '" stroke="#b5462f" stroke-width="3.5" fill="none" stroke-linecap="round"/>' +
+      '<path d="M48 ' + o.my + ' Q60 ' + (o.my + 10) + ' 72 ' + o.my + '" stroke="#b5462f" stroke-width="3.5" fill="none" stroke-linecap="round" class="pv-mouth-shut"/>' +
+      '<ellipse cx="60" cy="' + (o.my + 3) + '" rx="8" ry="6" fill="#7a2418" class="pv-mouth-open"/>' +
       '<circle cx="42" cy="' + (o.my - 2) + '" r="4" fill="#ff9e9e" opacity=".55"/><circle cx="78" cy="' + (o.my - 2) + '" r="4" fill="#ff9e9e" opacity=".55"/>' +
       (o.extra || "") + '</svg>';
   }
@@ -40,7 +41,7 @@
     if (!home || home.querySelector(".pv-pick")) return;
     var wrap = document.createElement("section");
     wrap.className = "pv-pick";
-    wrap.innerHTML = '<h2 class="pv-step">1 · Who is your interviewer?</h2><div class="pv-avatars"></div><h2 class="pv-step">2 · Pick your book</h2>';
+    wrap.innerHTML = '<h2 class="pv-step">1 · Who do you want to interview? <small>누구를 인터뷰할까요?</small></h2><div class="pv-avatars"></div><h2 class="pv-step">2 · Pick your book</h2>';
     var grid = wrap.querySelector(".pv-avatars");
     var cur = current();
     AVATARS.forEach(function (a) {
@@ -64,9 +65,9 @@
     call.innerHTML = '<div class="pv-call-video"><span class="pv-live">● LIVE</span><span class="pv-call-pic"></span><span class="pv-call-name"></span></div>' +
       '<div class="pv-bubble" aria-live="polite"><span class="pv-bubble-text"></span></div>';
     var cue = speak.querySelector(".cue-card");
-    speak.insertBefore(call, cue);
+    speak.appendChild(call); /* reply area sits at the BOTTOM, under the student's line + mic */
     var you = document.createElement("span");
-    you.className = "pv-you"; you.textContent = "🙋 Your turn — you say:";
+    you.className = "pv-you"; you.textContent = "🙋 Your question — 질문하세요:";
     cue.insertBefore(you, cue.firstChild);
     paintInterviewer();
   }
@@ -84,10 +85,31 @@
     var showing = banner && !banner.hidden && reply.trim();
     var bubble = call.querySelector(".pv-bubble");
     if (bubble.classList.contains("is-reply") !== !!showing) bubble.classList.toggle("is-reply", !!showing);
-    var text = showing ? reply : "Hi! I'm listening. Say your line to me 🎤";
+    if (call.classList.contains("is-on") !== !!showing) call.classList.toggle("is-on", !!showing);
+    var text = showing ? reply : "";
     var t = call.querySelector(".pv-bubble-text");
     if (t.textContent !== text) { t.textContent = text; bubble.classList.remove("pv-in"); void bubble.offsetWidth; bubble.classList.add("pv-in"); }
   }
+  /* Talking mouth: observe (not change) media playback. Only animates while the reply is showing. */
+  var talkTimer = null;
+  function talk(on) {
+    var call = document.querySelector(".pv-call");
+    clearInterval(talkTimer); talkTimer = null;
+    if (call) call.classList.remove("pv-talk");
+    if (!on || !call || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    talkTimer = setInterval(function () { call.classList.toggle("pv-talk"); }, 150);
+  }
+  var origPlay = HTMLMediaElement.prototype.play;
+  HTMLMediaElement.prototype.play = function () {
+    var a = this, banner = document.getElementById("replyBanner");
+    if (banner && !banner.hidden && !a.__pvTalk) {
+      a.__pvTalk = 1;
+      ["ended", "pause", "error"].forEach(function (ev) { a.addEventListener(ev, function () { talk(false); }); });
+      a.addEventListener("playing", function () { talk(true); });
+    }
+    return origPlay.apply(this, arguments);
+  };
+  window.pvTalk = talk; /* for screenshots */
   var n = 0;
   (function wait() {
     if (document.querySelector("#replyVoices button[data-voice]")) {

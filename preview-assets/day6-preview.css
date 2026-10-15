@@ -95,3 +95,15 @@ button.secondary { border: 2px solid var(--border); box-shadow: 0 5px 0 var(--bo
 @keyframes pv-breathe { 50% { transform: translateY(-4px) scale(1.02); } }
 @media (max-width: 600px) { .pv-call { grid-template-columns: 1fr; } .pv-call-video { max-width: 220px; margin: 0 auto; } .pv-bubble::before { display: none; } .pv-avatar-pic svg { width: 84px; height: 84px; } }
 /* no brand marks on preview */ .brand-mark { display: none !important; }
+
+/* 2026-10-16 v2: student interviews Jay. Reply area at bottom, hidden until the pass. */
+.pv-step small { font-size: .85rem; color: var(--muted); margin-left: .4rem; }
+.pv-call { display: none; margin: 1.2rem 0 .4rem; grid-template-columns: 1fr 220px; }
+.pv-call.is-on { display: grid; animation: mrj-pop .35s ease; }
+.pv-call-video { order: 2; }
+.pv-bubble { order: 1; }
+.pv-bubble::before { left: auto; right: -16px; border-right-color: transparent; border-left: 14px solid var(--accent); border-right: 0; }
+.pv-mouth-open { display: none; }
+.pv-call.pv-talk .pv-mouth-open { display: inline; }
+.pv-call.pv-talk .pv-mouth-shut { display: none; }
+@media (prefers-reduced-motion: reduce) { .pv-call.is-on { animation: none; } }
