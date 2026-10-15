@@ -107,3 +107,6 @@ button.secondary { border: 2px solid var(--border); box-shadow: 0 5px 0 var(--bo
 .pv-call.pv-talk .pv-mouth-open { display: inline; }
 .pv-call.pv-talk .pv-mouth-shut { display: none; }
 @media (prefers-reduced-motion: reduce) { .pv-call.is-on { animation: none; } }
+/* the bubble replaces the duplicate reply banner on the preview; tapping the bubble taps the banner */
+#viewSpeak #replyBanner { display: none !important; }
+.pv-bubble.is-reply { cursor: pointer; }

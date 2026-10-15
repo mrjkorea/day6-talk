@@ -65,7 +65,8 @@
     call.innerHTML = '<div class="pv-call-video"><span class="pv-live">● LIVE</span><span class="pv-call-pic"></span><span class="pv-call-name"></span></div>' +
       '<div class="pv-bubble" aria-live="polite"><span class="pv-bubble-text"></span></div>';
     var cue = speak.querySelector(".cue-card");
-    speak.appendChild(call); /* reply area sits at the BOTTOM, under the student's line + mic */
+    speak.appendChild(call);
+    call.querySelector('.pv-bubble').onclick = function () { var b = document.getElementById('replyBanner'); if (b && this.classList.contains('is-reply')) b.click(); }; /* reply area sits at the BOTTOM, under the student's line + mic */
     var you = document.createElement("span");
     you.className = "pv-you"; you.textContent = "🙋 Your question — 질문하세요:";
     cue.insertBefore(you, cue.firstChild);
