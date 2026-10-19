@@ -42,10 +42,10 @@ test("load bar and word colors are in the page", () => {
   assert.match(html, /id="wordBox"/);
   assert.match(app, /word-chip/);
   assert.match(app, /chipClass/);
-  const practice = handler(app, "async function practiceWord");
-  const arm = practice.indexOf("armMicNow()");
-  const firstAwait = practice.indexOf("await ");
-  assert.ok(arm > 0 && firstAwait > arm, "word practice must arm the mic before await");
+  assert.equal(app.includes("function practiceWord"), false);
+  assert.equal(app.includes("Tap a red word"), false);
+  assert.equal(app.includes("say just that word"), false);
+  assert.match(app, /Tap the mic to try the whole sentence again/);
 });
 
 test("recording uses the shared context, not a new one after getUserMedia", () => {
@@ -62,8 +62,10 @@ test("pronunciation uses the shared HuBERT checker from the pronounce site", () 
   const app = readFileSync(new URL("../js/app.js", import.meta.url), "utf8");
   assert.match(boot, /https:\/\/mrjkorea\.github\.io\/pronounce\/src\/shared\.js/);
   assert.match(boot, /PASS_PCT/);
-  assert.match(app, /score >= 0\.75\) return "good"/);
-  assert.match(app, /score >= 0\.5\) return "ok"/);
+  assert.match(app, /pct >= 75\) return "good"/);
+  assert.match(app, /pct >= 50\) return "ok"/);
+  assert.match(app, /need 60%/);
+  assert.equal(app.includes("need 70%"), false);
   assert.match(app, /MAX_TRIES = 5/);
   assert.equal(/citrinet/i.test(boot + html), false);
   assert.match(boot, /hints: false/);
