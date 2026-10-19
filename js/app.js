@@ -1,4 +1,4 @@
-/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261013-receiver */
+/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261019-sentence */
 (function () {
   const MAX_TRIES = 5;
   const $ = (id) => document.getElementById(id);
@@ -669,10 +669,18 @@
     if (box) box.hidden = true;
   }
 
+  // Same 0–100 number printed on the chip. A 0–1 fraction is scaled up first.
+  function shownPct(score) {
+    const n = Number(score) || 0;
+    if (n > 0 && n <= 1) return Math.round(n * 100);
+    return Math.round(n);
+  }
+
   // Shared MRJ colours: green 75+, yellow 50-74, red under 50.
   function chipClass(score) {
-    if (score >= 0.75) return "good";
-    if (score >= 0.5) return "ok";
+    const pct = shownPct(score);
+    if (pct >= 75) return "good";
+    if (pct >= 50) return "ok";
     return "bad";
   }
 
@@ -711,87 +719,24 @@
     box.innerHTML = "";
     const hint = document.createElement("p");
     hint.className = "word-hint";
-    hint.textContent = "Green is good. Yellow is close. Tap a red word, then say just that word.";
+    hint.textContent = "Green is good. Yellow is close. Tap the mic to try the whole sentence again.";
     box.appendChild(hint);
     const row = document.createElement("div");
     row.className = "word-row";
     words.forEach((w) => {
       const wrap = document.createElement("div");
       wrap.className = "word-chip-wrap";
-      const btn = document.createElement("button");
-      btn.type = "button";
-      const score = w.score || 0;
-      btn.className = "word-chip " + chipClass(score);
-      btn.innerHTML =
+      const chip = document.createElement("span");
+      const pct = shownPct(w.score || 0);
+      chip.className = "word-chip " + chipClass(pct);
+      chip.innerHTML =
         `<span class="w">${escapeHtml(w.word)}</span>` +
-        `<span class="p">${Math.round(score * 100)}%</span>`;
-      btn.onclick = () => practiceWord(w.word, btn);
-      wrap.appendChild(btn);
-      if (chipClass(score) === "bad" && w.hint) wrap.appendChild(wordHintEl(w.hint));
+        `<span class="p">${pct}%</span>`;
+      wrap.appendChild(chip);
+      if (chipClass(pct) === "bad" && w.hint) wrap.appendChild(wordHintEl(w.hint));
       row.appendChild(wrap);
     });
     box.appendChild(row);
-  }
-
-  async function practiceWord(word, btn) {
-    if (state.listening) {
-      if (btn === listenTarget) requestStopTake();
-      else queueNextStart(() => practiceWord(word, btn));
-      return;
-    }
-    if (btn.classList.contains("good")) {
-      $("micStatus").textContent = word + " is already good.";
-      return;
-    }
-    stopAudio();
-    let micPromise;
-    try {
-      micPromise = armMicNow();
-    } catch (e) {
-      $("micStatus").textContent = (e && e.message) || NO_MIC;
-      return;
-    }
-    $("micStatus").textContent = "Allow the microphone…";
-    beginListening(btn);
-    window.MRJPronounce.ensureReady().catch(() => {});
-    let held = true;
-    try {
-      const stream = await waitForMic(micPromise, 8000);
-      $("micStatus").textContent = "Say just: " + word;
-      const blob = await window.MRJPronounce.recordOnce(stream, () => stopWanted);
-      releaseTake();
-      held = false;
-      const graded = await gradeAgainst(word, blob);
-      const score = (graded.score || 0) / 100;
-      btn.className = "word-chip " + chipClass(score);
-      const pct = btn.querySelector(".p");
-      if (pct) pct.textContent = Math.round(score * 100) + "%";
-      const wrap = btn.parentElement;
-      if (wrap) {
-        const oldTip = wrap.querySelector(".word-hint");
-        if (oldTip) oldTip.remove();
-        const heard = graded.result && graded.result.words && graded.result.words[0];
-        if (chipClass(score) === "bad" && heard && heard.hint) wrap.appendChild(wordHintEl(heard.hint));
-      }
-      if (chipClass(score) === "good") {
-        $("micStatus").textContent = word + " is good.";
-        const chips = [...$("wordBox").querySelectorAll(".word-chip")];
-        if (chips.length && chips.every((c) => c.classList.contains("good"))) {
-          const pair = state.pairs[state.cursor];
-          if (pair) await onPass(pair, "words");
-        }
-      } else {
-        $("micStatus").textContent = "Not yet. Say " + word + " again.";
-      }
-    } catch (e) {
-      if (held) {
-        pendingStart = null;
-        stopListeningUI();
-      }
-      $("micStatus").textContent = (e && e.message) || "Mic error";
-    } finally {
-      hideGradeBar();
-    }
   }
 
   async function gradeAgainst(target, blob) {
@@ -1001,9 +946,10 @@
         state.tries += 1;
         updateTryDots();
         const why = missCopy(graded, "Not the line.");
+        $("btnMic").disabled = false;
         $("micStatus").textContent = graded.doorFail
           ? why
-          : `${why} Try again (${graded.score}% · need 70%)`;
+          : `${why} Try again (${graded.score}% · need 60%). Tap the mic to try the whole sentence again.`;
         if (state.tries >= MAX_TRIES) {
           recordSkip(pair);
           $("micStatus").textContent = "5 tries. Going on. Ask your teacher later.";
