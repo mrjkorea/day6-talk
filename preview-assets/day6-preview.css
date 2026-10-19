@@ -110,3 +110,6 @@ button.secondary { border: 2px solid var(--border); box-shadow: 0 5px 0 var(--bo
 /* the bubble replaces the duplicate reply banner on the preview; tapping the bubble taps the banner */
 #viewSpeak #replyBanner { display: none !important; }
 .pv-bubble.is-reply { cursor: pointer; }
+
+/* Level order easiest -> hardest: Basic, Int 3, Int 2 (display only). */
+#bookList .book-card.pv-lv-green { order: 1; } #bookList .book-card.pv-lv-blue { order: 2; } #bookList .book-card.pv-lv-red { order: 3; }

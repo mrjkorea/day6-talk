@@ -1,10 +1,10 @@
 /* Preview-only UI layer for Day 6 Talk. No checker, mic, scoring or auth changes.
-   - colour-codes level cards (Basic=green, Int 2=blue, Int 3=red) and sets html[data-book]
+   - colour-codes level cards (Korean order: Basic=green, Int 3=blue, Int 2=red/hardest; shown Basic, Int 3, Int 2) and sets html[data-book]
    - replaces the "Hear the line" <select> with voice chips (select kept, hidden, driven by "change") */
 (function () {
   "use strict";
   var root = document.documentElement;
-  function fam(t) { t = String(t || "").toUpperCase(); return /INT\s*3/.test(t) ? "red" : /INT\s*2/.test(t) ? "blue" : "green"; }
+  function fam(t) { t = String(t || "").toUpperCase(); return /INT\s*2/.test(t) ? "red" : /INT\s*3/.test(t) ? "blue" : "green"; }
   var ICON = { green: "🌿", blue: "💎", red: "🍎" };
   function tagCards() {
     document.querySelectorAll("#bookList .book-card:not([data-pv])").forEach(function (b) {
@@ -12,6 +12,7 @@
       var f = fam(h && h.textContent);
       b.setAttribute("data-pv", f);
       b.classList.add("pv-" + f);
+      b.classList.add("pv-lv-" + f); /* CSS order: green, blue (Int 3), red (Int 2) */
       var i = document.createElement("span");
       i.className = "pv-card-icon"; i.setAttribute("aria-hidden", "true"); i.textContent = ICON[f];
       b.insertBefore(i, b.firstChild);
