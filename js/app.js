@@ -563,7 +563,12 @@
     $("resultsMeta").textContent =
       `${state.level.label} · Unit ${state.unit.unit} ${state.unit.title} · ` +
       `${state.rows.filter((r) => r.status === "success").length} success / ` +
-      `${state.rows.filter((r) => r.status === "skipped").length} missed`;
+      `${state.rows.filter((r) => r.status === "skipped").length} missed` +
+      (() => {
+        const ok = state.rows.filter((r) => r.status === "success").length;
+        const n = ok + state.rows.filter((r) => r.status === "skipped").length;
+        return n ? ` (${Math.round((ok / n) * 100)}%)` : "";
+      })();
     const list = $("resultsList");
     list.innerHTML = "";
     state.rows.forEach((row, idx) => {
