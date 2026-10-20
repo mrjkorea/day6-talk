@@ -554,7 +554,7 @@
     stopAudio();
     const ok = state.rows.filter((r) => r.status === "success").length;
     const miss = state.rows.filter((r) => r.status === "skipped").length;
-    $("endSummary").textContent = `${ok} heard · ${miss} missed`;
+    $("endSummary").textContent = `${ok} heard · ${miss} missed` + (ok + miss ? ` (${Math.round((ok / (ok + miss)) * 100)}%)` : "");
     $("endDetail").textContent = `${state.level.label} · Unit ${state.unit.unit} · ${state.pairs.length} lines`;
     show("end");
   }
