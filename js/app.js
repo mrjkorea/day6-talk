@@ -217,6 +217,15 @@
     });
   }
 
+  function mrjTeacherMode() {
+    try {
+      var api = window.MRJSignin || window.MRJ_AUTH;
+      return !!(api && typeof api.isTeacher === "function" && api.isTeacher());
+    } catch (_) {
+      return false;
+    }
+  }
+
   /* ---------- Navigation / render ---------- */
   function renderHome() {
     const list = $("bookList");
@@ -465,6 +474,7 @@
     stopAudio();
     stopListeningUI();
     while (
+      !mrjTeacherMode() &&
       state.skipDone &&
       state.cursor < state.pairs.length &&
       state.doneIds.has(lineId(state.pairs[state.cursor]))
@@ -948,6 +958,12 @@
       hideGradeBar();
       renderWords(graded);
       if (!graded.pass) {
+        if (mrjTeacherMode()) {
+          $("btnMic").disabled = false;
+          $("btnNext").hidden = false;
+          $("micStatus").textContent = "Teacher mode — tap Next to continue.";
+          return;
+        }
         state.tries += 1;
         updateTryDots();
         const why = missCopy(graded, "Not the line.");
@@ -992,6 +1008,10 @@
         escapeHtml(String(err)) +
         "</p>";
     });
+
+  document.addEventListener("mrj-teacher", () => {
+    if (booted) renderHome();
+  });
 
   window.addEventListener("mrj-auth-ready", (event) => {
     const detail = (event && event.detail) || {};
