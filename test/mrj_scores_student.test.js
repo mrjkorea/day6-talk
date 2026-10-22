@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import test from "node:test";
 
-const BUILD = "20261019-sentence";
+const BUILD = "20261022-teacher-mode";
 const TEST_STUDENT = "zz_test_mrjmetrics";
 
 function loadMrjScores(sandbox) {
