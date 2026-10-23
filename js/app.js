@@ -1,4 +1,4 @@
-/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261022-teacher-mode */
+/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261023-deeplink */
 (function () {
   const MAX_TRIES = 5;
   const $ = (id) => document.getElementById(id);
