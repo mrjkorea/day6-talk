@@ -467,7 +467,27 @@
     if (booted || !state.qa || !authSeen) return;
     booted = true;
     // Always open the book picker. Auto-resume jumped to other units (shared logins merge many students).
-    renderHome();
+    // Exception: an explicit deep link ?unit=<book>_u<n> (e.g. basic_a_u3, int2c_u5) opens that unit.
+    if (!openDeepLink()) renderHome();
+  }
+
+  // ?unit=basic_a_u3 | int3b_u2 | int2c_u8  (study-site path map). Unknown/missing -> normal home.
+  function deepLinkUnit() {
+    const m = String(new URLSearchParams(location.search).get("unit") || "").toLowerCase()
+      .match(/^(basic_([abc])|int([23])([abc]))_u(\d+)$/);
+    if (!m || !state.qa) return null;
+    const code = m[2] ? "b" + m[2] : "i" + m[3] + m[4];
+    const lv = state.qa.levels.find((l) => l.level === code);
+    const u = lv && lv.units.find((x) => +x.unit === +m[5]);
+    return u ? { lv, u } : null;
+  }
+
+  function openDeepLink() {
+    const hit = deepLinkUnit();
+    if (!hit) return false;
+    state.level = hit.lv;
+    startUnit(hit.u);
+    return true;
   }
 
   function showPair() {
@@ -1010,7 +1030,7 @@
     });
 
   document.addEventListener("mrj-teacher", () => {
-    if (booted) renderHome();
+    if (booted && !(deepLinkUnit() && !views.speak.hidden)) renderHome();
   });
 
   window.addEventListener("mrj-auth-ready", (event) => {
