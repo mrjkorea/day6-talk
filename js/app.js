@@ -1,4 +1,4 @@
-/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261023-deeplink */
+/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261026-review-deeplink */
 (function () {
   const MAX_TRIES = 5;
   const $ = (id) => document.getElementById(id);
@@ -467,19 +467,39 @@
     if (booted || !state.qa || !authSeen) return;
     booted = true;
     // Always open the book picker. Auto-resume jumped to other units (shared logins merge many students).
-    // Exception: an explicit deep link ?unit=<book>_u<n> (e.g. basic_a_u3, int2c_u5) opens that unit.
+    // Exception: explicit ?unit=… deep link (book or review) opens that speaking unit.
     if (!openDeepLink()) renderHome();
   }
 
-  // ?unit=basic_a_u3 | int3b_u2 | int2c_u8  (study-site path map). Unknown/missing -> normal home.
-  function deepLinkUnit() {
-    const m = String(new URLSearchParams(location.search).get("unit") || "").toLowerCase()
-      .match(/^(basic_([abc])|int([23])([abc]))_u(\d+)$/);
-    if (!m || !state.qa) return null;
+  // ?unit=basic_a_u3 | int3b_u2 | ba_review_u1 | i2-review-u2  (study-site path map). Unknown -> home.
+  function parseDeepLinkUnit(raw, qa) {
+    const slug = String(raw || "").toLowerCase().trim().replace(/\s+/g, "");
+    if (!slug || !qa) return null;
+
+    const review = slug.match(
+      /^(?:(?:basic|ba)[_-]?(?:abc[_-]?)?review|ba[_-]?review|i2[_-]?review|int2[_-]?review|i3[_-]?review|int3[_-]?review)[_-]?u?0*(\d+)$/
+    );
+    if (review) {
+      let level;
+      if (/^(?:basic|ba)/.test(slug)) level = "ba-review";
+      else if (/^i2|^int2/.test(slug)) level = "i2-review";
+      else level = "i3-review";
+      const lv = qa.levels.find((l) => l.level === level);
+      const u = lv && lv.units.find((x) => +x.unit === +review[1]);
+      return u ? { lv, u } : null;
+    }
+
+    const m = slug.match(/^(basic_([abc])|int([23])([abc]))_u0*(\d+)$/);
+    if (!m) return null;
     const code = m[2] ? "b" + m[2] : "i" + m[3] + m[4];
-    const lv = state.qa.levels.find((l) => l.level === code);
+    const lv = qa.levels.find((l) => l.level === code);
     const u = lv && lv.units.find((x) => +x.unit === +m[5]);
     return u ? { lv, u } : null;
+  }
+
+  function deepLinkUnit() {
+    const raw = new URLSearchParams(location.search).get("unit");
+    return parseDeepLinkUnit(raw, state.qa);
   }
 
   function openDeepLink() {
