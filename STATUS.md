@@ -12,10 +12,10 @@
 |---|---|
 | Books / levels | **12** |
 | Units | **83** |
-| Items (Q/A pairs) | **693** |
+| Items (Q/A pairs) | **708** |
 | Audio mp3 total | **1283** |
 | Student (Dolly) say mp3 | **590** |
-| Teacher (Jay) reply mp3 | **693** |
+| Teacher (Jay) reply mp3 | **708** |
 
 ### Per book
 
@@ -32,7 +32,7 @@
 | i3-review | INT 3 Review | 4 | 48 |
 | i3a | INT 3A | 8 | 67 |
 | i3b | INT 3B | 8 | 53 |
-| i3c | INT 3C | 7 | 47 |
+| i3c | INT 3C | 8 | 62 |
 
 ## How extracted from APK
 
@@ -43,7 +43,7 @@ unzip MRJ-Day6-Talk-0.3.2.apk 'assets/public/*'
 | APK path | Web path | Role |
 |---|---|---|
 | `assets/public/data/day6-qa.json` | `data/day6-qa.json` | Canonical pairs (`student` / `reply` / `audio`) |
-| `assets/public/audio/index.json` | `data/audio-index.json` | `studentFiles` + `teacherFiles` maps (100% resolve for 693 pairs) |
+| `assets/public/audio/index.json` | `data/audio-index.json` | `studentFiles` + `teacherFiles` maps (100% resolve for 708 pairs) |
 | `assets/public/audio/say/**/*.mp3` | `audio/say/...` | Dolly student line (hear-before-speak) |
 | `assets/public/audio/{book}/uXX/NN.mp3` | `audio/...` | Jay teacher canned replies |
 

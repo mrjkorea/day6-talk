@@ -2,7 +2,7 @@
   "v": 1,
   "voice": "a79698cbbba6435d86ee335fbd999c41",
   "model": "s2.1-pro-free",
-  "pairCount": 693,
+  "pairCount": 708,
   "chunks": [
     "a",
     "b",
@@ -4040,6 +4040,87 @@
               "student": "No I can not",
               "reply": "[happy] That is okay. I cannot fly either!",
               "audio": "i3c/u07/06.mp3"
+            }
+          ]
+        },
+        {
+          "unit": 8,
+          "title": "What Time Is It?",
+          "pairs": [
+            {
+              "student": "DETENTION!",
+              "reply": "[stern] Detention! Sit down. No talking!",
+              "audio": "i3c/u08/01.mp3"
+            },
+            {
+              "student": "What time is it?",
+              "reply": "[happy] Look at the clock!",
+              "audio": "i3c/u08/02.mp3"
+            },
+            {
+              "student": "It is five o'clock",
+              "reply": "[happy] Yes. Five o'clock. Keep working!",
+              "audio": "i3c/u08/03.mp3"
+            },
+            {
+              "student": "Can we go home?",
+              "reply": "[stern] No! Not yet!",
+              "audio": "i3c/u08/04.mp3"
+            },
+            {
+              "student": "No!",
+              "reply": "[happy] That is right. No going home yet!",
+              "audio": "i3c/u08/05.mp3"
+            },
+            {
+              "student": "It is six o'clock",
+              "reply": "[happy] Six o'clock. Keep working!",
+              "audio": "i3c/u08/06.mp3"
+            },
+            {
+              "student": "It is seven o'clock",
+              "reply": "[tired] Seven o'clock. Still detention!",
+              "audio": "i3c/u08/07.mp3"
+            },
+            {
+              "student": "It is eight o'clock",
+              "reply": "[tired] Eight o'clock. It is getting late!",
+              "audio": "i3c/u08/08.mp3"
+            },
+            {
+              "student": "It is nine o'clock",
+              "reply": "[surprised] Nine o'clock? Time flies!",
+              "audio": "i3c/u08/09.mp3"
+            },
+            {
+              "student": "It is ten o'clock",
+              "reply": "[tired] Ten o'clock. Almost done...",
+              "audio": "i3c/u08/10.mp3"
+            },
+            {
+              "student": "Can we go home please",
+              "reply": "[stern] No way!",
+              "audio": "i3c/u08/11.mp3"
+            },
+            {
+              "student": "No way!",
+              "reply": "[happy] Ha! You said it. No way!",
+              "audio": "i3c/u08/12.mp3"
+            },
+            {
+              "student": "What time is it?",
+              "reply": "[happy] Check the clock again!",
+              "audio": "i3c/u08/13.mp3"
+            },
+            {
+              "student": "It is eleven o'clock",
+              "reply": "[happy] Eleven. One more hour!",
+              "audio": "i3c/u08/14.mp3"
+            },
+            {
+              "student": "It is midnight",
+              "reply": "[happy] Midnight! Okay. You can go home now!",
+              "audio": "i3c/u08/15.mp3"
             }
           ]
         }

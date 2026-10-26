@@ -843,5 +843,20 @@
   "[happy] Yes. I can walk to school.": "i3c/u07/04.mp3",
   "Yes. I can walk to school.": "i3c/u07/04.mp3",
   "[happy] No. I cannot fly. I wish!": "i3c/u07/05.mp3",
-  "No. I cannot fly. I wish!": "i3c/u07/05.mp3"
+  "No. I cannot fly. I wish!": "i3c/u07/05.mp3",
+  "[stern] Detention! Sit down. No talking!": "i3c/u08/01.mp3",
+  "[happy] Look at the clock!": "i3c/u08/02.mp3",
+  "[happy] Yes. Five o'clock. Keep working!": "i3c/u08/03.mp3",
+  "[stern] No! Not yet!": "i3c/u08/04.mp3",
+  "[happy] That is right. No going home yet!": "i3c/u08/05.mp3",
+  "[happy] Six o'clock. Keep working!": "i3c/u08/06.mp3",
+  "[tired] Seven o'clock. Still detention!": "i3c/u08/07.mp3",
+  "[tired] Eight o'clock. It is getting late!": "i3c/u08/08.mp3",
+  "[surprised] Nine o'clock? Time flies!": "i3c/u08/09.mp3",
+  "[tired] Ten o'clock. Almost done...": "i3c/u08/10.mp3",
+  "[stern] No way!": "i3c/u08/11.mp3",
+  "[happy] Ha! You said it. No way!": "i3c/u08/12.mp3",
+  "[happy] Check the clock again!": "i3c/u08/13.mp3",
+  "[happy] Eleven. One more hour!": "i3c/u08/14.mp3",
+  "[happy] Midnight! Okay. You can go home now!": "i3c/u08/15.mp3"
 }
