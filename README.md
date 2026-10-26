@@ -11,3 +11,5 @@ Kid-friendly **Day 6 Talk** classroom flow — port of verified APK `MRJ-Day6-Ta
 **Live:** GitHub Pages from this repo.
 
 Use **Chrome** (desktop or Android) for the mic. Teacher mic on the results page is optional.
+
+**Conversation Review AI Chat** deep links (12 speaking units): see [docs/REVIEW_AI_CHAT_DEEPLINKS.md](docs/REVIEW_AI_CHAT_DEEPLINKS.md).
