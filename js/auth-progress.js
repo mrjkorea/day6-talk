@@ -102,6 +102,17 @@
     return Array.from(byId.values());
   }
 
+  function mrjTeacherSession(host) {
+    host = host || (typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : null);
+    if (!host) return false;
+    try {
+      var api = host.MRJSignin || host.MRJ_AUTH;
+      return !!(api && typeof api.isTeacher === "function" && api.isTeacher());
+    } catch (_) {
+      return false;
+    }
+  }
+
   var api = {
     PROGRAM: PROGRAM,
     itemIdFromRow: itemIdFromRow,
@@ -110,6 +121,7 @@
     filterProgramRows: filterProgramRows,
     mergeAuthProgress: mergeAuthProgress,
     mergeRowLists: mergeRowLists,
+    mrjTeacherSession: mrjTeacherSession,
   };
 
   root.MRJ_DAY6_AUTH_PROGRESS = api;

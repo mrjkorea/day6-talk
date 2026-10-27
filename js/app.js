@@ -1,4 +1,4 @@
-/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261026-review-deeplink */
+/** Day 6 Talk — classroom flow (port of MRJ-Day6-Talk-0.3.2) · build 20261027-teacher-chip */
 (function () {
   const MAX_TRIES = 5;
   const $ = (id) => document.getElementById(id);
@@ -218,12 +218,45 @@
   }
 
   function mrjTeacherMode() {
+    const api = progressApi();
+    if (api && typeof api.mrjTeacherSession === "function") {
+      return api.mrjTeacherSession(window);
+    }
     try {
-      var api = window.MRJSignin || window.MRJ_AUTH;
-      return !!(api && typeof api.isTeacher === "function" && api.isTeacher());
+      const signin = window.MRJSignin || window.MRJ_AUTH;
+      return !!(signin && typeof signin.isTeacher === "function" && signin.isTeacher());
     } catch (_) {
       return false;
     }
+  }
+
+  function syncStudentPill() {
+    const pill = $("studentPill");
+    if (!pill) return;
+    let id = "";
+    try {
+      const auth = window.MRJ_AUTH;
+      if (auth && typeof auth.student === "function") id = String(auth.student() || "").trim();
+    } catch (_) {}
+    if (!id) id = String(window.MRJ_STUDENT || "").trim();
+    if (id) {
+      pill.textContent = id;
+      pill.hidden = false;
+    } else {
+      pill.textContent = "";
+      pill.hidden = true;
+    }
+  }
+
+  function onMrjTeacherChrome() {
+    syncStudentPill();
+    if (!booted || !state.qa) return;
+    if (!views.speak.hidden) {
+      state.skipDone = false;
+      showPair();
+      return;
+    }
+    if (!(deepLinkUnit() && !views.speak.hidden)) renderHome();
   }
 
   /* ---------- Navigation / render ---------- */
@@ -542,6 +575,10 @@
     hideGradeBar();
     updateProgress();
     updateTryDots();
+    if (mrjTeacherMode()) {
+      $("btnNext").hidden = false;
+      $("micStatus").textContent = "Teacher mode — tap Next to skip or Speak to try.";
+    }
   }
 
   function updateProgress() {
@@ -1049,13 +1086,12 @@
         "</p>";
     });
 
-  document.addEventListener("mrj-teacher", () => {
-    if (booted && !(deepLinkUnit() && !views.speak.hidden)) renderHome();
-  });
+  document.addEventListener("mrj-teacher", onMrjTeacherChrome);
 
   window.addEventListener("mrj-auth-ready", (event) => {
     const detail = (event && event.detail) || {};
     authSeen = true;
+    syncStudentPill();
     const progErr = safeProgressError();
     if (!progErr) {
       const rows = Array.isArray(detail.progress) ? detail.progress : [];

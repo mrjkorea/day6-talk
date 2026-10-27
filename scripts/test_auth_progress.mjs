@@ -51,6 +51,13 @@ test("paged reload (>20 rows) merges with max score per item", () => {
   assert.equal(P.scoreFromRow(state.doneRows.get("ba/u01/02")), 72);
 });
 
+test("mrjTeacherSession reads MRJSignin.isTeacher", () => {
+  const host = { MRJSignin: { isTeacher: () => true } };
+  assert.equal(P.mrjTeacherSession(host), true);
+  host.MRJSignin.isTeacher = () => false;
+  assert.equal(P.mrjTeacherSession(host), false);
+});
+
 test("mergeRowLists keeps best row per item for resume anchor", () => {
   const rows = P.mergeRowLists(
     [{ program: PROGRAM, item: "bc/u02/01", scorePct: 40 }],
