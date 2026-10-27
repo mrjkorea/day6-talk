@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 import vm from "node:vm";
 import test from "node:test";
 
-const BUILD = "20261026-review-deeplink";
+const BUILD = "20261027-teacher-chip";
 const TEST_STUDENT = "zz_test_mrjmetrics";
 
 function loadMrjScores(sandbox) {
