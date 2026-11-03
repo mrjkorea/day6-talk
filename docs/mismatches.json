@@ -1,0 +1,3779 @@
+[
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 1,
+  "deeplink": "basic_a_u1",
+  "status": "MATCH",
+  "program_count": 10,
+  "pdf_count": 10,
+  "program_items": [
+   "One",
+   "Two",
+   "Three",
+   "Four",
+   "Five",
+   "Six",
+   "Seven",
+   "Eight",
+   "Nine",
+   "Ten"
+  ],
+  "pdf_items": [
+   "One",
+   "Two",
+   "Three",
+   "Four",
+   "Five",
+   "Six",
+   "Seven",
+   "Eight",
+   "Nine",
+   "Ten"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 2,
+  "deeplink": "basic_a_u2",
+  "status": "MATCH",
+  "program_count": 10,
+  "pdf_count": 10,
+  "program_items": [
+   "Goodbye, mom.",
+   "Hello, Mr. Cat",
+   "Hello, Mr. Dog",
+   "Hello, Mr. Cow",
+   "Hello, Mr. Horse",
+   "Hello, Ms. Chicken",
+   "Hello, Ms. Goat",
+   "Hello, Ms. Pig",
+   "Hello, Mrs. Sheep",
+   "Hello, Mrs. Duck"
+  ],
+  "pdf_items": [
+   "Goodbye, mom.",
+   "Hello, Mr. Cat",
+   "Hello, Mr. Dog",
+   "Hello, Mr. Cow",
+   "Hello, Mr. Horse",
+   "Hello, Ms. Chicken",
+   "Hello, Ms. Goat",
+   "Hello, Ms. Pig",
+   "Hello, Mrs. Sheep",
+   "Hello, Mrs. Duck"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 3,
+  "deeplink": "basic_a_u3",
+  "status": "MATCH",
+  "program_count": 9,
+  "pdf_count": 9,
+  "program_items": [
+   "Unplug your headset",
+   "Scroll down",
+   "type your ID",
+   "Make a new tab",
+   "Left click",
+   "Right click",
+   "Double click",
+   "Don't click on X",
+   "Restart your computer"
+  ],
+  "pdf_items": [
+   "Unplug your headset",
+   "Scroll down",
+   "Type your ID",
+   "Make a new tab",
+   "Left click",
+   "Right click",
+   "Double click",
+   "Don't click on X",
+   "Restart your computer"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 4,
+  "deeplink": "basic_a_u4",
+  "status": "MATCH",
+  "program_count": 6,
+  "pdf_count": 6,
+  "program_items": [
+   "See you tomorrow.",
+   "Sorry",
+   "Pardon?",
+   "Help me please.",
+   "Quiet!",
+   "Wait!"
+  ],
+  "pdf_items": [
+   "See you tomorrow.",
+   "Sorry",
+   "Pardon?",
+   "Help me please.",
+   "Quiet!",
+   "Wait!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 5,
+  "deeplink": "basic_a_u5",
+  "status": "MATCH",
+  "program_count": 8,
+  "pdf_count": 8,
+  "program_items": [
+   "This is my mom",
+   "This is my dad",
+   "This is my sister",
+   "This is my brother",
+   "This is my uncle",
+   "This is my aunt",
+   "This is my grandmother",
+   "This is my cousin"
+  ],
+  "pdf_items": [
+   "This is my mom",
+   "This is my dad",
+   "This is my sister",
+   "This is my brother",
+   "This is my uncle",
+   "This is my aunt",
+   "This is my grandmother",
+   "This is my cousin"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 6,
+  "deeplink": "basic_a_u6",
+  "status": "MATCH",
+  "program_count": 10,
+  "pdf_count": 10,
+  "program_items": [
+   "What is this?",
+   "It is a desk.",
+   "It is a gym ball.",
+   "It is a mouse.",
+   "It is a keyboard.",
+   "It is a monitor.",
+   "It is a headset.",
+   "It is a cube.",
+   "It is a clipboard",
+   "It is a pen."
+  ],
+  "pdf_items": [
+   "What is this?",
+   "It is a desk.",
+   "It is a gym ball.",
+   "It is a mouse.",
+   "It is a keyboard.",
+   "It is a monitor.",
+   "It is a headset.",
+   "It is a cube.",
+   "It is a clipboard.",
+   "It is a pen."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 7,
+  "deeplink": "basic_a_u7",
+  "status": "MATCH",
+  "program_count": 8,
+  "pdf_count": 8,
+  "program_items": [
+   "I can dance.",
+   "I can run fast",
+   "I can sing.",
+   "I can do taekwondo",
+   "I can play the piano",
+   "I can draw",
+   "I can speak Chinese",
+   "I can do magic"
+  ],
+  "pdf_items": [
+   "I can dance.",
+   "I can run fast",
+   "I can sing.",
+   "I can do taekwondo",
+   "I can play the piano",
+   "I can draw",
+   "I can speak Chinese",
+   "I can do magic"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_a",
+  "program_level": "ba",
+  "unit": 8,
+  "deeplink": "basic_a_u8",
+  "status": "MATCH",
+  "program_count": 11,
+  "pdf_count": 11,
+  "program_items": [
+   "Oh my God",
+   "Hurry",
+   "Phew!",
+   "100",
+   "98",
+   "55",
+   "32",
+   "22",
+   "14",
+   "12",
+   "11"
+  ],
+  "pdf_items": [
+   "Oh my God",
+   "Hurry",
+   "Phew!",
+   "100",
+   "98",
+   "55",
+   "32",
+   "22",
+   "14",
+   "12",
+   "11"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1DElft0r6Aj_pJcPzU-rI-oOQ9e0VuJpq",
+  "local_pdf": "/workspace/printoff-v4/basic_a"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 1,
+  "deeplink": "basic_b_u1",
+  "status": "MATCH",
+  "program_count": 8,
+  "pdf_count": 8,
+  "program_items": [
+   "I am sad.",
+   "I am angry.",
+   "I am hungry.",
+   "I am tired.",
+   "I am bored.",
+   "I am scared.",
+   "I am sick.",
+   "I am worried."
+  ],
+  "pdf_items": [
+   "I am sad.",
+   "I am angry.",
+   "I am hungry.",
+   "I am tired.",
+   "I am bored.",
+   "I am scared.",
+   "I am sick.",
+   "I am worried."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 2,
+  "deeplink": "basic_b_u2",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 7,
+  "program_items": [
+   "I like meat.",
+   "I like fruit.",
+   "I like games.",
+   "I like school.",
+   "I like exercise.",
+   "I like movies.",
+   "I like music",
+   "I like you!",
+   "Sorry"
+  ],
+  "pdf_items": [
+   "I like meat.",
+   "I like fruit.",
+   "I like games.",
+   "I like school.",
+   "I like exercise.",
+   "I like movies.",
+   "I like you!"
+  ],
+  "only_on_program": [
+   "I like music",
+   "Sorry"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF basic_b U2 Day6 table: ['I like music', 'Sorry']"
+  ],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 3,
+  "deeplink": "basic_b_u3",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 5,
+  "program_items": [
+   "Recycle this!",
+   "Trash this!",
+   "Don't do that!",
+   "Thank you",
+   "Excuse me",
+   "I do not understand.",
+   "I do not know"
+  ],
+  "pdf_items": [
+   "Recycle this!",
+   "Trash this!",
+   "Don't do that!",
+   "I do not understand.",
+   "I do not know"
+  ],
+  "only_on_program": [
+   "Thank you",
+   "Excuse me"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF basic_b U3 Day6 table: ['Thank you', 'Excuse me']"
+  ],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 4,
+  "deeplink": "basic_b_u4",
+  "status": "MISMATCH",
+  "program_count": 8,
+  "pdf_count": 1,
+  "program_items": [
+   "Show it",
+   "You lose",
+   "Paper",
+   "Rock",
+   "What can you make?",
+   "Scissors",
+   "ROCK PAPER SCISSORS",
+   "I win"
+  ],
+  "pdf_items": [
+   "What can you make?"
+  ],
+  "only_on_program": [
+   "Show it",
+   "You lose",
+   "Paper",
+   "Rock",
+   "Scissors",
+   "ROCK PAPER SCISSORS",
+   "I win"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF basic_b U4 Day6 table: ['Show it', 'You lose', 'Paper', 'Rock', 'Scissors', 'ROCK PAPER SCISSORS', 'I win']"
+  ],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 5,
+  "deeplink": "basic_b_u5",
+  "status": "MATCH",
+  "program_count": 9,
+  "pdf_count": 9,
+  "program_items": [
+   "It is a phone charger",
+   "It is a sock.",
+   "It is a toy",
+   "It is underwear.",
+   "It is a toothbrush",
+   "It is a night light.",
+   "It is a teddy bear.",
+   "It was an apple.",
+   "what is it?"
+  ],
+  "pdf_items": [
+   "It is a phone charger",
+   "It is a sock.",
+   "It is a toy",
+   "It is underwear.",
+   "It is a toothbrush",
+   "It is a night light.",
+   "It is a teddy bear.",
+   "It was an apple.",
+   "what is it?"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 6,
+  "deeplink": "basic_b_u6",
+  "status": "MATCH",
+  "program_count": 7,
+  "pdf_count": 7,
+  "program_items": [
+   "This is my nose.",
+   "This is MY mouth.",
+   "This is my ear.",
+   "This is my eye.",
+   "This is my neck.",
+   "I like my body.",
+   "Me too!"
+  ],
+  "pdf_items": [
+   "This is my nose.",
+   "This is MY mouth.",
+   "This is my ear.",
+   "This is my eye.",
+   "This is my neck.",
+   "I like my body.",
+   "Me too!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 7,
+  "deeplink": "basic_b_u7",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 3,
+  "program_items": [
+   "It is black",
+   "It is brown.",
+   "It is red.",
+   "It is orange",
+   "It is yellow",
+   "It is green",
+   "It is blue",
+   "It is purple",
+   "It is a rainbow."
+  ],
+  "pdf_items": [
+   "It is brown.",
+   "It is red.",
+   "It is a rainbow."
+  ],
+  "only_on_program": [
+   "It is black",
+   "It is orange",
+   "It is yellow",
+   "It is green",
+   "It is blue",
+   "It is purple"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF basic_b U7 Day6 table: ['It is black', 'It is orange', 'It is yellow', 'It is green', 'It is blue', 'It is purple']"
+  ],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_b",
+  "program_level": "bb",
+  "unit": 8,
+  "deeplink": "basic_b_u8",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 0,
+  "program_items": [
+   "I am 10",
+   "I am 14",
+   "I am 17",
+   "I am 22",
+   "I am 25",
+   "I am 33",
+   "I am 66",
+   "Yes",
+   "No"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "I am 10",
+   "I am 14",
+   "I am 17",
+   "I am 22",
+   "I am 25",
+   "I am 33",
+   "I am 66",
+   "Yes",
+   "No"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF basic_b U8 Day6 table: ['I am 10', 'I am 14', 'I am 17', 'I am 22', 'I am 25', 'I am 33', 'I am 66', 'Yes', 'No']"
+  ],
+  "drive_id": "1yZiVoe7jgHHQiKqAYtC5Y9Bt-WePIVr-",
+  "local_pdf": "/workspace/printoff-v4/basic_b"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 1,
+  "deeplink": "basic_c_u1",
+  "status": "MATCH",
+  "program_count": 9,
+  "pdf_count": 9,
+  "program_items": [
+   "I love my dog Zoey.",
+   "I love my cat Leo",
+   "I love my bird Sarah",
+   "I love my rabbit Sam",
+   "I love my hamster Fluffy",
+   "I love my fish Nimo",
+   "I love my beetle Bob",
+   "I love my turtle Tom",
+   "I love my snake Jessica"
+  ],
+  "pdf_items": [
+   "I love my dog Zoey.",
+   "I love my cat Leo",
+   "I love my bird Sarah",
+   "I love my rabbit Sam",
+   "I love my hamster Fluffy",
+   "I love my fish Nimo",
+   "I love my beetle Bob",
+   "I love my turtle Tom",
+   "I love my snake Jessica"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 2,
+  "deeplink": "basic_c_u2",
+  "status": "MATCH",
+  "program_count": 8,
+  "pdf_count": 8,
+  "program_items": [
+   "Look at my new hat",
+   "Look at my new earphones. .",
+   "Look at my new shoes.",
+   "Look at my new phone",
+   "Look at my new coat.",
+   "Look at my watch.",
+   "Look at my new bag.",
+   "Look at my new computer."
+  ],
+  "pdf_items": [
+   "Look at my new hat",
+   "Look at my new earphones. .",
+   "Look at my new shoes.",
+   "Look at my new phone",
+   "Look at my new coat.",
+   "Look at my watch.",
+   "Look at my new bag.",
+   "Look at my new computer."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 3,
+  "deeplink": "basic_c_u3",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 4,
+  "program_items": [
+   "See you Monday",
+   "May I start?",
+   "Report!",
+   "Spell cat!",
+   "What does cat mean?",
+   "You are welcome",
+   "Please test me"
+  ],
+  "pdf_items": [
+   "May I start?",
+   "Report!",
+   "Spell cat!",
+   "What does cat mean?"
+  ],
+  "only_on_program": [
+   "See you Monday",
+   "You are welcome",
+   "Please test me"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF basic_c U3 Day6 table: ['See you Monday', 'You are welcome', 'Please test me']"
+  ],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 4,
+  "deeplink": "basic_c_u4",
+  "status": "MATCH",
+  "program_count": 10,
+  "pdf_count": 10,
+  "program_items": [
+   "What can we see near Seoul?",
+   "You can see a palace",
+   "What can we see near Busan?",
+   "You can see a fish market.",
+   "What can we see near Jeh joo?",
+   "You can see a volcano",
+   "What can we see near Tong young?",
+   "You can see a turtle ship.",
+   "What can we see near Ahndong?",
+   "You can see a folk village."
+  ],
+  "pdf_items": [
+   "What can we see near Seoul?",
+   "You can see a palace",
+   "What can we see near Busan?",
+   "You can see a fish market.",
+   "What can we see near Jeh joo?",
+   "You can see a volcano",
+   "What can we see near Tong young?",
+   "You can see a turtle ship.",
+   "What can we see near Ahndong?",
+   "You can see a folk village."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 5,
+  "deeplink": "basic_c_u5",
+  "status": "MISMATCH",
+  "program_count": 11,
+  "pdf_count": 5,
+  "program_items": [
+   "Hello students",
+   "This is the MRJ SPELLING BEE!",
+   "Spell pig!",
+   "Yes, good",
+   "Spell dog",
+   "C. A. T.",
+   "NO, sorry",
+   "Spell Seoul",
+   "Spell Tongyeong",
+   "T O N G Y E O N G",
+   "Yes, you win!"
+  ],
+  "pdf_items": [
+   "This is the MRJ SPELLING BEE!",
+   "Spell pig!",
+   "C. A. T.",
+   "T O N G Y E O N G",
+   "Yes, you win!"
+  ],
+  "only_on_program": [
+   "Hello students",
+   "Yes, good",
+   "Spell dog",
+   "NO, sorry",
+   "Spell Seoul",
+   "Spell Tongyeong"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [
+   "T O N G Y E O N G"
+  ],
+  "fix": [
+   "ADD to PDF basic_c U5 Day6 table: ['Hello students', 'Yes, good', 'Spell dog', 'NO, sorry', 'Spell Seoul', 'Spell Tongyeong']"
+  ],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 6,
+  "deeplink": "basic_c_u6",
+  "status": "MATCH",
+  "program_count": 6,
+  "pdf_count": 6,
+  "program_items": [
+   "DON'T TOUCH your arm",
+   "DON'T TOUCH your leg",
+   "DON'T TOUCH your knee",
+   "DON'T TOUCH your back",
+   "DON'T TOUCH your face",
+   "DON'T TOUCH your stomach"
+  ],
+  "pdf_items": [
+   "DON'T TOUCH your arm",
+   "DON'T TOUCH your leg",
+   "DON'T TOUCH your knee",
+   "DON'T TOUCH your back",
+   "DON'T TOUCH your face",
+   "DON'T TOUCH your stomach"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 7,
+  "deeplink": "basic_c_u7",
+  "status": "MISMATCH",
+  "program_count": 10,
+  "pdf_count": 8,
+  "program_items": [
+   "Come play with us.",
+   "Where is the seesaw?",
+   "It is here",
+   "Where is the slide?",
+   "It is there",
+   "Where is the swing?",
+   "Where is the jungle gym?",
+   "Where is the sandbox?",
+   "Where is the playhouse?",
+   "Where is the merry-go-round ?"
+  ],
+  "pdf_items": [
+   "Come play with us.",
+   "Where is the seesaw?",
+   "Where is the slide?",
+   "Where is the swing?",
+   "Where is the jungle gym?",
+   "Where is the sandbox?",
+   "Where is the playhouse?",
+   "Where is the merry-go-round ?"
+  ],
+  "only_on_program": [
+   "It is here",
+   "It is there"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF basic_c U7 Day6 table: ['It is here', 'It is there']"
+  ],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "basic_c",
+  "program_level": "bc",
+  "unit": 8,
+  "deeplink": "basic_c_u8",
+  "status": "MATCH",
+  "program_count": 9,
+  "pdf_count": 9,
+  "program_items": [
+   "I want a new doll",
+   "I want a new pencil case",
+   "I want a new school bag",
+   "I want new earphones",
+   "I want a new phone",
+   "I want new clothes",
+   "I want a new bike",
+   "I want a new computer",
+   "I want a new brother!"
+  ],
+  "pdf_items": [
+   "I want a new doll",
+   "I want a new pencil case",
+   "I want a new school bag",
+   "I want new earphones",
+   "I want a new phone",
+   "I want new clothes",
+   "I want a new bike",
+   "I want a new computer",
+   "I want a new brother!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1Ii2iKkHJzqMv_ce0BI03GxhO7NJk3VTB",
+  "local_pdf": "/workspace/printoff-v4/basic_c"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 1,
+  "deeplink": "int2a_u1",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 13,
+  "program_items": [
+   "Hey google, How is the weather in Daegu, South Korea?",
+   "If",
+   "In Tongyeong",
+   "It is cold.",
+   "It is windy.",
+   "In Canada,",
+   "It is snowy here.",
+   "Sorry. I didn't understand.",
+   "How is the weather here?"
+  ],
+  "pdf_items": [
+   "Hey google, How is the weather in Daegu, South Korea?",
+   "It is hot.",
+   "How is the weather in Tongyeong , South Korea",
+   "How is the weather in space?",
+   "It is cold.",
+   "How is the weather in Australia?",
+   "It is windy.",
+   "How is the weather in Canada?",
+   "It is sunny.",
+   "It is snowy here.",
+   "Sorry. I didn't understand.",
+   "Okay.",
+   "How is the weather here?"
+  ],
+  "only_on_program": [
+   "If",
+   "In Tongyeong",
+   "In Canada,"
+  ],
+  "only_on_pdf": [
+   "It is hot.",
+   "How is the weather in Tongyeong , South Korea",
+   "How is the weather in space?",
+   "How is the weather in Australia?",
+   "How is the weather in Canada?",
+   "It is sunny.",
+   "Okay."
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u1: ['It is hot.', 'How is the weather in Tongyeong , South Korea', 'How is the weather in space?', 'How is the weather in Australia?', 'How is the weather in Canada?', 'It is sunny.', 'Okay.']",
+   "ADD to PDF int2a U1 Day6 table: ['If', 'In Tongyeong', 'In Canada,']"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 2,
+  "deeplink": "int2a_u2",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 10,
+  "program_items": [
+   "There are snakes!",
+   "There is water!",
+   "There are bees!",
+   "There are ants!",
+   "There are spiders!"
+  ],
+  "pdf_items": [
+   "There are snakes!",
+   "Run!",
+   "There is water!",
+   "Come!",
+   "There are bees!",
+   "There is food!",
+   "There are ants!",
+   "There is a hotel!",
+   "There are spiders!",
+   "There is a washroom!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Run!",
+   "Come!",
+   "There is food!",
+   "There is a hotel!",
+   "There is a washroom!"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u2: ['Run!', 'Come!', 'There is food!', 'There is a hotel!', 'There is a washroom!']"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 3,
+  "deeplink": "int2a_u3",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 11,
+  "program_items": [
+   "Can you speak Chinese?",
+   "It has subtitles.",
+   "Can you speak French?",
+   "Can you speak Spanish ?",
+   "Can you speak Vietnamese ?",
+   "What languages can you speak?"
+  ],
+  "pdf_items": [
+   "Can you speak Chinese?",
+   "Nope.",
+   "It has subtitles.",
+   "Can you speak Japanese?",
+   "Can you speak French?",
+   "Can you speak German?",
+   "Can you speak Spanish ?",
+   "Can you speak Hindi?",
+   "Can you speak Vietnamese ?",
+   "Can you speak Korean?",
+   "What languages can you speak?"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Nope.",
+   "Can you speak Japanese?",
+   "Can you speak German?",
+   "Can you speak Hindi?",
+   "Can you speak Korean?"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u3: ['Nope.', 'Can you speak Japanese?', 'Can you speak German?', 'Can you speak Hindi?', 'Can you speak Korean?']"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 4,
+  "deeplink": "int2a_u4",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 10,
+  "program_items": [
+   "What do you want?",
+   "I want a blanket.",
+   "I want soup.",
+   "I want water.",
+   "What do you want now?"
+  ],
+  "pdf_items": [
+   "What do you want?",
+   "I want medicine.",
+   "I want a blanket.",
+   "I want tissue paper.",
+   "I want soup.",
+   "I want juice.",
+   "I want water.",
+   "I want my phone.",
+   "What do you want now?",
+   "I want a hug."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "I want medicine.",
+   "I want tissue paper.",
+   "I want juice.",
+   "I want my phone.",
+   "I want a hug."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u4: ['I want medicine.', 'I want tissue paper.', 'I want juice.', 'I want my phone.', 'I want a hug.']"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 5,
+  "deeplink": "int2a_u5",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 8,
+  "program_items": [
+   "Where is my phone?",
+   "I don't know",
+   "Maybe it is in the living room.",
+   "Maybe it is in the bedroom.",
+   "Your phone should be ringing now."
+  ],
+  "pdf_items": [
+   "Where is my phone?",
+   "I don't know, maybe it is in the kitchen.",
+   "Maybe it is in the bathroom.",
+   "Maybe it is in the living room.",
+   "Maybe it is in the garage.",
+   "Maybe it is in the bedroom.",
+   "Hey google! Where is my phone?",
+   "Your phone should be ringing now."
+  ],
+  "only_on_program": [
+   "I don't know"
+  ],
+  "only_on_pdf": [
+   "I don't know, maybe it is in the kitchen.",
+   "Maybe it is in the bathroom.",
+   "Maybe it is in the garage.",
+   "Hey google! Where is my phone?"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u5: [\"I don't know, maybe it is in the kitchen.\", 'Maybe it is in the bathroom.', 'Maybe it is in the garage.', 'Hey google! Where is my phone?']",
+   "ADD to PDF int2a U5 Day6 table: [\"I don't know\"]"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 6,
+  "deeplink": "int2a_u6",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 14,
+  "program_items": [
+   "Look at this funny video.",
+   "Look at this scary video.",
+   "Look at this gross video.",
+   "Look at this sad video.",
+   "Look at this weird video.",
+   "Look at this exciting video.",
+   "Look at this crazy video."
+  ],
+  "pdf_items": [
+   "Look at this funny video.",
+   "Yeah, it is really funny.",
+   "Look at this scary video.",
+   "Yeah, it is really scary.",
+   "Look at this gross video.",
+   "Yeah, it is really gross.",
+   "Look at this sad video.",
+   "Yeah, it is really sad.",
+   "Look at this weird video.",
+   "Yeah, it is really weird.",
+   "Look at this exciting video.",
+   "Yeah, it is really exciting.",
+   "Look at this crazy video.",
+   "Hey, that is me!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Yeah, it is really funny.",
+   "Yeah, it is really scary.",
+   "Yeah, it is really gross.",
+   "Yeah, it is really sad.",
+   "Yeah, it is really weird.",
+   "Yeah, it is really exciting.",
+   "Hey, that is me!"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u6: ['Yeah, it is really funny.', 'Yeah, it is really scary.', 'Yeah, it is really gross.', 'Yeah, it is really sad.', 'Yeah, it is really weird.', 'Yeah, it is really exciting.', 'Hey, that is me!']"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 7,
+  "deeplink": "int2a_u7",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 14,
+  "program_items": [
+   "Welcome to Juklim Elementary School.",
+   "Where is the teacher?",
+   "Where are our classmates?",
+   "Where is the principal ?",
+   "Where is the librarian?",
+   "Where is the lunch lady?",
+   "Where is the janitor?"
+  ],
+  "pdf_items": [
+   "Welcome to Juklim Elementary School.",
+   "Thank you.",
+   "Where is the teacher?",
+   "He is in the classroom.",
+   "Where are our classmates?",
+   "They are in the gym.",
+   "Where is the principal ?",
+   "He is in the office.",
+   "Where is the librarian?",
+   "She is in the library.",
+   "Where is the lunch lady?",
+   "She is in the cafeteria.",
+   "Where is the janitor?",
+   "In Korea, students clean their school."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Thank you.",
+   "He is in the classroom.",
+   "They are in the gym.",
+   "He is in the office.",
+   "She is in the library.",
+   "She is in the cafeteria.",
+   "In Korea, students clean their school."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u7: ['Thank you.', 'He is in the classroom.', 'They are in the gym.', 'He is in the office.', 'She is in the library.', 'She is in the cafeteria.', 'In Korea, students clean their school.']"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2a",
+  "program_level": "i2a",
+  "unit": 8,
+  "deeplink": "int2a_u8",
+  "status": "MISMATCH",
+  "program_count": 4,
+  "pdf_count": 8,
+  "program_items": [
+   "What do you do after school?",
+   "I play soccer.",
+   "I go to English class.",
+   "I take care of my little brother."
+  ],
+  "pdf_items": [
+   "What do you do after school?",
+   "I play computer games.",
+   "I play soccer.",
+   "I practice martial arts.",
+   "I go to English class.",
+   "I play piano.",
+   "I take care of my little brother.",
+   "I just relax."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "I play computer games.",
+   "I practice martial arts.",
+   "I play piano.",
+   "I just relax."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2a u8: ['I play computer games.', 'I practice martial arts.', 'I play piano.', 'I just relax.']"
+  ],
+  "drive_id": "1mZSuL2KVlT-PzfsMJiPzn4D9pYUj_ixK",
+  "local_pdf": "/workspace/printoff-v4/int2a"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 1,
+  "deeplink": "int2b_u1",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 12,
+  "program_items": [
+   "Hello, this is pizzaland",
+   "We close every Monday.",
+   "Hello? Hello?",
+   "It's Monday.",
+   "It's Wednesday.",
+   "It's Friday."
+  ],
+  "pdf_items": [
+   "Hello, this is pizzaland",
+   "Are you open tomorrow?",
+   "We close every Monday.",
+   "What day is it today?",
+   "Hello? Hello?",
+   "It's Sunday.",
+   "It's Monday.",
+   "It's Tuesday.",
+   "It's Wednesday.",
+   "It's Thursday.",
+   "It's Friday.",
+   "It's Saturday."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Are you open tomorrow?",
+   "What day is it today?",
+   "It's Sunday.",
+   "It's Tuesday.",
+   "It's Thursday.",
+   "It's Saturday."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u1: ['Are you open tomorrow?', 'What day is it today?', \"It's Sunday.\", \"It's Tuesday.\", \"It's Thursday.\", \"It's Saturday.\"]"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 2,
+  "deeplink": "int2b_u2",
+  "status": "MISMATCH",
+  "program_count": 10,
+  "pdf_count": 18,
+  "program_items": [
+   "Hey google,",
+   "It's seven thirty.",
+   "It is eight o'clock",
+   "It is eleven a.m.",
+   "It is three thirty",
+   "It is five fifty five",
+   "It is ten p.m.",
+   "It is ten a.m.",
+   "It is twelve o'clock",
+   "It is seven ten"
+  ],
+  "pdf_items": [
+   "What time is it now?",
+   "It's seven thirty.",
+   "It's time for breakfast.",
+   "It is eight o'clock",
+   "It is eleven a.m.",
+   "It's time for recess.",
+   "It is three thirty",
+   "It's snack time.",
+   "It is five fifty five",
+   "It's time for dinner.",
+   "It is ten p.m.",
+   "It's bedtime.",
+   "It is ten a.m.",
+   "It's time for online classes.",
+   "It is twelve o'clock",
+   "It's time for lunch.",
+   "It is seven ten",
+   "It's game time."
+  ],
+  "only_on_program": [
+   "Hey google,"
+  ],
+  "only_on_pdf": [
+   "What time is it now?",
+   "It's time for breakfast.",
+   "It's time for recess.",
+   "It's snack time.",
+   "It's time for dinner.",
+   "It's bedtime.",
+   "It's time for online classes.",
+   "It's time for lunch.",
+   "It's game time."
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u2: ['What time is it now?', \"It's time for breakfast.\", \"It's time for recess.\", \"It's snack time.\", \"It's time for dinner.\", \"It's bedtime.\", \"It's time for online classes.\", \"It's time for lunch.\", \"It's game time.\"]",
+   "ADD to PDF int2b U2 Day6 table: ['Hey google,']"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 3,
+  "deeplink": "int2b_u3",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 11,
+  "program_items": [
+   "What do you want to be",
+   "I want to be a computer hacker.",
+   "I want to be a scientist.",
+   "I want to be a food critic.",
+   "I want to be an English teacher.",
+   "I want to be a police officer."
+  ],
+  "pdf_items": [
+   "What do you want to be",
+   "in the future?",
+   "I want to be a computer hacker.",
+   "I want to be a pro-gamer.",
+   "I want to be a scientist.",
+   "I want to be an actress or a doctor.",
+   "I want to be a food critic.",
+   "I want to be a judge.",
+   "I want to be an English teacher.",
+   "I want to be the president.",
+   "I want to be a police officer."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "in the future?",
+   "I want to be a pro-gamer.",
+   "I want to be an actress or a doctor.",
+   "I want to be a judge.",
+   "I want to be the president."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u3: ['in the future?', 'I want to be a pro-gamer.', 'I want to be an actress or a doctor.', 'I want to be a judge.', 'I want to be the president.']"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 4,
+  "deeplink": "int2b_u4",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 11,
+  "program_items": [
+   "Welcome to Seven-Eleven.",
+   "What is about 100 won in Canada?",
+   "What is about 500 won in Canada?",
+   "What is about 1000 won in Canada?",
+   "What is about 5000 won in Canada?",
+   "Let's buy some more!"
+  ],
+  "pdf_items": [
+   "Welcome to Seven-Eleven.",
+   "How much is a hamburger in Canada?",
+   "What is about 100 won in Canada?",
+   "How much is a cup of coffee in Canada?",
+   "What is about 500 won in Canada?",
+   "How much is a car in Canada?",
+   "What is about 1000 won in Canada?",
+   "How much is a house in Canada?",
+   "What is about 5000 won in Canada?",
+   "Everything here is cheap!",
+   "Let's buy some more!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "How much is a hamburger in Canada?",
+   "How much is a cup of coffee in Canada?",
+   "How much is a car in Canada?",
+   "How much is a house in Canada?",
+   "Everything here is cheap!"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u4: ['How much is a hamburger in Canada?', 'How much is a cup of coffee in Canada?', 'How much is a car in Canada?', 'How much is a house in Canada?', 'Everything here is cheap!']"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 5,
+  "deeplink": "int2b_u5",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 12,
+  "program_items": [
+   "Somebody stole my bike.",
+   "I don't know",
+   "He is very tall.",
+   "He is very thin.",
+   "He is very young.",
+   "He is very good-looking",
+   "I think he is a she."
+  ],
+  "pdf_items": [
+   "Somebody stole my bike.",
+   "What did he look like?",
+   "Is he tall?",
+   "He is very tall.",
+   "Is he thin?",
+   "He is very thin.",
+   "Is he young?",
+   "He is very young.",
+   "Is he ugly?",
+   "He is very good-looking",
+   "Oh wait!",
+   "I think he is a she."
+  ],
+  "only_on_program": [
+   "I don't know"
+  ],
+  "only_on_pdf": [
+   "What did he look like?",
+   "Is he tall?",
+   "Is he thin?",
+   "Is he young?",
+   "Is he ugly?",
+   "Oh wait!"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u5: ['What did he look like?', 'Is he tall?', 'Is he thin?', 'Is he young?', 'Is he ugly?', 'Oh wait!']",
+   "ADD to PDF int2b U5 Day6 table: [\"I don't know\"]"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 6,
+  "deeplink": "int2b_u6",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 11,
+  "program_items": [
+   "Welcome to Parent's night.",
+   "Nice to meet you Mr. Jay",
+   "This is my math teacher, Ms. Soohok",
+   "This is my history teacher, Mrs. Yuksu",
+   "This is my art teacher, Ms. Meesool",
+   "This is my Korean teacher, Mr. Sejong"
+  ],
+  "pdf_items": [
+   "Welcome to Parent's night.",
+   "This is my English teacher, Mr. Jay",
+   "Nice to meet you Mr. Jay",
+   "Nice to meet you too.",
+   "This is my math teacher, Ms. Soohok",
+   "This is my science teacher, Mr. Gwohok",
+   "This is my history teacher, Mrs. Yuksu",
+   "This is my music teacher, Mr. Oommok",
+   "This is my art teacher, Ms. Meesool",
+   "This is my gym teacher, Mr. Chaiyook",
+   "This is my Korean teacher, Mr. Sejong"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "This is my English teacher, Mr. Jay",
+   "Nice to meet you too.",
+   "This is my science teacher, Mr. Gwohok",
+   "This is my music teacher, Mr. Oommok",
+   "This is my gym teacher, Mr. Chaiyook"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u6: ['This is my English teacher, Mr. Jay', 'Nice to meet you too.', 'This is my science teacher, Mr. Gwohok', 'This is my music teacher, Mr. Oommok', 'This is my gym teacher, Mr. Chaiyook']"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 7,
+  "deeplink": "int2b_u7",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 13,
+  "program_items": [
+   "Have you seen my transit card?",
+   "Let's think together.",
+   "Nope.",
+   "Is it under your desk?",
+   "Is it behind your phone?",
+   "Is it between your shoes?",
+   "Is it in your pocket?"
+  ],
+  "pdf_items": [
+   "Have you seen my transit card?",
+   "Sorry, but no.",
+   "Let's think together.",
+   "Is it in your pencil case?",
+   "Nope.",
+   "Is it on your books?",
+   "Is it under your desk?",
+   "I don't think so.",
+   "Is it behind your phone?",
+   "Is it in front of the stairs?",
+   "Is it between your shoes?",
+   "Is it next to the bus stop?",
+   "Is it in your pocket?"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Sorry, but no.",
+   "Is it in your pencil case?",
+   "Is it on your books?",
+   "I don't think so.",
+   "Is it in front of the stairs?",
+   "Is it next to the bus stop?"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u7: ['Sorry, but no.', 'Is it in your pencil case?', 'Is it on your books?', \"I don't think so.\", 'Is it in front of the stairs?', 'Is it next to the bus stop?']"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2b",
+  "program_level": "i2b",
+  "unit": 8,
+  "deeplink": "int2b_u8",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 10,
+  "program_items": [
+   "This is mine.",
+   "It is ours.",
+   "This is not yours, it is hers.",
+   "These are not yours.",
+   "What about mine?",
+   "Thank you."
+  ],
+  "pdf_items": [
+   "This is mine.",
+   "It is not yours.",
+   "It is ours.",
+   "This is mine and this is mine and this is mine.",
+   "This is not yours, it is hers.",
+   "This is not yours, it is his.",
+   "These are not yours.",
+   "What about mine?",
+   "This is for you.",
+   "Thank you."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "It is not yours.",
+   "This is mine and this is mine and this is mine.",
+   "This is not yours, it is his.",
+   "This is for you."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2b u8: ['It is not yours.', 'This is mine and this is mine and this is mine.', 'This is not yours, it is his.', 'This is for you.']"
+  ],
+  "drive_id": "10b0ghn6nTvTioZsg8EnpTqj6fRjqZsJf",
+  "local_pdf": "/workspace/printoff-v4/int2b"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 1,
+  "deeplink": "int2c_u1",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 10,
+  "program_items": [
+   "I love summer.",
+   "I love summer in Tongyeong City.",
+   "I love fall in Naejangsan National Park.",
+   "I love winter in Gangwon Province.",
+   "I love spring in Jinhae."
+  ],
+  "pdf_items": [
+   "I love summer.",
+   "How about you?",
+   "I love summer in Tongyeong City.",
+   "We can swim and visit many islands.",
+   "I love fall in Naejangsan National Park.",
+   "We can see beautiful fall leaves.",
+   "I love winter in Gangwon Province.",
+   "We can ski and skate.",
+   "I love spring in Jinhae.",
+   "We can see cherry blossoms everywhere."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "How about you?",
+   "We can swim and visit many islands.",
+   "We can see beautiful fall leaves.",
+   "We can ski and skate.",
+   "We can see cherry blossoms everywhere."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u1: ['How about you?', 'We can swim and visit many islands.', 'We can see beautiful fall leaves.', 'We can ski and skate.', 'We can see cherry blossoms everywhere.']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 2,
+  "deeplink": "int2c_u2",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 13,
+  "program_items": [
+   "What are you doing?",
+   "What is he doing?",
+   "What is she doing?",
+   "He is fishing.",
+   "What are they doing?",
+   "They are playing computer games.",
+   "We are making kimchi."
+  ],
+  "pdf_items": [
+   "What are you doing?",
+   "I am taking a picture.",
+   "What is he doing?",
+   "He is selling fruit.",
+   "What is she doing?",
+   "She is bowing.",
+   "He is fishing.",
+   "She is selling vegetables.",
+   "What are they doing?",
+   "They are playing Go.",
+   "They are playing computer games.",
+   "What are we doing?",
+   "We are making kimchi."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "I am taking a picture.",
+   "He is selling fruit.",
+   "She is bowing.",
+   "She is selling vegetables.",
+   "They are playing Go.",
+   "What are we doing?"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u2: ['I am taking a picture.', 'He is selling fruit.', 'She is bowing.', 'She is selling vegetables.', 'They are playing Go.', 'What are we doing?']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 3,
+  "deeplink": "int2c_u3",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 17,
+  "program_items": [
+   "Whose candy is this?",
+   "Is this yours?",
+   "Whose phone is this?",
+   "Whose garbage is this?",
+   "Whose watch is this?",
+   "Whose jacket is this?",
+   "Whose sunglasses are these?",
+   "Whose perfume is this?",
+   "Whose pen is this?"
+  ],
+  "pdf_items": [
+   "Whose candy is this?",
+   "It's mine. It's mine.",
+   "Is this yours?",
+   "Whose money is this?",
+   "Whose phone is this?",
+   "No, it's not mine.",
+   "Whose garbage is this?",
+   "It's not mine.",
+   "Whose watch is this?",
+   "Whose car is this?",
+   "Whose jacket is this?",
+   "Whose laptop is this?",
+   "Whose sunglasses are these?",
+   "Whose headphones are these?",
+   "Whose perfume is this?",
+   "Whose bike is this?",
+   "Whose pen is this?"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "It's mine. It's mine.",
+   "Whose money is this?",
+   "No, it's not mine.",
+   "It's not mine.",
+   "Whose car is this?",
+   "Whose laptop is this?",
+   "Whose headphones are these?",
+   "Whose bike is this?"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u3: [\"It's mine. It's mine.\", 'Whose money is this?', \"No, it's not mine.\", \"It's not mine.\", 'Whose car is this?', 'Whose laptop is this?', 'Whose headphones are these?', 'Whose bike is this?']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 4,
+  "deeplink": "int2c_u4",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 14,
+  "program_items": [
+   "What's your favorite subject?",
+   "What's your favorite animal?",
+   "What's your favorite food?",
+   "What's your favorite color?",
+   "What's your favorite music?",
+   "What's your favorite game?",
+   "What's your favorite sport?"
+  ],
+  "pdf_items": [
+   "What's your favorite subject?",
+   "My favorite subject is science.",
+   "What's your favorite animal?",
+   "I really like dogs.",
+   "What's your favorite food?",
+   "Gimbap is best.",
+   "What's your favorite color?",
+   "Blue is my favorite.",
+   "What's your favorite music?",
+   "I like everything.",
+   "What's your favorite game?",
+   "I really like Kart Rider.",
+   "What's your favorite sport?",
+   "Ice hockey all the way."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "My favorite subject is science.",
+   "I really like dogs.",
+   "Gimbap is best.",
+   "Blue is my favorite.",
+   "I like everything.",
+   "I really like Kart Rider.",
+   "Ice hockey all the way."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u4: ['My favorite subject is science.', 'I really like dogs.', 'Gimbap is best.', 'Blue is my favorite.', 'I like everything.', 'I really like Kart Rider.', 'Ice hockey all the way.']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 5,
+  "deeplink": "int2c_u5",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 9,
+  "program_items": [
+   "I am feeling a little confused.",
+   "I am feeling a little jealous.",
+   "How are you feeling today?",
+   "I am feeling a little ignored.",
+   "I am feeling a little guilty."
+  ],
+  "pdf_items": [
+   "I am feeling a little confused.",
+   "I am feeling a little embarrassed.",
+   "I am feeling a little jealous.",
+   "I am feeling fantastic",
+   "How are you feeling today?",
+   "I am feeling proud.",
+   "I am feeling a little ignored.",
+   "I am feeling satisfied.",
+   "I am feeling a little guilty."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "I am feeling a little embarrassed.",
+   "I am feeling fantastic",
+   "I am feeling proud.",
+   "I am feeling satisfied."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u5: ['I am feeling a little embarrassed.', 'I am feeling fantastic', 'I am feeling proud.', 'I am feeling satisfied.']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 6,
+  "deeplink": "int2c_u6",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 9,
+  "program_items": [
+   "I have a cold.",
+   "What's wrong?",
+   "I have a headache.",
+   "I have a stomachache.",
+   "I have a bloody nose."
+  ],
+  "pdf_items": [
+   "I have a cold.",
+   "No school for you!",
+   "What's wrong?",
+   "My knee hurts.",
+   "I have a headache.",
+   "My back hurts.",
+   "I have a stomachache.",
+   "My tooth hurts.",
+   "I have a bloody nose."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "No school for you!",
+   "My knee hurts.",
+   "My back hurts.",
+   "My tooth hurts."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u6: ['No school for you!', 'My knee hurts.', 'My back hurts.', 'My tooth hurts.']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 7,
+  "deeplink": "int2c_u7",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 9,
+  "program_items": [
+   "Is Beomjun there?",
+   "Hi, Is Jessica home?",
+   "What is his number?",
+   "Is this 010 6616 2558",
+   "010 3457 7544?"
+  ],
+  "pdf_items": [
+   "Is Beomjun there?",
+   "Hello, can I talk to Jinho please.",
+   "Hi, Is Jessica home?",
+   "Sorry, he is out.",
+   "What is his number?",
+   "What is her number?",
+   "Is this 010 6616 2558",
+   "010 4558 9231?",
+   "010 3457 7544?"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Hello, can I talk to Jinho please.",
+   "Sorry, he is out.",
+   "What is her number?",
+   "010 4558 9231?"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u7: ['Hello, can I talk to Jinho please.', 'Sorry, he is out.', 'What is her number?', '010 4558 9231?']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int2c",
+  "program_level": "i2c",
+  "unit": 8,
+  "deeplink": "int2c_u8",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 5,
+  "program_items": [
+   "I'll miss you.",
+   "Take care.",
+   "Time to say good-bye.",
+   "Good luck",
+   "I must be going."
+  ],
+  "pdf_items": [
+   "I'll miss you.",
+   "Take care.",
+   "Time to say good-bye.",
+   "I must be going.",
+   "Have a nice day"
+  ],
+  "only_on_program": [
+   "Good luck"
+  ],
+  "only_on_pdf": [
+   "Have a nice day"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i2c u8: ['Have a nice day']",
+   "ADD to PDF int2c U8 Day6 table: ['Good luck']"
+  ],
+  "drive_id": "11ebwMhtifcHJpDSh_zioHvhzCl-ra9VN",
+  "local_pdf": "/workspace/printoff-v4/int2c"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 1,
+  "deeplink": "int3a_u1",
+  "status": "MISMATCH",
+  "program_count": 8,
+  "pdf_count": 12,
+  "program_items": [
+   "What can you draw?",
+   "I can draw a circle",
+   "I can draw a star",
+   "I can draw a monster",
+   "I can",
+   "Really?",
+   "Yuck!",
+   "Wow!"
+  ],
+  "pdf_items": [
+   "What can you draw?",
+   "I can draw a circle",
+   "Me too.",
+   "I can draw a star",
+   "I can draw a monster",
+   "I can draw a tree",
+   "I can draw Korea",
+   "Really?",
+   "I can draw poo",
+   "Yuck!",
+   "I can draw a flag.",
+   "Wow!"
+  ],
+  "only_on_program": [
+   "I can"
+  ],
+  "only_on_pdf": [
+   "Me too.",
+   "I can draw a tree",
+   "I can draw Korea",
+   "I can draw poo",
+   "I can draw a flag."
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3a u1: ['Me too.', 'I can draw a tree', 'I can draw Korea', 'I can draw poo', 'I can draw a flag.']",
+   "ADD to PDF int3a U1 Day6 table: ['I can']"
+  ],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 2,
+  "deeplink": "int3a_u2",
+  "status": "MISMATCH",
+  "program_count": 10,
+  "pdf_count": 13,
+  "program_items": [
+   "What flavor do you like?",
+   "I like vanilla.",
+   "What about you?",
+   "I like chocolate.",
+   "And you?",
+   "Strawberry",
+   "Melon",
+   "I like mint",
+   "How about you?",
+   "Lemon"
+  ],
+  "pdf_items": [
+   "What flavor do you like?",
+   "My favorite flavor is",
+   "I like vanilla.",
+   "Vanilla?",
+   "What about you?",
+   "I like chocolate.",
+   "Chocolate.",
+   "And you?",
+   "What do you want to know?",
+   "Strawberry is better than",
+   "You like mint too?",
+   "How about you?",
+   "I am on a diet"
+  ],
+  "only_on_program": [
+   "Strawberry",
+   "Melon",
+   "I like mint",
+   "Lemon"
+  ],
+  "only_on_pdf": [
+   "My favorite flavor is",
+   "Vanilla?",
+   "Chocolate.",
+   "What do you want to know?",
+   "Strawberry is better than",
+   "You like mint too?",
+   "I am on a diet"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3a u2: ['My favorite flavor is', 'Vanilla?', 'Chocolate.', 'What do you want to know?', 'Strawberry is better than', 'You like mint too?', 'I am on a diet']",
+   "ADD to PDF int3a U2 Day6 table: ['Strawberry', 'Melon', 'I like mint', 'Lemon']"
+  ],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 3,
+  "deeplink": "int3a_u3",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 0,
+  "program_items": [
+   "This is good",
+   "That is bad",
+   "This is cold",
+   "This is small",
+   "This is soft",
+   "This is quiet"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "This is good",
+   "That is bad",
+   "This is cold",
+   "This is small",
+   "This is soft",
+   "This is quiet"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF int3a U3 Day6 table: ['This is good', 'That is bad', 'This is cold', 'This is small', 'This is soft', 'This is quiet']"
+  ],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 4,
+  "deeplink": "int3a_u4",
+  "status": "MATCH",
+  "program_count": 7,
+  "pdf_count": 7,
+  "program_items": [
+   "How old is he?",
+   "He is five years old.",
+   "How old is she?",
+   "She is ten years old",
+   "He is fifteen years old.",
+   "She is thirty years old",
+   "He is one hundred years old."
+  ],
+  "pdf_items": [
+   "How old is he?",
+   "He is five years old.",
+   "How old is she?",
+   "She is ten years old",
+   "He is fifteen years old.",
+   "She is thirty years old",
+   "He is one hundred years old."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 5,
+  "deeplink": "int3a_u5",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 10,
+  "program_items": [
+   "What is this bug?",
+   "It is a moth",
+   "It is a mosquito.",
+   "It is a cicada.",
+   "it is a spider.",
+   "It is a silkworm. Yum!",
+   "OH my God!"
+  ],
+  "pdf_items": [
+   "What is this bug?",
+   "It is a moth",
+   "It is a centipede.",
+   "It is a mosquito.",
+   "It is a cockroach.",
+   "It is a cicada.",
+   "it is a spider.",
+   "it is an ant.",
+   "It is a silkworm. Yum!",
+   "OH my God!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "It is a centipede.",
+   "It is a cockroach.",
+   "it is an ant."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3a u5: ['It is a centipede.', 'It is a cockroach.', 'it is an ant.']"
+  ],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 6,
+  "deeplink": "int3a_u6",
+  "status": "MISMATCH",
+  "program_count": 13,
+  "pdf_count": 13,
+  "program_items": [
+   "My name is Rose.",
+   "Rose?",
+   "I am Iris.",
+   "Iris?",
+   "I am Hunter",
+   "Hunter?",
+   "My name is Ginger",
+   "Ginger?",
+   "Ray.",
+   "My name is Mike.",
+   "Yep, Mike",
+   "Ivy is",
+   "Hey!"
+  ],
+  "pdf_items": [
+   "My name is Rose.",
+   "Rose?",
+   "What is your name?",
+   "I am Iris.",
+   "Iris?",
+   "Hunter?",
+   "My name is Ginger",
+   "Ginger?",
+   "Ray.",
+   "My name is Mike.",
+   "Ivy?",
+   "Hey!",
+   "Nice to meet you all"
+  ],
+  "only_on_program": [
+   "I am Hunter",
+   "Yep, Mike",
+   "Ivy is"
+  ],
+  "only_on_pdf": [
+   "What is your name?",
+   "Ivy?",
+   "Nice to meet you all"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3a u6: ['What is your name?', 'Ivy?', 'Nice to meet you all']",
+   "ADD to PDF int3a U6 Day6 table: ['I am Hunter', 'Yep, Mike', 'Ivy is']"
+  ],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 7,
+  "deeplink": "int3a_u7",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 0,
+  "program_items": [
+   "Stand up",
+   "Run Around",
+   "Climb up",
+   "Do jumping jacks",
+   "Sit down"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Stand up",
+   "Run Around",
+   "Climb up",
+   "Do jumping jacks",
+   "Sit down"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF int3a U7 Day6 table: ['Stand up', 'Run Around', 'Climb up', 'Do jumping jacks', 'Sit down']"
+  ],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3a",
+  "program_level": "i3a",
+  "unit": 8,
+  "deeplink": "int3a_u8",
+  "status": "MISMATCH",
+  "program_count": 11,
+  "pdf_count": 11,
+  "program_items": [
+   "What is your name?",
+   "I am 11 years old",
+   "I'm 18",
+   "What can you do?",
+   "What do you like?",
+   "I really like dogs",
+   "I like music",
+   "Where are you from?",
+   "Seoul? A",
+   "I have",
+   "I do not"
+  ],
+  "pdf_items": [
+   "What is your name?",
+   "How old are you",
+   "I am 11 years old",
+   "What can you do?",
+   "What do you like?",
+   "I really like dogs",
+   "Where are you from?",
+   "I am from Seoul",
+   "How big is your family?",
+   "What school do you go to?",
+   "I go to Juklim Elementary School"
+  ],
+  "only_on_program": [
+   "I'm 18",
+   "I like music",
+   "Seoul? A",
+   "I have",
+   "I do not"
+  ],
+  "only_on_pdf": [
+   "How old are you",
+   "I am from Seoul",
+   "How big is your family?",
+   "What school do you go to?",
+   "I go to Juklim Elementary School"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3a u8: ['How old are you', 'I am from Seoul', 'How big is your family?', 'What school do you go to?', 'I go to Juklim Elementary School']",
+   "ADD to PDF int3a U8 Day6 table: [\"I'm 18\", 'I like music', 'Seoul? A', 'I have', 'I do not']"
+  ],
+  "drive_id": "151g5Ovdk6mnJymb-a4Epbzkl1ybHz818",
+  "local_pdf": "/workspace/printoff-v4/int3a"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 1,
+  "deeplink": "int3b_u1",
+  "status": "MATCH",
+  "program_count": 9,
+  "pdf_count": 9,
+  "program_items": [
+   "What grade are you in?",
+   "I am in kindergarten .",
+   "I am in the first grade.",
+   "I am in the second grade.",
+   "I am in the third grade.",
+   "I am in the fourth grade.",
+   "I am in the fifth grade.",
+   "I am in the sixth grade.",
+   "I am in the seventh grade."
+  ],
+  "pdf_items": [
+   "What grade are you in?",
+   "I am in kindergarten .",
+   "I am in the first grade.",
+   "I am in the second grade.",
+   "I am in the third grade.",
+   "I am in the fourth grade.",
+   "I am in the fifth grade.",
+   "I am in the sixth grade.",
+   "I am in the seventh grade."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [],
+  "thinner_side": null,
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 2,
+  "deeplink": "int3b_u2",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 9,
+  "program_items": [
+   "Is this a gayageum?",
+   "No it is not, it is a guitar.",
+   "No it is not, it is a piano.",
+   "No it is not, it is a flute.",
+   "No it is not, it is a drum.",
+   "No it is not, it is a saxophone .",
+   "Yes, it is!"
+  ],
+  "pdf_items": [
+   "Is this a gayageum?",
+   "No it is not, it is a guitar.",
+   "No it is not, it is a piano.",
+   "No it is not, it is a flute.",
+   "No it is not, it is a drum.",
+   "No it is not, it is a violin.",
+   "No it is not, it is a saxophone .",
+   "No it is not, it is a microwave!",
+   "Yes, it is!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "No it is not, it is a violin.",
+   "No it is not, it is a microwave!"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3b u2: ['No it is not, it is a violin.', 'No it is not, it is a microwave!']"
+  ],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 3,
+  "deeplink": "int3b_u3",
+  "status": "MISMATCH",
+  "program_count": 4,
+  "pdf_count": 8,
+  "program_items": [
+   "Slower, please.",
+   "Bigger, please.",
+   "Cooler, please.",
+   "More, please."
+  ],
+  "pdf_items": [
+   "Slower, please.",
+   "Warmer, please.",
+   "Bigger, please.",
+   "Higher, please.",
+   "Cooler, please.",
+   "Smaller, please.",
+   "More, please.",
+   "Less, please."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Warmer, please.",
+   "Higher, please.",
+   "Smaller, please.",
+   "Less, please."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3b u3: ['Warmer, please.', 'Higher, please.', 'Smaller, please.', 'Less, please.']"
+  ],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 4,
+  "deeplink": "int3b_u4",
+  "status": "MISMATCH",
+  "program_count": 8,
+  "pdf_count": 11,
+  "program_items": [
+   "Who is this? Is she your mom?",
+   "No, she is my aunt",
+   "No, she is my grandmother",
+   "No, she is my teacher",
+   "No.",
+   "How",
+   "No, he is my brother",
+   "Wow,"
+  ],
+  "pdf_items": [
+   "Who is this? Is she your mom?",
+   "No, she is my aunt",
+   "No, she is my grandmother",
+   "No, she is my sister.",
+   "No, she is my teacher",
+   "Who is this? Is he your dad?",
+   "No.",
+   "No, he is my uncle",
+   "No, he is my grandfather.",
+   "No, he is my brother",
+   "No, he is me!"
+  ],
+  "only_on_program": [
+   "How",
+   "Wow,"
+  ],
+  "only_on_pdf": [
+   "No, she is my sister.",
+   "Who is this? Is he your dad?",
+   "No, he is my uncle",
+   "No, he is my grandfather.",
+   "No, he is me!"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3b u4: ['No, she is my sister.', 'Who is this? Is he your dad?', 'No, he is my uncle', 'No, he is my grandfather.', 'No, he is me!']",
+   "ADD to PDF int3b U4 Day6 table: ['How', 'Wow,']"
+  ],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 5,
+  "deeplink": "int3b_u5",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 12,
+  "program_items": [
+   "Eat up!",
+   "Wash up!",
+   "Clean up!",
+   "Slow down!",
+   "Lay down!",
+   "Quiet down!"
+  ],
+  "pdf_items": [
+   "Eat up!",
+   "Okay, mom.",
+   "Wash up!",
+   "Hurry up!",
+   "Clean up!",
+   "Yes, ma'am!",
+   "Slow down!",
+   "Okay, dad.",
+   "Lay down!",
+   "Get down!",
+   "Quiet down!",
+   "Yes, sir!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Okay, mom.",
+   "Hurry up!",
+   "Yes, ma'am!",
+   "Okay, dad.",
+   "Get down!",
+   "Yes, sir!"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3b u5: ['Okay, mom.', 'Hurry up!', \"Yes, ma'am!\", 'Okay, dad.', 'Get down!', 'Yes, sir!']"
+  ],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 6,
+  "deeplink": "int3b_u6",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 10,
+  "program_items": [
+   "What fruit are these?",
+   "What fruit are those?",
+   "They are lychee.",
+   "They are grapefruit.",
+   "They are durian."
+  ],
+  "pdf_items": [
+   "What fruit are these?",
+   "They are apples.",
+   "What fruit are those?",
+   "They are mangos.",
+   "They are lychee.",
+   "They are soursop.",
+   "They are grapefruit.",
+   "They are mangosteen.",
+   "They are durian.",
+   "They are not fruit! They are rocks."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "They are apples.",
+   "They are mangos.",
+   "They are soursop.",
+   "They are mangosteen.",
+   "They are not fruit! They are rocks."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3b u6: ['They are apples.', 'They are mangos.', 'They are soursop.', 'They are mangosteen.', 'They are not fruit! They are rocks.']"
+  ],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 7,
+  "deeplink": "int3b_u7",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 10,
+  "program_items": [
+   "Do not forget your transit card!",
+   "Do not forget your hat!",
+   "Do not forget your money!",
+   "Do not forget your school bag!",
+   "Do not forget your sister!"
+  ],
+  "pdf_items": [
+   "Do not forget your transit card!",
+   "Okay.",
+   "Do not forget your hat!",
+   "Do not forget your jacket!",
+   "Do not forget your money!",
+   "Do not forget your phone!",
+   "Do not forget your school bag!",
+   "Do not forget your lunch!",
+   "Do not forget your sister!",
+   "Oh my god, sorry!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Okay.",
+   "Do not forget your jacket!",
+   "Do not forget your phone!",
+   "Do not forget your lunch!",
+   "Oh my god, sorry!"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3b u7: ['Okay.', 'Do not forget your jacket!', 'Do not forget your phone!', 'Do not forget your lunch!', 'Oh my god, sorry!']"
+  ],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3b",
+  "program_level": "i3b",
+  "unit": 8,
+  "deeplink": "int3b_u8",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 17,
+  "program_items": [
+   "Hello!",
+   "I am from Canada.",
+   "I am 187cm tall.",
+   "I am 22 years old forever.",
+   "I came to teach English.",
+   "They are 310 mm.",
+   "I love Gimbap!",
+   "That is a secret!",
+   "That is a secret too!"
+  ],
+  "pdf_items": [
+   "Hello!",
+   "Where are you from?",
+   "I am from Canada.",
+   "How tall are you?",
+   "I am 187cm tall.",
+   "How old are you?",
+   "I am 22 years old forever.",
+   "Why did you come to Korea?",
+   "I came to teach English.",
+   "How big are your feet?",
+   "They are 310 mm.",
+   "What Korean food do you like?",
+   "I love Gimbap!",
+   "How much do you weigh?",
+   "That is a secret!",
+   "Do you have a girlfriend?",
+   "That is a secret too!"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Where are you from?",
+   "How tall are you?",
+   "How old are you?",
+   "Why did you come to Korea?",
+   "How big are your feet?",
+   "What Korean food do you like?",
+   "How much do you weigh?",
+   "Do you have a girlfriend?"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3b u8: ['Where are you from?', 'How tall are you?', 'How old are you?', 'Why did you come to Korea?', 'How big are your feet?', 'What Korean food do you like?', 'How much do you weigh?', 'Do you have a girlfriend?']"
+  ],
+  "drive_id": "1oj4AjbvmTQYMWWTHqmOSOPc4PlQAmxM9",
+  "local_pdf": "/workspace/printoff-v4/int3b"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 1,
+  "deeplink": "int3c_u1",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 14,
+  "program_items": [
+   "Do you like sweet food?",
+   "Try ddeok.",
+   "Do you like salty food?",
+   "It is a soy paste stew.",
+   "Try doraji namul.",
+   "Do you like sour food?",
+   "What is it?"
+  ],
+  "pdf_items": [
+   "Do you like sweet food?",
+   "Yes, I do.",
+   "Try ddeok.",
+   "It is a sticky rice dessert.",
+   "Do you like salty food?",
+   "Try doenjang guk.",
+   "It is a soy paste stew.",
+   "Do you like bitter food?",
+   "Try doraji namul.",
+   "It is a sautéed bellflower root.",
+   "Do you like sour food?",
+   "Try this.",
+   "What is it?",
+   "I do not know."
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "Yes, I do.",
+   "It is a sticky rice dessert.",
+   "Try doenjang guk.",
+   "Do you like bitter food?",
+   "It is a sautéed bellflower root.",
+   "Try this.",
+   "I do not know."
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3c u1: ['Yes, I do.', 'It is a sticky rice dessert.', 'Try doenjang guk.', 'Do you like bitter food?', 'It is a sautéed bellflower root.', 'Try this.', 'I do not know.']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 2,
+  "deeplink": "int3c_u2",
+  "status": "MISMATCH",
+  "program_count": 5,
+  "pdf_count": 5,
+  "program_items": [
+   "Do not run",
+   "Do not open it",
+   "Do not sleep",
+   "Do not draw here",
+   "Do not touch"
+  ],
+  "pdf_items": [
+   "Do not open it",
+   "Do not pull it",
+   "Do not throw that.",
+   "Do not draw here",
+   "Please, do not cry"
+  ],
+  "only_on_program": [
+   "Do not run",
+   "Do not sleep",
+   "Do not touch"
+  ],
+  "only_on_pdf": [
+   "Do not pull it",
+   "Do not throw that.",
+   "Please, do not cry"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3c u2: ['Do not pull it', 'Do not throw that.', 'Please, do not cry']",
+   "ADD to PDF int3c U2 Day6 table: ['Do not run', 'Do not sleep', 'Do not touch']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 3,
+  "deeplink": "int3c_u3",
+  "status": "MISMATCH",
+  "program_count": 7,
+  "pdf_count": 8,
+  "program_items": [
+   "Can I play outside?",
+   "not yet, put on your shirt",
+   "not yet, put on your pants",
+   "not yet, put on your socks",
+   "not yet, put on your jacket",
+   "not yet, put on your shoes",
+   "IT IS TOO COLD. CAN I WATCH TV?"
+  ],
+  "pdf_items": [
+   "Can I play outside?",
+   "not yet, put on your shirt",
+   "not yet, put on your pants",
+   "not yet, put on your socks",
+   "not yet, put on your jacket",
+   "not yet, put on your gloves",
+   "not yet, put on your shoes",
+   "IT IS TOO COLD. CAN I WATCH TV?"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "not yet, put on your gloves"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3c u3: ['not yet, put on your gloves']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 4,
+  "deeplink": "int3c_u4",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 7,
+  "program_items": [
+   "I'm bored",
+   "I cannot sing",
+   "I don't like sports.",
+   "It's too scary",
+   "I don't like tv.",
+   "I am not hungry.",
+   "My throat hurts",
+   "My legs are short",
+   "Good idea."
+  ],
+  "pdf_items": [
+   "I don't like sports.",
+   "Let's climb up the jungle gym.",
+   "I don't like tv.",
+   "I am not hungry.",
+   "My legs are short",
+   "Let's play an rpg",
+   "Good idea."
+  ],
+  "only_on_program": [
+   "I'm bored",
+   "I cannot sing",
+   "It's too scary",
+   "My throat hurts"
+  ],
+  "only_on_pdf": [
+   "Let's climb up the jungle gym.",
+   "Let's play an rpg"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3c u4: [\"Let's climb up the jungle gym.\", \"Let's play an rpg\"]",
+   "ADD to PDF int3c U4 Day6 table: [\"I'm bored\", 'I cannot sing', \"It's too scary\", 'My throat hurts']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 5,
+  "deeplink": "int3c_u5",
+  "status": "MISMATCH",
+  "program_count": 4,
+  "pdf_count": 6,
+  "program_items": [
+   "Study!",
+   "Nothing",
+   "I have a book.",
+   "I have a chess board"
+  ],
+  "pdf_items": [
+   "Study!",
+   "What do you have?",
+   "I have a book.",
+   "I have a puzzle",
+   "I have a chess board",
+   "I have my phone"
+  ],
+  "only_on_program": [
+   "Nothing"
+  ],
+  "only_on_pdf": [
+   "What do you have?",
+   "I have a puzzle",
+   "I have my phone"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3c u5: ['What do you have?', 'I have a puzzle', 'I have my phone']",
+   "ADD to PDF int3c U5 Day6 table: ['Nothing']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 6,
+  "deeplink": "int3c_u6",
+  "status": "MISMATCH",
+  "program_count": 9,
+  "pdf_count": 12,
+  "program_items": [
+   "This is my mom",
+   "A professor? Great!",
+   "Pardon?",
+   "How many provinces are there in Korea?",
+   "How many national parks are there in Korea?",
+   "How many islands are there in Korea?",
+   "How many volcanoes are there in Korea?",
+   "How many deserts are there in Korea?",
+   "How many people are there in Korea?"
+  ],
+  "pdf_items": [
+   "This is my mom",
+   "She is a professor",
+   "A professor? Great!",
+   "How many cities are there in Korea?",
+   "Pardon?",
+   "How many provinces are there in Korea?",
+   "How many national parks are there in Korea?",
+   "How many islands are there in Korea?",
+   "How many volcanoes are there in Korea?",
+   "How many deserts are there in Korea?",
+   "How many people are there in Korea?",
+   "In 2020, almost 52,000,000"
+  ],
+  "only_on_program": [],
+  "only_on_pdf": [
+   "She is a professor",
+   "How many cities are there in Korea?",
+   "In 2020, almost 52,000,000"
+  ],
+  "thinner_side": "program",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3c u6: ['She is a professor', 'How many cities are there in Korea?', 'In 2020, almost 52,000,000']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 7,
+  "deeplink": "int3c_u7",
+  "status": "MISMATCH",
+  "program_count": 6,
+  "pdf_count": 9,
+  "program_items": [
+   "Can you dance?",
+   "Can you jump?",
+   "Can you fight?",
+   "Can you walk",
+   "Can you fly?",
+   "No I can not"
+  ],
+  "pdf_items": [
+   "Can you dance?",
+   "Can you jump?",
+   "Can you sing?",
+   "Can you fight?",
+   "Can you type?",
+   "Can you cook?",
+   "Can you fly?",
+   "Can you love?",
+   "No I can not"
+  ],
+  "only_on_program": [
+   "Can you walk"
+  ],
+  "only_on_pdf": [
+   "Can you sing?",
+   "Can you type?",
+   "Can you cook?",
+   "Can you love?"
+  ],
+  "thinner_side": "both",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to program i3c u7: ['Can you sing?', 'Can you type?', 'Can you cook?', 'Can you love?']",
+   "ADD to PDF int3c U7 Day6 table: ['Can you walk']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "int3c",
+  "program_level": "i3c",
+  "unit": 8,
+  "deeplink": "int3c_u8",
+  "status": "MISMATCH",
+  "program_count": 15,
+  "pdf_count": 14,
+  "program_items": [
+   "DETENTION!",
+   "What time is it?",
+   "It is five o'clock",
+   "Can we go home?",
+   "No!",
+   "It is six o'clock",
+   "It is seven o'clock",
+   "It is eight o'clock",
+   "It is nine o'clock",
+   "It is ten o'clock",
+   "Can we go home please",
+   "No way!",
+   "What time is it?",
+   "It is eleven o'clock",
+   "It is midnight"
+  ],
+  "pdf_items": [
+   "DETENTION!",
+   "What time is it?",
+   "It is five o'clock",
+   "Can we go home?",
+   "No!",
+   "It is six o'clock",
+   "It is seven o'clock",
+   "It is eight o'clock",
+   "It is nine o'clock",
+   "It is ten o'clock",
+   "Can we go home please",
+   "No way!",
+   "What time is it?",
+   "It is eleven o'clock"
+  ],
+  "only_on_program": [
+   "It is midnight"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "local_repo_differs_from_live": false,
+  "pdf_text_check_missing": [],
+  "fix": [
+   "ADD to PDF int3c U8 Day6 table: ['It is midnight']"
+  ],
+  "drive_id": "1KnilUODDopwO6L01ovQ-rpHA6pW-8QaC",
+  "local_pdf": "/workspace/printoff-v4/int3c"
+ },
+ {
+  "book": "BASIC_REVIEW",
+  "program_level": "ba-review",
+  "unit": 1,
+  "deeplink": "ba_review_u1",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "Goodbye, mom.",
+   "Hello, Mr. Cat",
+   "Four",
+   "Five",
+   "I am angry.",
+   "I am hungry.",
+   "I like you!",
+   "Sorry",
+   "I love my dog Zoey.",
+   "I love my cat Leo",
+   "Look at my new earphones. .",
+   "Look at my new shoes."
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Goodbye, mom.",
+   "Hello, Mr. Cat",
+   "Four",
+   "Five",
+   "I am angry.",
+   "I am hungry.",
+   "I like you!",
+   "Sorry",
+   "I love my dog Zoey.",
+   "I love my cat Leo",
+   "Look at my new earphones. .",
+   "Look at my new shoes."
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=ba_review_u1; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map ba_review_uN -> level ba-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "BASIC_REVIEW",
+  "program_level": "ba-review",
+  "unit": 2,
+  "deeplink": "ba_review_u2",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "Unplug your headset",
+   "Restart your computer",
+   "See you tomorrow.",
+   "Sorry",
+   "Excuse me",
+   "I do not understand.",
+   "Show it",
+   "You lose",
+   "What does cat mean?",
+   "You are welcome",
+   "What can we see near Seoul?",
+   "You can see a palace"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Unplug your headset",
+   "Restart your computer",
+   "See you tomorrow.",
+   "Sorry",
+   "Excuse me",
+   "I do not understand.",
+   "Show it",
+   "You lose",
+   "What does cat mean?",
+   "You are welcome",
+   "What can we see near Seoul?",
+   "You can see a palace"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=ba_review_u2; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map ba_review_uN -> level ba-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "BASIC_REVIEW",
+  "program_level": "ba-review",
+  "unit": 3,
+  "deeplink": "ba_review_u3",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "This is my brother",
+   "This is my uncle",
+   "It is a headset.",
+   "It is a cube.",
+   "It is a night light.",
+   "It is a teddy bear.",
+   "I like my body.",
+   "Me too!",
+   "Hello students",
+   "This is the MRJ SPELLING BEE!",
+   "Don't touch your arm",
+   "Don't touch your leg"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "This is my brother",
+   "This is my uncle",
+   "It is a headset.",
+   "It is a cube.",
+   "It is a night light.",
+   "It is a teddy bear.",
+   "I like my body.",
+   "Me too!",
+   "Hello students",
+   "This is the MRJ SPELLING BEE!",
+   "Don't touch your arm",
+   "Don't touch your leg"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=ba_review_u3; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map ba_review_uN -> level ba-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "BASIC_REVIEW",
+  "program_level": "ba-review",
+  "unit": 4,
+  "deeplink": "ba_review_u4",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "I can play the piano",
+   "I can draw",
+   "Phew!",
+   "100",
+   "It is orange",
+   "It is yellow",
+   "I am 66",
+   "Yes",
+   "Where is the slide?",
+   "It is there",
+   "I want a new computer",
+   "I want a new brother!"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "I can play the piano",
+   "I can draw",
+   "Phew!",
+   "100",
+   "It is orange",
+   "It is yellow",
+   "I am 66",
+   "Yes",
+   "Where is the slide?",
+   "It is there",
+   "I want a new computer",
+   "I want a new brother!"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=ba_review_u4; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map ba_review_uN -> level ba-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT2_REVIEW",
+  "program_level": "i2-review",
+  "unit": 1,
+  "deeplink": "i2_review_u1",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 18,
+  "pdf_count": 0,
+  "program_items": [
+   "Hey google, How is the weather in Daegu, South Korea?",
+   "It is cold.",
+   "It is snowy here.",
+   "Hello, this is pizzaland",
+   "Hello? Hello?",
+   "It's Wednesday.",
+   "I love summer.",
+   "I love summer in Tongyeong City.",
+   "I love winter in Gangwon Province.",
+   "There are snakes!",
+   "There is water!",
+   "There are ants!",
+   "Hey google,",
+   "It is eleven a.m.",
+   "It is ten p.m.",
+   "What are you doing?",
+   "What is she doing?",
+   "What are they doing?"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Hey google, How is the weather in Daegu, South Korea?",
+   "It is cold.",
+   "It is snowy here.",
+   "Hello, this is pizzaland",
+   "Hello? Hello?",
+   "It's Wednesday.",
+   "I love summer.",
+   "I love summer in Tongyeong City.",
+   "I love winter in Gangwon Province.",
+   "There are snakes!",
+   "There is water!",
+   "There are ants!",
+   "Hey google,",
+   "It is eleven a.m.",
+   "It is ten p.m.",
+   "What are you doing?",
+   "What is she doing?",
+   "What are they doing?"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i2_review_u1; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i2_review_uN -> level i2-review; optionally ADD 18-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT2_REVIEW",
+  "program_level": "i2-review",
+  "unit": 2,
+  "deeplink": "i2_review_u2",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 18,
+  "pdf_count": 0,
+  "program_items": [
+   "Can you speak Chinese?",
+   "Can you speak French?",
+   "Can you speak Vietnamese ?",
+   "What do you want to be",
+   "I want to be a scientist.",
+   "I want to be an English teacher.",
+   "Whose candy is this?",
+   "Whose garbage is this?",
+   "Whose sunglasses are these?",
+   "What do you want?",
+   "I want a blanket.",
+   "I want water.",
+   "Welcome to Seven-Eleven.",
+   "What is about 500 won in Canada?",
+   "What is about 5000 won in Canada?",
+   "What's your favorite subject?",
+   "What's your favorite food?",
+   "What's your favorite music?"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Can you speak Chinese?",
+   "Can you speak French?",
+   "Can you speak Vietnamese ?",
+   "What do you want to be",
+   "I want to be a scientist.",
+   "I want to be an English teacher.",
+   "Whose candy is this?",
+   "Whose garbage is this?",
+   "Whose sunglasses are these?",
+   "What do you want?",
+   "I want a blanket.",
+   "I want water.",
+   "Welcome to Seven-Eleven.",
+   "What is about 500 won in Canada?",
+   "What is about 5000 won in Canada?",
+   "What's your favorite subject?",
+   "What's your favorite food?",
+   "What's your favorite music?"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i2_review_u2; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i2_review_uN -> level i2-review; optionally ADD 18-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT2_REVIEW",
+  "program_level": "i2-review",
+  "unit": 3,
+  "deeplink": "i2_review_u3",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 18,
+  "pdf_count": 0,
+  "program_items": [
+   "Where is my phone?",
+   "I don't know",
+   "Maybe it is in the bedroom.",
+   "Somebody stole my bike.",
+   "He is very tall.",
+   "He is very young.",
+   "I am feeling a little confused.",
+   "I am feeling a little jealous.",
+   "I am feeling a little ignored.",
+   "Look at this funny video.",
+   "Look at this gross video.",
+   "Look at this weird video.",
+   "Welcome to Parent's night.",
+   "This is my math teacher, Ms. Soohok",
+   "This is my art teacher, Ms. Meesool",
+   "I have a cold.",
+   "What's wrong?",
+   "I have a stomachache."
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Where is my phone?",
+   "I don't know",
+   "Maybe it is in the bedroom.",
+   "Somebody stole my bike.",
+   "He is very tall.",
+   "He is very young.",
+   "I am feeling a little confused.",
+   "I am feeling a little jealous.",
+   "I am feeling a little ignored.",
+   "Look at this funny video.",
+   "Look at this gross video.",
+   "Look at this weird video.",
+   "Welcome to Parent's night.",
+   "This is my math teacher, Ms. Soohok",
+   "This is my art teacher, Ms. Meesool",
+   "I have a cold.",
+   "What's wrong?",
+   "I have a stomachache."
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i2_review_u3; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i2_review_uN -> level i2-review; optionally ADD 18-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT2_REVIEW",
+  "program_level": "i2-review",
+  "unit": 4,
+  "deeplink": "i2_review_u4",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 18,
+  "pdf_count": 0,
+  "program_items": [
+   "Welcome to Juklim Elementary School.",
+   "Where are our classmates?",
+   "Where is the librarian?",
+   "Have you seen my transit card?",
+   "Nope.",
+   "Is it behind your phone?",
+   "Is Beomjun there?",
+   "Hi, Is Jessica home?",
+   "Is this 010 6616 2558",
+   "What do you do after school?",
+   "I play soccer.",
+   "I go to English class.",
+   "This is mine.",
+   "This is not yours, it is hers.",
+   "What about mine?",
+   "I'll miss you.",
+   "Take care.",
+   "Good luck"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Welcome to Juklim Elementary School.",
+   "Where are our classmates?",
+   "Where is the librarian?",
+   "Have you seen my transit card?",
+   "Nope.",
+   "Is it behind your phone?",
+   "Is Beomjun there?",
+   "Hi, Is Jessica home?",
+   "Is this 010 6616 2558",
+   "What do you do after school?",
+   "I play soccer.",
+   "I go to English class.",
+   "This is mine.",
+   "This is not yours, it is hers.",
+   "What about mine?",
+   "I'll miss you.",
+   "Take care.",
+   "Good luck"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i2_review_u4; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i2_review_uN -> level i2-review; optionally ADD 18-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT3_REVIEW",
+  "program_level": "i3-review",
+  "unit": 1,
+  "deeplink": "i3_review_u1",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "What can you draw?",
+   "I can",
+   "What grade are you in?",
+   "I am in the third grade.",
+   "Do you like sweet food?",
+   "It is a soy paste stew.",
+   "What flavor do you like?",
+   "Strawberry",
+   "Is this a gayageum?",
+   "No it is not, it is a flute.",
+   "Do not run",
+   "Do not sleep"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "What can you draw?",
+   "I can",
+   "What grade are you in?",
+   "I am in the third grade.",
+   "Do you like sweet food?",
+   "It is a soy paste stew.",
+   "What flavor do you like?",
+   "Strawberry",
+   "Is this a gayageum?",
+   "No it is not, it is a flute.",
+   "Do not run",
+   "Do not sleep"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i3_review_u1; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i3_review_uN -> level i3-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT3_REVIEW",
+  "program_level": "i3-review",
+  "unit": 2,
+  "deeplink": "i3_review_u2",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "This is good",
+   "This is small",
+   "Slower, please.",
+   "Cooler, please.",
+   "Can I play outside?",
+   "not yet, put on your socks",
+   "How old is he?",
+   "She is ten years old",
+   "Who is this? Is she your mom?",
+   "No.",
+   "I'm bored",
+   "I don't like tv."
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "This is good",
+   "This is small",
+   "Slower, please.",
+   "Cooler, please.",
+   "Can I play outside?",
+   "not yet, put on your socks",
+   "How old is he?",
+   "She is ten years old",
+   "Who is this? Is she your mom?",
+   "No.",
+   "I'm bored",
+   "I don't like tv."
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i3_review_u2; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i3_review_uN -> level i3-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT3_REVIEW",
+  "program_level": "i3-review",
+  "unit": 3,
+  "deeplink": "i3_review_u3",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "What is this bug?",
+   "It is a cicada.",
+   "Eat up!",
+   "Slow down!",
+   "Study!",
+   "I have a book.",
+   "My name is Rose.",
+   "My name is Ginger",
+   "What fruit are these?",
+   "They are lychee.",
+   "This is my mom",
+   "How many national parks are there in Korea?"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "What is this bug?",
+   "It is a cicada.",
+   "Eat up!",
+   "Slow down!",
+   "Study!",
+   "I have a book.",
+   "My name is Rose.",
+   "My name is Ginger",
+   "What fruit are these?",
+   "They are lychee.",
+   "This is my mom",
+   "How many national parks are there in Korea?"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i3_review_u3; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i3_review_uN -> level i3-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ },
+ {
+  "book": "INT3_REVIEW",
+  "program_level": "i3-review",
+  "unit": 4,
+  "deeplink": "i3_review_u4",
+  "status": "PDF_HAS_NO_DAY6_ITEMS",
+  "program_count": 12,
+  "pdf_count": 0,
+  "program_items": [
+   "Stand up",
+   "Climb up",
+   "Do not forget your transit card!",
+   "Do not forget your money!",
+   "Can you dance?",
+   "Can you walk",
+   "What is your name?",
+   "I really like dogs",
+   "Hello!",
+   "I came to teach English.",
+   "Can you dance?",
+   "Can you walk"
+  ],
+  "pdf_items": [],
+  "only_on_program": [
+   "Stand up",
+   "Climb up",
+   "Do not forget your transit card!",
+   "Do not forget your money!",
+   "Can you dance?",
+   "Can you walk",
+   "What is your name?",
+   "I really like dogs",
+   "Hello!",
+   "I came to teach English.",
+   "Can you dance?",
+   "Can you walk"
+  ],
+  "only_on_pdf": [],
+  "thinner_side": "pdf",
+  "fix": [
+   "PDF only prints link day6-talk/?unit=i3_review_u4; deep-link regex in js/app.js does NOT accept review keys -> opens home. Fix app deepLinkUnit to map i3_review_uN -> level i3-review; optionally ADD 12-line student list to review PDF."
+  ],
+  "local_pdf": "/workspace/printoff-review-2026-10-27/"
+ }
+]
