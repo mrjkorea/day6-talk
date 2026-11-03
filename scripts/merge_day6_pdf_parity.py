@@ -20,6 +20,24 @@ AUDIO_JAY7 = ROOT / "audio" / "voices" / "jay7"
 
 TAG_RE = re.compile(r"^\[[^\]]+\]\s*")
 
+# Broken program-only fragments with no PDF line — expand to full kid lines (keep audio paths).
+STUDENT_EXPANSIONS: dict[tuple[str, int], dict[str, str]] = {
+    ("i3a", 6): {"Ivy is": "My name is Ivy."},
+    ("i3a", 8): {
+        "I have": "I have something to say.",
+        "I do not": "I do not know you yet.",
+        "Seoul? A": "I am from Seoul",
+    },
+    ("i3b", 4): {
+        "How": "How do you know?",
+        "Wow,": "Wow, you are handsome!",
+    },
+}
+
+
+def expand_student(level: str, unit: int, student: str) -> str:
+    return STUDENT_EXPANSIONS.get((level, unit), {}).get(student, student)
+
 
 def normalize(text: str) -> str:
     t = (text or "").lower().strip()
@@ -57,6 +75,9 @@ def keep_program_line(p: str, mu: dict, pdf_items: list[str]) -> bool:
         return True
     if mu.get("thinner_side") == "pdf":
         return True
+    if (mu.get("program_level"), int(mu.get("unit", 0))) in STUDENT_EXPANSIONS:
+        if p in STUDENT_EXPANSIONS[(mu["program_level"], int(mu["unit"]))]:
+            return True
     return not is_fragment(p, pdf_items)
 
 
@@ -265,8 +286,10 @@ def main() -> None:
         added = 0
 
         for student in order:
-            sn = normalize(student)
-            canon = pdf_canonical(student, pdf_items)
+            canon = expand_student(
+                level, unit_n, pdf_canonical(student, pdf_items)
+            )
+            sn = normalize(canon)
             existing = by_norm.get(sn)
 
             if existing and normalize(existing.get("student", "")) != normalize(canon):

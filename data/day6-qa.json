@@ -4033,13 +4033,13 @@
               "audio": "i3a/u06/11.mp3"
             },
             {
-              "student": "Ivy is",
+              "student": "My name is Ivy.",
               "reply": "[happy] Ivy is your friend? She sounds nice.",
               "audio": "i3a/u06/12.mp3"
             },
             {
               "student": "Ivy?",
-              "reply": "[happy] Good question!",
+              "reply": "[happy] Ivy? Like the green plant on the wall!",
               "audio": "i3a/u06/15.mp3"
             },
             {
@@ -4151,8 +4151,18 @@
             },
             {
               "student": "I go to Juklim Elementary School",
-              "reply": "[happy] Okay.",
+              "reply": "[happy] Juklim Elementary! I know that school!",
               "audio": "i3a/u08/16.mp3"
+            },
+            {
+              "student": "I have something to say.",
+              "reply": "[happy] You have what? Tell me more!",
+              "audio": "i3a/u08/10.mp3"
+            },
+            {
+              "student": "I do not know you yet.",
+              "reply": "[happy] That is okay. I am the teacher here.",
+              "audio": "i3a/u08/11.mp3"
             }
           ]
         }
@@ -4350,13 +4360,18 @@
               "audio": "i3b/u04/05.mp3"
             },
             {
-              "student": "No, he is my uncle",
+              "student": "How do you know?",
               "reply": "[happy] This is how: I look at the face.",
+              "audio": "i3b/u04/06.mp3"
+            },
+            {
+              "student": "No, he is my uncle",
+              "reply": "[happy] Okay. I see his face now!",
               "audio": "i3b/u04/11.mp3"
             },
             {
               "student": "No, he is my grandfather.",
-              "reply": "[happy] Okay.",
+              "reply": "[happy] Your grandfather? He looks young!",
               "audio": "i3b/u04/12.mp3"
             },
             {
@@ -4365,8 +4380,13 @@
               "audio": "i3b/u04/07.mp3"
             },
             {
-              "student": "No, he is me!",
+              "student": "Wow, you are handsome!",
               "reply": "[surprised] I know. I am very handsome!",
+              "audio": "i3b/u04/08.mp3"
+            },
+            {
+              "student": "No, he is me!",
+              "reply": "[happy] Okay, okay. You got me!",
               "audio": "i3b/u04/13.mp3"
             }
           ]

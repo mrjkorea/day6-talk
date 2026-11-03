@@ -786,7 +786,7 @@
   "Okay. Here is some more!": "i3b/u03/04.mp3",
   "[happy] Oh! Hello, teacher!": "i3b/u04/04.mp3",
   "Oh! Hello, teacher!": "i3b/u04/04.mp3",
-  "[happy] This is how: I look at the face.": "i3b/u04/11.mp3",
+  "[happy] This is how: I look at the face.": "i3b/u04/06.mp3",
   "This is how: I look at the face.": "i3b/u04/06.mp3",
   "[happy] Okay. I will wash my hands.": "i3b/u05/02.mp3",
   "Okay. I will wash my hands.": "i3b/u05/02.mp3",
@@ -869,5 +869,15 @@
   "[happy] I am a teacher. How old are you?": "i3a/u08/12.mp3",
   "I am a teacher. How old are you?": "i3a/u08/12.mp3",
   "[happy] Seoul is a very big city!": "i3a/u08/13.mp3",
-  "Seoul is a very big city!": "i3a/u08/13.mp3"
+  "Seoul is a very big city!": "i3a/u08/13.mp3",
+  "[happy] Ivy? Like the green plant on the wall!": "i3a/u06/15.mp3",
+  "Ivy? Like the green plant on the wall!": "i3a/u06/15.mp3",
+  "[happy] Juklim Elementary! I know that school!": "i3a/u08/16.mp3",
+  "Juklim Elementary! I know that school!": "i3a/u08/16.mp3",
+  "[happy] Okay. I see his face now!": "i3b/u04/11.mp3",
+  "Okay. I see his face now!": "i3b/u04/11.mp3",
+  "[happy] Your grandfather? He looks young!": "i3b/u04/12.mp3",
+  "Your grandfather? He looks young!": "i3b/u04/12.mp3",
+  "[happy] Okay, okay. You got me!": "i3b/u04/13.mp3",
+  "Okay, okay. You got me!": "i3b/u04/13.mp3"
 }
