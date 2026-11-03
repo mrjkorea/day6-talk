@@ -2,7 +2,7 @@
   "name": "day6-talk",
   "private": true,
   "scripts": {
-    "test": "node --test test/*.test.js scripts/test_auth_progress.mjs scripts/test_speak_order.mjs && node scripts/check_reply_clear.js",
+    "test": "node --test test/*.test.js scripts/test_auth_progress.mjs scripts/test_speak_order.mjs && node scripts/check_reply_clear.js && python3 scripts/verify_day6_pdf_parity.py",
     "bench": "echo bench: see pronounce/tools/bench-trial.mjs"
   },
   "devDependencies": {
