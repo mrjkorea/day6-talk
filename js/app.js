@@ -21,6 +21,9 @@
     doneIds: new Set(),
     doneRows: new Map(),
     authRows: [],
+    attemptStartedAt: 0,
+    attemptNo: 1,
+    attemptRecorded: false,
   };
 
   const AUTH_PROGRAM = "day6-talk";
@@ -301,9 +304,117 @@
     state.cursor = 0;
     state.tries = 0;
     state.rows = [];
+    state.attemptStartedAt = Date.now();
+    state.attemptRecorded = false;
+    state.attemptNo = attemptStore() ? attemptStore().nextNumber(unitPageId()) : 1;
+    updateUnitTryChip();
     $("title").textContent = `U${u.unit} · ${u.title}`;
     showPair();
     show("speak");
+  }
+
+  function attemptStore() {
+    return window.MRJ_DAY6_ATTEMPTS || null;
+  }
+
+  function unitPageId() {
+    const lv = state.level && state.level.level ? state.level.level : "";
+    if (!lv || !state.unit) return "";
+    return `${lv}_u${state.unit.unit}`;
+  }
+
+  function attemptRecord() {
+    const store = attemptStore();
+    const pid = unitPageId();
+    if (!store || !pid) return null;
+    return store.list(pid);
+  }
+
+  function bestAttempt(rows) {
+    let best = null;
+    (rows || []).forEach((a) => {
+      if (!best || a.score > best.score) best = a;
+    });
+    return best;
+  }
+
+  function updateUnitTryChip() {
+    const el = $("unitTry");
+    if (!el) return;
+    if (state.attemptNo > 1) {
+      el.textContent = `Try ${state.attemptNo}`;
+      el.hidden = false;
+    } else {
+      el.textContent = "";
+      el.hidden = true;
+    }
+  }
+
+  function recordUnitAttempt(ok, miss) {
+    if (state.attemptRecorded) return null;
+    const store = attemptStore();
+    const pid = unitPageId();
+    const total = ok + miss;
+    const pct = total ? Math.round((ok / total) * 100) : 0;
+    state.attemptRecorded = true;
+    if (!store || !pid) return { n: state.attemptNo, score: pct, bestScore: pct, bestTry: state.attemptNo, attempts: 1 };
+    const res = store.add(pid, {
+      startedAt: state.attemptStartedAt ? new Date(state.attemptStartedAt).toISOString() : "",
+      endedAt: new Date().toISOString(),
+      score: pct,
+      pass: pct >= store.PASS_PCT,
+      correct: ok,
+      total: total,
+      source: mrjTeacherMode() ? "teacher" : "student",
+    });
+    const rows = res.record.attempts;
+    const best = bestAttempt(rows);
+    postUnitAttempt(pid, res.row, rows.length);
+    return {
+      n: res.row.n,
+      score: pct,
+      bestScore: res.record.bestScore,
+      bestTry: best ? best.n : res.row.n,
+      attempts: rows.length,
+    };
+  }
+
+  function postUnitAttempt(pageId, row, count) {
+    if (!window.MRJ_SCORES || typeof window.MRJ_SCORES.post !== "function") return;
+    window.MRJ_SCORES.post({
+      program: "day6-talk",
+      appName: "MRJ Day 6 Talk",
+      source: "day6-talk",
+      bookTitle: bookTitle(),
+      unitTitle: unitTitle(),
+      itemId: pageId,
+      itemType: "talk_unit",
+      scoreValue: row.correct,
+      scoreMax: row.total,
+      scorePct: row.score,
+      correctness: row.pass ? "correct" : "incorrect",
+      metadata: {
+        attempt: row.n,
+        re_attempt: row.n > 1,
+        tries_kept: count,
+        lines: row.total,
+        heard: row.correct,
+        passed: row.pass,
+      },
+    });
+  }
+
+  function openTryCard() {
+    const card = $("tryCard");
+    if (!card) return;
+    card.hidden = false;
+    const yes = $("btnTryYes");
+    if (yes) yes.focus();
+  }
+
+  function closeTryCard() {
+    const card = $("tryCard");
+    if (card) card.hidden = true;
   }
 
   function lineId(pair) {
@@ -641,12 +752,27 @@
     stopAudio();
     const ok = state.rows.filter((r) => r.status === "success").length;
     const miss = state.rows.filter((r) => r.status === "skipped").length;
+    const attempt = recordUnitAttempt(ok, miss);
     $("endSummary").textContent = `${ok} heard · ${miss} missed` + (ok + miss ? ` (${Math.round((ok / (ok + miss)) * 100)}%)` : "");
     $("endDetail").textContent = `${state.level.label} · Unit ${state.unit.unit} · ${state.pairs.length} lines`;
+    const tries = $("endTries");
+    if (tries && attempt) {
+      tries.hidden = false;
+      tries.textContent =
+        `Try ${attempt.n} · ${attempt.score}% · every try is kept` +
+        (attempt.attempts > 1 ? ` · Best ${attempt.bestScore}% (try ${attempt.bestTry})` : "");
+    }
     show("end");
   }
 
   function renderResults() {
+    const rows = attemptRecord();
+    const best = bestAttempt(rows);
+    const keepLine =
+      rows && rows.length
+        ? ` · Try ${rows[rows.length - 1].n} · every try is kept` +
+          (rows.length > 1 && best ? ` · Best ${best.score}% (try ${best.n})` : "")
+        : "";
     $("resultsMeta").textContent =
       `${state.level.label} · Unit ${state.unit.unit} ${state.unit.title} · ` +
       `${state.rows.filter((r) => r.status === "success").length} success / ` +
@@ -655,7 +781,8 @@
         const ok = state.rows.filter((r) => r.status === "success").length;
         const n = ok + state.rows.filter((r) => r.status === "skipped").length;
         return n ? ` (${Math.round((ok / n) * 100)}%)` : "";
-      })();
+      })() +
+      keepLine;
     const list = $("resultsList");
     list.innerHTML = "";
     state.rows.forEach((row, idx) => {
@@ -993,7 +1120,16 @@
   $("replyBanner").onclick = () => replayReply();
   $("btnNext").onclick = () => advance();
   $("btnResults").onclick = () => renderResults();
-  $("btnAgain").onclick = () => startUnit(state.unit);
+  $("btnAgain").onclick = () => openTryCard();
+  $("btnResultsTry").onclick = () => openTryCard();
+  $("btnTryYes").onclick = () => {
+    closeTryCard();
+    startUnit(state.unit);
+  };
+  $("btnTryNo").onclick = () => closeTryCard();
+  $("tryCard").onclick = (e) => {
+    if (e.target === $("tryCard")) closeTryCard();
+  };
   $("btnBackUnits").onclick = () => openLevel(state.level);
   $("btnPrint").onclick = () => window.print();
   $("btnResultsHome").onclick = () => renderHome();

@@ -220,3 +220,19 @@ button.stop {
   .print-hide, #btnHome, #btnStop, .top .badge, #checkerStatus, #loadTrack, #gradeBox, #wordBox { display: none !important; }
   .result-card { box-shadow: none; break-inside: avoid; }
 }
+
+/* Try again (Jay 2026-11-06): one chip, one warning card, every try kept */
+.try-chip { background: #dbeafe; color: #1d4ed8; border-color: #93c5fd; font-weight: 900; }
+.try-card {
+  position: fixed; inset: 0; z-index: 60; display: grid; place-items: center;
+  padding: 20px; background: rgba(17, 17, 17, 0.55);
+}
+.try-card[hidden] { display: none; }
+.try-card-box {
+  width: min(420px, 100%); background: var(--card, #fff); border: 3px solid var(--ink, #111);
+  border-radius: 24px; padding: 24px 20px; text-align: center; box-shadow: var(--shadow, 0 8px 0 #111);
+}
+.try-card-box h2 { margin: 0 0 8px; font-size: 1.7rem; }
+.try-card-box p { margin: 0 0 18px; font-weight: 700; }
+.try-card-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.try-card-actions button { min-width: 140px; }

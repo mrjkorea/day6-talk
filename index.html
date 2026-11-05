@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Day 6 Talk · MRJ</title>
-  <link rel="stylesheet" href="css/app.css?v=20261027-teacher-chip" />
+  <link rel="stylesheet" href="css/app.css?v=20261106-try-again" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
@@ -17,6 +17,7 @@
       </div>
       <div class="top-right">
         <span id="studentPill" class="student-pill" data-mrj-name-pill hidden></span>
+        <span id="unitTry" class="badge try-chip" hidden></span>
         <span id="tryBadge" class="badge" hidden></span>
       </div>
     </header>
@@ -85,8 +86,9 @@
         <h2>Done! 🎉</h2>
         <p id="endSummary" class="big-score"></p>
         <p id="endDetail" class="muted"></p>
+        <p id="endTries" class="muted" hidden></p>
         <button type="button" id="btnResults" class="primary big">Results</button>
-        <button type="button" id="btnAgain" class="secondary">Again</button>
+        <button type="button" id="btnAgain" class="secondary try-again">🔁 Try again</button>
         <button type="button" id="btnBackUnits" class="ghost">Unit list</button>
       </div>
     </main>
@@ -101,12 +103,25 @@
         </div>
         <div class="results-actions print-hide">
           <button type="button" id="btnPrint" class="secondary">Print</button>
+          <button type="button" id="btnResultsTry" class="secondary try-again">🔁 Try again</button>
           <button type="button" id="btnResultsHome" class="ghost">Home</button>
         </div>
       </div>
       <div id="resultsList" class="results-list"></div>
       <p class="muted print-hide tip">Missed lines: simply ask your teacher for help with this.</p>
     </main>
+
+    <!-- TRY AGAIN WARNING (one card, no new screen) -->
+    <div id="tryCard" class="try-card" hidden role="dialog" aria-modal="true" aria-labelledby="tryCardTitle">
+      <div class="try-card-box">
+        <h2 id="tryCardTitle">Try again?</h2>
+        <p>Your result now is saved. Nothing is erased.</p>
+        <div class="try-card-actions">
+          <button type="button" id="btnTryYes" class="primary">Yes, try again</button>
+          <button type="button" id="btnTryNo" class="ghost">No, keep this</button>
+        </div>
+      </div>
+    </div>
     <button type="button" id="btnStop" class="stop" hidden>Stop</button>
   </div>
 
@@ -117,8 +132,9 @@
   <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="day6-talk"></script>
   <script src="mrj-scores.js?v=20261027-teacher-chip"></script>
   <script src="js/auth-progress.js?v=20261027-teacher-chip"></script>
+  <script src="js/attempts.js?v=20261106-try-again"></script>
   <script type="module" src="js/pronounce-boot.js?v=20261027-teacher-chip"></script>
-  <script src="js/app.js?v=20261027-teacher-chip" defer></script>
+  <script src="js/app.js?v=20261106-try-again" defer></script>
   <script src="preview-assets/preview-ui.js?v=live2" defer></script>
   <script src="preview-assets/interview.js?v=live2" defer></script>
 </body>
