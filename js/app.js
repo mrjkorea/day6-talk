@@ -387,7 +387,7 @@
       source: "day6-talk",
       bookTitle: bookTitle(),
       unitTitle: unitTitle(),
-      itemId: pageId,
+      itemId: row.n > 1 ? `${pageId}#t${row.n}` : pageId,
       itemType: "talk_unit",
       scoreValue: row.correct,
       scoreMax: row.total,
